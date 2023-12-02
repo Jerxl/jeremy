@@ -4,7 +4,7 @@
   justify-content: space-between;
   height: 80px;
   align-items: center;
-  color: #848483;
+  color: #808080;
 }
 .pages {
   flex: 2;
@@ -35,5 +35,5 @@
 }
 
 .active {
-  color: #ffffff; /* Replace with your desired active color */
+  color: #d1d1cf; /* Replace with your desired active color */
 }

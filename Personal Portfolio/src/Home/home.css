@@ -1,3 +1,11 @@
+:root {
+  --text-colour: #d8d8d8;
+  --text-colour2: #808080;
+  --bg-colour: #393936;
+
+  --bg-colour-hover: #505050;
+}
+
 .Main {
   background-color: rgb(235, 235, 235);
   height: 96vh;
@@ -8,24 +16,33 @@
 }
 .Personal_Top {
   margin-top: 40px;
-  background-color: aliceblue;
+
   display: flex;
   gap: 15px;
   height: 300px;
 }
 .Intro {
   display: flex;
-  background-color: #393936;
+  background-color: var(--bg-colour);
   flex: 1;
   align-items: center;
   border-radius: 15px;
   gap: 25px;
 }
+.Profile_Img {
+  flex: 0.6;
+}
+
 .Profile_Img img {
   width: 200px;
   border-top-right-radius: 15px;
   border-bottom-left-radius: 15px;
   margin-left: 15px;
+}
+.Profile_Content {
+  color: var(--text-colour2);
+  flex: 1;
+  padding: 0 15px 0 0;
 }
 .Intro_Top_left {
   flex: 1;
@@ -35,10 +52,11 @@
   height: 100%;
 }
 .Type_js_Intro {
-  height: 50px;
-  background-color: #393936;
-  color: #d8d8d8;
-  border-radius: 25px;
+  height: 80px;
+  background-color: var(--bg-colour);
+  color: var(--text-colour);
+  border-radius: 15px;
+  padding: 8px;
 }
 .About_me {
   display: flex;
@@ -47,24 +65,118 @@
   gap: 15px;
 }
 
-.Credentials {
+.About_MeCard {
   flex: 1;
-  background-color: #393936;
+  background-color: var(--bg-colour);
   border-radius: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-.Portfolio {
-  flex: 1;
-  background-color: #393936;
-  border-radius: 25px;
+  transition: all 0.2s ease-in-out;
 }
 
-.Credentials_content {
+.About_MeCard_content {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-around;
   transform: translateY(30px);
+  color: var(--text-colour2);
+  text-align: left;
+}
+
+.About_MeCard:hover {
+  cursor: pointer;
+  background-color: var(--bg-colour-hover);
+  transform: scale(1.05);
+}
+
+/* Personal_bottom */
+.Personal_Botm {
+  margin-top: 15px;
+  display: flex;
+  background-color: #d1d1d1;
+  height: 350px;
+  column-gap: 10px;
+}
+
+.CV_Portfo {
+  flex: 1;
+  background-color: var(--bg-colour);
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.CV_Portfo_content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-around;
+  /* transform: translateY(80px); */
+
+  color: var(--text-colour2);
+  text-align: left;
+}
+
+.CV_Portfo:hover {
+  cursor: pointer;
+  background-color: var(--bg-colour-hover);
+  transform: scale(1.08);
+}
+
+.CV_Img {
+  display: flex;
+  justify-content: center;
+}
+.CV_Img img {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+/* Contact */
+.bi {
+  font-size: 2.5rem;
+}
+
+.SocialMedia_Wrap {
+  width: 250px;
+  height: 200px;
+  /* background-color: #d8d8d8; */
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.SocialMedia {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-self: center;
+  border-radius: 15px;
+}
+.SocialMedia div {
+  display: flex;
+  justify-content: space-evenly;
+}
+.SocialMedia div i {
+  background-color: #313131;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: var(--text-colour);
+  transition: all 0.2s ease-in-out;
+}
+
+.SocialMedia div i:hover {
+  background-color: #474747;
+}
+/* Skilss */
+.TopSkills {
+  flex: 2;
+  background-color: #8f6767;
 }
