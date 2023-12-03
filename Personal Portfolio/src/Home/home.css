@@ -2,12 +2,15 @@
   --text-colour: #d8d8d8;
   --text-colour2: #808080;
   --bg-colour: #393936;
-
+  --bg-colour2: #2a2a2a;
+  --my-gradient: linear-gradient(to bottom right, #202020, #131313);
   --bg-colour-hover: #505050;
+  --bg-colour-hover2: #474747;
 }
 
 .Main {
-  background-color: rgb(235, 235, 235);
+  /* background-color: #0f0f0f; */
+  background-color: #cacaca;
   height: 96vh;
   width: 100%;
   display: flex;
@@ -23,7 +26,7 @@
 }
 .Intro {
   display: flex;
-  background-color: var(--bg-colour);
+  background-image: var(--my-gradient);
   flex: 1;
   align-items: center;
   border-radius: 15px;
@@ -53,7 +56,7 @@
 }
 .Type_js_Intro {
   height: 80px;
-  background-color: var(--bg-colour);
+  background-image: var(--my-gradient);
   color: var(--text-colour);
   border-radius: 15px;
   padding: 8px;
@@ -67,7 +70,7 @@
 
 .About_MeCard {
   flex: 1;
-  background-color: var(--bg-colour);
+  background-image: var(--my-gradient);
   border-radius: 25px;
   display: flex;
   flex-direction: column;
@@ -95,14 +98,14 @@
 .Personal_Botm {
   margin-top: 15px;
   display: flex;
-  background-color: #d1d1d1;
+
   height: 350px;
   column-gap: 10px;
 }
 
 .CV_Portfo {
   flex: 1;
-  background-color: var(--bg-colour);
+  background-image: var(--my-gradient);
   border-radius: 25px;
   display: flex;
   flex-direction: column;
@@ -115,7 +118,7 @@
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-around;
-  /* transform: translateY(80px); */
+  /* transform: translateY(20px); */
 
   color: var(--text-colour2);
   text-align: left;
@@ -124,16 +127,16 @@
 .CV_Portfo:hover {
   cursor: pointer;
   background-color: var(--bg-colour-hover);
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
 .CV_Img {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
 .CV_Img img {
   width: 200px;
-  margin-bottom: 20px;
 }
 
 /* Contact */
@@ -161,7 +164,7 @@
   justify-content: space-evenly;
 }
 .SocialMedia div i {
-  background-color: #313131;
+  background-color: var(--bg-colour2);
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -173,10 +176,70 @@
 }
 
 .SocialMedia div i:hover {
-  background-color: #474747;
+  background-color: var(--bg-colour-hover2);
 }
 /* Skilss */
+/* home.css */
+
 .TopSkills {
+  display: flex;
   flex: 2;
-  background-color: #8f6767;
+  align-items: center; /* Aligns children (skills) vertically in the center */
+  justify-content: center; /* Aligns children (skills) horizontally in the center */
+  flex-direction: column;
+  background-image: var(--my-gradient);
+  border-radius: 25px;
+}
+
+.Skills_Container {
+  /* Adjust the following properties as needed */
+  max-width: 550px; /* Max width for the CV image container */
+  max-height: 200px; /* Max height for the CV image container */
+  overflow: hidden; /* Ensures content doesn't spill out */
+}
+/* Add styles for the Skills component as necessary */
+.Skills_content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  transform: translateY(30px);
+
+  color: var(--text-colour2);
+  text-align: center;
+}
+
+/* Personal_Experience */
+.Personal_Experience {
+  background-color: #d4d4d4;
+  margin-top: 15px;
+  display: flex;
+  height: 300px;
+  gap: 15px;
+}
+.Personal_Exp {
+  flex: 0.5;
+  background-image: var(--my-gradient);
+  border-radius: 25px;
+  padding: 25px 35px;
+  display: flex;
+  gap: 15px;
+}
+.Personal_Exp_Card {
+  flex: 1;
+  background-color: antiquewhite;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 10px;
+  justify-content: center;
+  align-items: center;
+}
+.icon {
+  font-size: 4rem;
+}
+
+.Font_Focus {
+  font-size: 20px;
+  color: #d1d1cf;
 }

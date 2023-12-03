@@ -1,0 +1,57 @@
+/* SkillsSection.css */
+.skill-bubble {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 120px; /* Adjust as needed */
+  height: 120px; /* Adjust as needed */
+  text-decoration: none;
+  background-color: var(--bg-colour2); /* Your preferred background color */
+  color: #000; /* Your preferred text color */
+  border-radius: 50%; /* Makes the div circular */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Adds some shadow */
+  text-decoration: none; /* Removes underline from links */
+  font-size: 0.9rem; /* Adjust as needed */
+  font-weight: bold; /* Makes the text bold */
+  transition: all 0.3s ease-in;
+}
+
+.skill-bubble img {
+  max-width: 100%; /* Ensures the image fits in the bubble */
+  max-height: 80%; /* Adjust as needed */
+  margin-bottom: 10px; /* Space between the image and text */
+}
+
+.skill-bubble:hover {
+  background-color: var(--bg-colour-hover2);
+}
+
+/* Style for Swiper container */
+.swiper {
+  width: 100%;
+  padding-top: 20px; /* Space above the Swiper */
+  padding-bottom: 20px; /* Space below the Swiper */
+}
+
+/* Style for Swiper slide */
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Optional: Adjust the breakpoint for responsiveness */
+@media (max-width: 768px) {
+  .swiper {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .skill-bubble {
+    width: 80px; /* Smaller size on mobile */
+    height: 80px; /* Smaller size on mobile */
+    font-size: 0.7rem; /* Smaller text on mobile */
+  }
+}

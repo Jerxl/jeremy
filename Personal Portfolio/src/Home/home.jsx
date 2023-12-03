@@ -5,6 +5,11 @@ import Signature from "../assets/signature.png";
 import CV from "../assets/image-removebg-preview.png";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Typed from "typed.js";
+import Skills from "./Skills.jsx";
+
+// import achivement_img from "../assets/achivement.png";
+// import experience_img from "../assets/experience.png";
+// import education_img from "../assets/education.png";
 
 function home() {
   const el = useRef(null);
@@ -28,7 +33,6 @@ function home() {
           .map((record) => record.fields.Quotes);
         setQuotes(selectedQuotes);
       } catch (error) {
-        console.error("Error fetching quotes:", error);
         setQuotes(["Error loading quotes..."]);
       }
     }
@@ -79,9 +83,7 @@ function home() {
               <div className="About_MeCard_content">
                 <div>
                   <div>More About Me</div>
-                  <div style={{ fontSize: "20px", color: "#d1d1cf" }}>
-                    Credentials
-                  </div>
+                  <div className="Font_Focus">Credentials</div>
                 </div>
                 <div>
                   <i
@@ -98,9 +100,7 @@ function home() {
               <div className="About_MeCard_content">
                 <div>
                   <div>Showcase</div>
-                  <div style={{ fontSize: "20px", color: "#d1d1cf" }}>
-                    Portfolio
-                  </div>
+                  <div className="Font_Focus">Portfolio</div>
                 </div>
                 <div>
                   <i
@@ -122,7 +122,7 @@ function home() {
           <div className="CV_Portfo_content">
             <div>
               <div>My cv</div>
-              <div style={{ fontSize: "20px", color: "#d1d1cf" }}>Download</div>
+              <div className="Font_Focus">Download</div>
             </div>
             <div>
               <i
@@ -134,21 +134,13 @@ function home() {
         </div>
 
         <div className="TopSkills">
-          <div className="CV_Img">
-            <img src={CV} alt="CV" />
+          <div className="Skills_Container">
+            <Skills />
           </div>
-          <div className="CV_Portfo_content">
+          <div className="Skills_content">
             <div>
-              <div>Skills</div>
-              <div style={{ fontSize: "20px", color: "#d1d1cf" }}>
-                List of Skills
-              </div>
-            </div>
-            <div>
-              <i
-                className="bi bi-arrow-right-circle"
-                style={{ fontSize: "2rem" }}
-              ></i>
+              <div>Professional Skills </div>
+              <div className="Font_Focus">Skills Overview</div>
             </div>
           </div>
         </div>
@@ -181,9 +173,7 @@ function home() {
             <div className="CV_Portfo_content">
               <div>
                 <div>Channles</div>
-                <div style={{ fontSize: "20px", color: "#d1d1cf" }}>
-                  Contact Me
-                </div>
+                <div className="Font_Focus">Contact Me</div>
               </div>
               <div>
                 <i
@@ -194,6 +184,29 @@ function home() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="Personal_Experience">
+        <div className="Personal_Exp">
+          <div className="Personal_Exp_Card">
+            <div>
+              <i class="bi bi-award icon"></i>
+            </div>
+            <div>Achivements</div>
+          </div>
+          <div className="Personal_Exp_Card">
+            <div>
+              <i class="bi bi-book icon"></i>
+            </div>
+            <div>Education</div>
+          </div>
+          <div className="Personal_Exp_Card">
+            <div>
+              <i class="bi bi-buildings icon"></i>
+            </div>
+            <div>experience_img</div>
+          </div>
+        </div>
+        <div>2</div>
       </div>
     </div>
   );
