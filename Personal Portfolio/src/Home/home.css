@@ -6,23 +6,26 @@
   --my-gradient: linear-gradient(to bottom right, #202020, #131313);
   --bg-colour-hover: #505050;
   --bg-colour-hover2: #474747;
+
+  --maxwidth: 1600px;
 }
 
 .Main {
   /* background-color: #0f0f0f; */
-  background-color: #cacaca;
+  background-color: #0a0a0a;
   height: 96vh;
-  width: 100%;
   display: flex;
   flex-direction: column;
   padding: 0 10% 0 10%;
+  align-items: center;
 }
 .Personal_Top {
-  margin-top: 40px;
-
+  margin-top: 80px;
   display: flex;
   gap: 15px;
   height: 300px;
+  max-width: var(--maxwidth);
+  width: 100%;
 }
 .Intro {
   display: flex;
@@ -31,6 +34,7 @@
   align-items: center;
   border-radius: 15px;
   gap: 25px;
+  min-width: 490px;
 }
 .Profile_Img {
   flex: 0.6;
@@ -66,6 +70,7 @@
   text-align: center;
   height: 100%;
   gap: 15px;
+  min-width: 460px;
 }
 
 .About_MeCard {
@@ -90,17 +95,19 @@
 
 .About_MeCard:hover {
   cursor: pointer;
-  background-color: var(--bg-colour-hover);
   transform: scale(1.05);
 }
-
+.About_MeCard:hover .bi-arrow-right-circle {
+  color: var(--text-colour); /* Replace with the color you want */
+}
 /* Personal_bottom */
 .Personal_Botm {
   margin-top: 15px;
   display: flex;
-
+  max-width: var(--maxwidth);
   height: 350px;
   column-gap: 10px;
+  width: 100%;
 }
 
 .CV_Portfo {
@@ -111,6 +118,7 @@
   flex-direction: column;
   justify-content: center;
   transition: all 0.2s ease-in-out;
+  min-width: 250px;
 }
 
 .CV_Portfo_content {
@@ -126,8 +134,11 @@
 
 .CV_Portfo:hover {
   cursor: pointer;
-  background-color: var(--bg-colour-hover);
   transform: scale(1.05);
+}
+
+.CV_Portfo:hover .bi-arrow-right-circle {
+  color: #fff;
 }
 
 .CV_Img {
@@ -155,15 +166,14 @@
 .SocialMedia {
   display: flex;
   gap: 10px;
-  flex-direction: column;
-  align-self: center;
+  flex-direction: row;
+  align-items: center;
   border-radius: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-.SocialMedia div {
-  display: flex;
-  justify-content: space-evenly;
-}
-.SocialMedia div i {
+
+.SocialMedia i {
   background-color: var(--bg-colour2);
   width: 100px;
   height: 100px;
@@ -175,8 +185,9 @@
   transition: all 0.2s ease-in-out;
 }
 
-.SocialMedia div i:hover {
+.SocialMedia i:hover {
   background-color: var(--bg-colour-hover2);
+  transform: translateY(-5px);
 }
 /* Skilss */
 /* home.css */
@@ -211,35 +222,124 @@
 
 /* Personal_Experience */
 .Personal_Experience {
-  background-color: #d4d4d4;
-  margin-top: 15px;
+  /* Dark background */
   display: flex;
   height: 300px;
-  gap: 15px;
+  color: #fff; /* White text for visibility on dark bg */
+  align-items: center; /* Vertically center the content */
+  max-width: var(--maxwidth);
+  width: 100%;
+  margin-top: -25px;
+  gap: 5px;
 }
+
 .Personal_Exp {
-  flex: 0.5;
-  background-image: var(--my-gradient);
-  border-radius: 25px;
-  padding: 25px 35px;
+  flex: 1; /* Adjusted for more space for the cards */
   display: flex;
-  gap: 15px;
+  gap: 10px;
+  min-width: 710px;
 }
+
 .Personal_Exp_Card {
   flex: 1;
-  background-color: antiquewhite;
+  background-image: var(
+    --my-gradient
+  ); /* Slightly lighter card bg for contrast */
   border-radius: 25px;
   display: flex;
   flex-direction: column;
-  padding: 5px 10px;
+  padding: 20px;
   justify-content: center;
   align-items: center;
+  gap: 10px; /* Space between icon and text */
 }
+
+.Personal_Exp_Card div:nth-child(2) {
+  font-size: 2.5rem; /* Larger font for the number */
+  font-weight: bold;
+}
+
+.Personal_Exp_Card div:nth-child(3) {
+  font-size: 1rem; /* Smaller font for the description */
+}
+
 .icon {
-  font-size: 4rem;
+  font-size: 3rem; /* Adjust icon size */
+  color: var(--text-colour); /* Bootstrap primary color for the icons */
+}
+
+.Personal_Exp_CTA {
+  flex: 0.3; /* Smaller flex value for the CTA section */
+  background-color: #1a1a1a; /* Matching the cards bg */
+  border-radius: 25px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between; /* Space out text and arrow icon */
+  align-items: center;
+  font-size: 1.5rem; /* Larger font for CTA text */
+  cursor: pointer; /* Hand cursor on hover */
+  transition: all 0.3s;
+}
+
+.Personal_Exp_CTA:hover {
+  background-color: #007bff; /* Highlight the CTA on hover */
+  color: #0a0a0a; /* Dark text on light bg for the hover state */
+}
+.Personal_Exp_CTA i {
+  font-size: 2rem; /* Larger arrow icon */
+  color: #fff; /* White icon */
+}
+
+/* Additional hover effects for cards */
+.Personal_Exp_Card:hover {
+  background-color: #333333; /* Slightly lighter bg on hover */
+  transform: translateY(-8px); /* Lift the card up a bit */
+  transition: background-color 0.3s, transform 0.3s ease-out; /* Smooth transition */
+  cursor: pointer;
 }
 
 .Font_Focus {
   font-size: 20px;
-  color: #d1d1cf;
+  color: #fff;
+}
+
+@media (max-width: 1340px) {
+  .Main {
+    padding: 0 2%;
+  }
+
+  .CV_Portfo {
+    flex: 0.5;
+  }
+  .CV_Portfo img {
+    width: 180px;
+  }
+  .SocialMedia i {
+    width: 85px;
+    height: 85px;
+  }
+  .SocialMedia {
+    justify-content: center;
+  }
+  .TopSkills {
+    flex: 1;
+  }
+  .SocialMedia_Wrap {
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .TopSkills {
+    overflow: hidden;
+    width: 450px;
+  }
+  .SocialMedia i {
+    width: 80px;
+    height: 80px;
+  }
+  .CV_Portfo {
+    min-width: 0px;
+    width: 150px;
+  }
 }

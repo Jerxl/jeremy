@@ -1,0 +1,52 @@
+/* Footer.css */
+.footer {
+  background-color: #1c1c1e; /* Dark background color */
+  color: #fff; /* White text color */
+  padding: 20px 0; /* Top and bottom padding */
+  display: flex;
+  justify-content: center; /* Center footer content horizontally */
+  align-items: center; /* Center footer content vertically */
+  border-top: 3px solid #4a90e2; /* Blue top border */
+}
+
+.footer-content {
+  text-align: center; /* Center align the content */
+}
+
+.footer-title {
+  font-size: 1.5em; /* Larger font size for the title */
+  margin-bottom: 10px; /* Space below the title */
+  font-weight: bold;
+}
+
+.footer-links {
+  margin-bottom: 10px; /* Space below the links */
+}
+
+.footer-link {
+  margin: 0 15px; /* Margin to space out the links */
+  color: #fff; /* White text color */
+  text-decoration: none; /* No underline */
+  font-weight: bold; /* Bold font weight */
+}
+
+.footer-link:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+.footer-rights {
+  font-size: 0.75em; /* Smaller font size for the copyright text */
+  opacity: 0.6; /* Slightly transparent */
+}
+
+@media (max-width: 600px) {
+  .footer-links {
+    display: flex;
+    flex-direction: column; /* Stack the links vertically on small screens */
+    align-items: center; /* Center the links */
+  }
+
+  .footer-link {
+    margin: 5px 0; /* Vertical margin for stacked links */
+  }
+}

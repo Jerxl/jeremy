@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home/home";
 import Nav from "./Nav/nav";
+import Footer from "./Nav/Footer.jsx";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/" element={<Home />} />
         {/* <Route exact path="/" element={<Nav />} /> */}
       </Routes>
+      <Footer />
     </div>
   );
 }

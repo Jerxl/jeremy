@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-
 import "./nav.css";
 
 function Navigation() {
+  const [isNavExpanded, setIsNavExpanded] = useState(false);
   return (
     <nav className="navbar">
       <div className="logo">
-        <NavLink to="/">Jeremy</NavLink>
+        <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          Jeremy
+        </NavLink>
       </div>
-      <div className="pages">
+      <button
+        className="hamburger"
+        onClick={() => setIsNavExpanded(!isNavExpanded)}
+      >
+        {/* Icon from Bootstrap Icons */}
+        <i className={isNavExpanded ? "bi bi-x-lg" : "bi bi-list"}></i>
+      </button>
+      <div className={`pages ${isNavExpanded ? "nav-expanded" : ""}`}>
         <ul className="page_list">
           <li>
             <NavLink
@@ -54,7 +66,9 @@ function Navigation() {
         </ul>
       </div>
       <div className="CTA">
-        <div className="Contact">Contact</div>
+        <NavLink to="/contact" className="Contact">
+          Contact
+        </NavLink>
       </div>
     </nav>
   );

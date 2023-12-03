@@ -14,6 +14,10 @@ import Skills from "./Skills.jsx";
 function home() {
   const el = useRef(null);
   const [quotes, setQuotes] = useState(["Loading quotes..."]);
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
 
   useEffect(() => {
     async function fetchQuotes() {
@@ -55,125 +59,76 @@ function home() {
       };
     }
   }, [quotes]);
-  return (
-    <div className="Main">
-      <div className="Personal_Top">
-        <div className="Intro">
-          <div className="Profile_Img">
-            <img src={profileimg} alt="" />
-          </div>
-          <div className="Profile_Content">
-            <p>A Web Developer</p>
-            <p style={{ color: "#d1d1cf", fontSize: "30px" }}>Jeremy Zhao</p>
-            <p>
-              Engineering student passionate about embracing and advancing
-              technology, driven by innovation and creative problem-solving.
-            </p>
-          </div>
-        </div>
-        <div className="Intro_Top_left">
-          <div className="Type_js_Intro">
-            <span ref={el}></span>
-          </div>
-          <div className="About_me">
-            <div className="About_MeCard">
-              <div>
-                <img src={Signature} alt="Signature" />
-              </div>
-              <div className="About_MeCard_content">
-                <div>
-                  <div>More About Me</div>
-                  <div className="Font_Focus">Credentials</div>
-                </div>
-                <div>
-                  <i
-                    className="bi bi-arrow-right-circle"
-                    style={{ fontSize: "2rem" }}
-                  ></i>
-                </div>
-              </div>
-            </div>
-            <div className="About_MeCard">
-              <div>
-                <img src={Signature} alt="Signature" />
-              </div>
-              <div className="About_MeCard_content">
-                <div>
-                  <div>Showcase</div>
-                  <div className="Font_Focus">Portfolio</div>
-                </div>
-                <div>
-                  <i
-                    className="bi bi-arrow-right-circle"
-                    style={{ fontSize: "2rem" }}
-                  ></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="Personal_Botm">
-        {/* CV */}
-        <div className="CV_Portfo">
-          <div className="CV_Img">
-            <img src={CV} alt="CV" />
-          </div>
-          <div className="CV_Portfo_content">
-            <div>
-              <div>My cv</div>
-              <div className="Font_Focus">Download</div>
-            </div>
-            <div>
-              <i
-                className="bi bi-arrow-right-circle"
-                style={{ fontSize: "2rem" }}
-              ></i>
-            </div>
-          </div>
-        </div>
 
-        <div className="TopSkills">
-          <div className="Skills_Container">
-            <Skills />
+  return (
+    <div className="Master_Main">
+      <div className={`Main`}>
+        <div className="Personal_Top">
+          <div className="Intro">
+            <div className="Profile_Img">
+              <img src={profileimg} alt="" />
+            </div>
+            <div className="Profile_Content">
+              <p>A Web Developer</p>
+              <p style={{ color: "#d1d1cf", fontSize: "30px" }}>Jeremy Zhao</p>
+              <p>
+                Engineering student passionate about embracing and advancing
+                technology, driven by innovation and creative problem-solving.
+              </p>
+            </div>
           </div>
-          <div className="Skills_content">
-            <div>
-              <div>Professional Skills </div>
-              <div className="Font_Focus">Skills Overview</div>
+          <div className="Intro_Top_left">
+            <div className="Type_js_Intro">
+              <span ref={el}></span>
+            </div>
+            <div className="About_me">
+              <div className="About_MeCard">
+                <div>
+                  <img src={Signature} alt="Signature" />
+                </div>
+                <div className="About_MeCard_content">
+                  <div>
+                    <div>More About Me</div>
+                    <div className="Font_Focus">Credentials</div>
+                  </div>
+                  <div>
+                    <i
+                      className="bi bi-arrow-right-circle"
+                      style={{ fontSize: "2rem" }}
+                    ></i>
+                  </div>
+                </div>
+              </div>
+              <div className="About_MeCard">
+                <div>
+                  <img src={Signature} alt="Signature" />
+                </div>
+                <div className="About_MeCard_content">
+                  <div>
+                    <div>Showcase</div>
+                    <div className="Font_Focus">Portfolio</div>
+                  </div>
+                  <div>
+                    <i
+                      className="bi bi-arrow-right-circle"
+                      style={{ fontSize: "2rem" }}
+                    ></i>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div className="CV_Portfo">
-          {/* Contact */}
-          <div>
-            <div className="SocialMedia_Wrap">
-              <div className="SocialMedia">
-                <div>
-                  <a href="mailto:jeremyzhaoxl@gmail.com" target="blank">
-                    <i class="bi bi-envelope-at"></i>
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/zhao-xinlei-80875b211/"
-                    target="blank"
-                  >
-                    <i class="bi bi-linkedin"></i>
-                  </a>
-                </div>
-                <div>
-                  <a href="https://github.com/Jerxl" target="blank">
-                    <i class="bi bi-github"></i>
-                  </a>
-                  <a href="">
-                    <i class="bi bi-instagram" target="blank"></i>
-                  </a>
-                </div>
-              </div>
+        <div className="Personal_Botm">
+          {/* CV */}
+          <div className="CV_Portfo">
+            <div className="CV_Img">
+              <img src={CV} alt="CV" />
             </div>
             <div className="CV_Portfo_content">
               <div>
-                <div>Channles</div>
-                <div className="Font_Focus">Contact Me</div>
+                <div>My cv</div>
+                <div className="Font_Focus">Download</div>
               </div>
               <div>
                 <i
@@ -183,30 +138,86 @@ function home() {
               </div>
             </div>
           </div>
+
+          <div className="TopSkills">
+            <div className="Skills_Container">
+              <Skills />
+            </div>
+            <div className="Skills_content">
+              <div>
+                <div>Professional Skills </div>
+                <div className="Font_Focus">Skills Overview</div>
+              </div>
+            </div>
+          </div>
+          <div className="CV_Portfo">
+            {/* Contact */}
+            <div>
+              <div className="SocialMedia_Wrap">
+                <div className="SocialMedia">
+                  <a href="mailto:jeremyzhaoxl@gmail.com" target="blank">
+                    <i className="bi bi-envelope-at"></i>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/zhao-xinlei-80875b211/"
+                    target="blank"
+                  >
+                    <i className="bi bi-linkedin"></i>
+                  </a>
+
+                  <a href="https://github.com/Jerxl" target="blank">
+                    <i className="bi bi-github"></i>
+                  </a>
+                  <a href="">
+                    <i className="bi bi-instagram" target="blank"></i>
+                  </a>
+                </div>
+              </div>
+              <div className="CV_Portfo_content">
+                <div>
+                  <div>Channles</div>
+                  <div className="Font_Focus">Contact Me</div>
+                </div>
+                <div>
+                  <i
+                    className="bi bi-arrow-right-circle"
+                    style={{ fontSize: "2rem" }}
+                  ></i>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="Personal_Experience">
-        <div className="Personal_Exp">
-          <div className="Personal_Exp_Card">
-            <div>
-              <i class="bi bi-award icon"></i>
+        {/* // In your React component file */}
+        <div className="Personal_Experience">
+          <div className="Personal_Exp">
+            <div className="Personal_Exp_Card">
+              <div>
+                <i className="bi bi-award icon"></i>
+              </div>
+              <div>07</div>
+              <div>ACHIVEMENTS</div>
             </div>
-            <div>Achivements</div>
+            <div className="Personal_Exp_Card">
+              <div>
+                <i className="bi bi-book icon"></i>
+              </div>
+              <div>Tertiary</div>
+              <div>EDUCATION</div>
+            </div>
+            <div className="Personal_Exp_Card">
+              <div>
+                <i className="bi bi-buildings icon"></i>
+              </div>
+              <div>3</div>
+              <div>WORK EXPERIENCE</div>
+            </div>
           </div>
-          <div className="Personal_Exp_Card">
-            <div>
-              <i class="bi bi-book icon"></i>
-            </div>
-            <div>Education</div>
-          </div>
-          <div className="Personal_Exp_Card">
-            <div>
-              <i class="bi bi-buildings icon"></i>
-            </div>
-            <div>experience_img</div>
+          <div className="Personal_Exp_CTA">
+            <span>Let's work together.</span>
+            <i className="bi bi-arrow-right-circle-fill"></i>
           </div>
         </div>
-        <div>2</div>
       </div>
     </div>
   );

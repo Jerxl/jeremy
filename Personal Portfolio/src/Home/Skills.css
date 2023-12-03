@@ -14,7 +14,7 @@
   text-decoration: none; /* Removes underline from links */
   font-size: 0.9rem; /* Adjust as needed */
   font-weight: bold; /* Makes the text bold */
-  transition: all 0.3s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 .skill-bubble img {
@@ -25,6 +25,7 @@
 
 .skill-bubble:hover {
   background-color: var(--bg-colour-hover2);
+  transform: translateY(-8px);
 }
 
 /* Style for Swiper container */
@@ -43,6 +44,7 @@
 }
 
 /* Optional: Adjust the breakpoint for responsiveness */
+
 @media (max-width: 768px) {
   .swiper {
     padding-top: 10px;
@@ -50,8 +52,8 @@
   }
 
   .skill-bubble {
-    width: 80px; /* Smaller size on mobile */
-    height: 80px; /* Smaller size on mobile */
+    width: 100px; /* Smaller size on mobile */
+    height: 100px; /* Smaller size on mobile */
     font-size: 0.7rem; /* Smaller text on mobile */
   }
 }
