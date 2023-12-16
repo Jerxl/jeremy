@@ -2,7 +2,9 @@ import { React, useEffect, useRef, useState } from "react";
 import "./home.css";
 import profileimg from "../assets/Personal_img.png";
 import Signature from "../assets/signature.png";
+import Portfolio from "../assets/Portfolio.png";
 import CV from "../assets/image-removebg-preview.png";
+import Resume from "../assets/Resume.pdf";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Typed from "typed.js";
 import Skills from "./Skills.jsx";
@@ -60,6 +62,17 @@ function home() {
     }
   }, [quotes]);
 
+  // Function to handle CV download
+  const handleDownloadCV = () => {
+    // Create a link and trigger the download
+    const link = document.createElement("a");
+    link.href = Resume;
+    link.download = "Resume.pdf"; // Set the download file name
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="Master_Main">
       <div className={`Main`}>
@@ -83,7 +96,13 @@ function home() {
             </div>
             <div className="About_me">
               <div className="About_MeCard">
-                <div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
                   <img src={Signature} alt="Signature" />
                 </div>
                 <div className="About_MeCard_content">
@@ -100,8 +119,14 @@ function home() {
                 </div>
               </div>
               <div className="About_MeCard">
-                <div>
-                  <img src={Signature} alt="Signature" />
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <img src={Portfolio} alt="Signature" />
                 </div>
                 <div className="About_MeCard_content">
                   <div>
@@ -121,7 +146,7 @@ function home() {
         </div>
         <div className="Personal_Botm">
           {/* CV */}
-          <div className="CV_Portfo">
+          <div className="CV_Portfo" onClick={handleDownloadCV}>
             <div className="CV_Img">
               <img src={CV} alt="CV" />
             </div>

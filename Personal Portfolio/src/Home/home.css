@@ -13,14 +13,14 @@
 .Main {
   /* background-color: #0f0f0f; */
   background-color: #0a0a0a;
-  height: 96vh;
+  height: auto;
+  min-height: 96vh;
   display: flex;
   flex-direction: column;
   padding: 0 10% 0 10%;
   align-items: center;
 }
 .Personal_Top {
-  margin-top: 80px;
   display: flex;
   gap: 15px;
   height: 300px;
@@ -34,7 +34,6 @@
   align-items: center;
   border-radius: 15px;
   gap: 25px;
-  min-width: 490px;
 }
 .Profile_Img {
   flex: 0.6;
@@ -45,6 +44,7 @@
   border-top-right-radius: 15px;
   border-bottom-left-radius: 15px;
   margin-left: 15px;
+  min-width: 180px;
 }
 .Profile_Content {
   color: var(--text-colour2);
@@ -88,7 +88,7 @@
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-around;
-  transform: translateY(30px);
+  transform: translateY(-10px);
   color: var(--text-colour2);
   text-align: left;
 }
@@ -100,6 +100,7 @@
 .About_MeCard:hover .bi-arrow-right-circle {
   color: var(--text-colour); /* Replace with the color you want */
 }
+
 /* Personal_bottom */
 .Personal_Botm {
   margin-top: 15px;
@@ -284,6 +285,8 @@
 .Personal_Exp_CTA:hover {
   background-color: #007bff; /* Highlight the CTA on hover */
   color: #0a0a0a; /* Dark text on light bg for the hover state */
+  transform: scale(1.05);
+  transition: transform 0.3s ease-out; /* Smooth transition */
 }
 .Personal_Exp_CTA i {
   font-size: 2rem; /* Larger arrow icon */
@@ -303,7 +306,14 @@
   color: #fff;
 }
 
-@media (max-width: 1340px) {
+@media (max-width: 1350px) {
+  .Main {
+    padding: 0 5% 0 5%;
+  }
+}
+
+/* Extra large devices (large desktops) */
+@media (min-width: 1200px) and (max-width: 1350px) {
   .Main {
     padding: 0 2%;
   }
@@ -329,17 +339,147 @@
   }
 }
 
-@media (max-width: 1024px) {
-  .TopSkills {
-    overflow: hidden;
-    width: 450px;
+/* Large devices (desktops) */
+@media (min-width: 993px) and (max-width: 1200px) {
+  .Main {
+    padding: 0px 15px;
+    height: 1150px;
+  }
+
+  .CV_Portfo {
+    flex: 0.5;
+  }
+  .CV_Portfo img {
+    width: 180px;
   }
   .SocialMedia i {
-    width: 80px;
-    height: 80px;
+    width: 85px;
+    height: 85px;
   }
-  .CV_Portfo {
-    min-width: 0px;
-    width: 150px;
+  .SocialMedia {
+    justify-content: center;
+  }
+  .TopSkills {
+    flex: 1;
+    width: 350px;
+    overflow: hidden;
+  }
+  .SocialMedia_Wrap {
+    margin-bottom: 8px;
+  }
+}
+
+/* Large devices (tablet) */
+@media (max-width: 992px) {
+  .Main {
+    padding: 2%;
+    height: auto;
+  }
+
+  .Personal_Top {
+    flex-direction: column;
+    margin: 0;
+  }
+  /* Reset any specific margins or paddings that could be causing issues */
+  .Personal_Top > *,
+  .Personal_Botm > * {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Remove any fixed heights and use min-height if necessary */
+  .Personal_Top,
+  .Personal_Botm,
+  .Personal_Experience {
+    min-height: auto; /* Or some other appropriate value */
+    height: auto; /* This will allow the containers to grow with the content */
+  }
+
+  .About_MeCard_content {
+    transform: translateY(0px);
+  }
+  .About_MeCard {
+    min-height: 200px;
+  }
+  .About_MeCard img {
+    margin-bottom: auto;
+
+    height: 120px;
+  }
+  .Personal_Botm {
+    flex-direction: row;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .TopSkills {
+    order: 2;
+  }
+
+  .Skills_content {
+    transform: translateY(0px);
+  }
+
+  .Personal_Experience {
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  .Personal_Exp {
+    min-width: 550px;
+    width: 100%;
+  }
+
+  .Personal_Exp_Card {
+    gap: 0px;
+    padding: 10px;
+  }
+
+  .Personal_Exp_Card div:nth-child(2) {
+    font-size: 1.5rem;
+  }
+}
+
+/* Large devices (tablet) */
+@media (max-width: 600px) {
+  .Personal_Experience {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .Personal_Exp {
+    flex-direction: column;
+    width: 100%;
+    min-width: 250px;
+  }
+
+  .TopSkills {
+    min-width: 400px;
+    overflow: hidden;
+  }
+}
+
+/* Large devices (phone) */
+@media (max-width: 456px) {
+  .Intro {
+    flex-direction: column;
+    padding-top: 10px;
+  }
+  .Profile_Content {
+    padding-left: 10px;
+  }
+  .Profile_Img img {
+    width: 160px;
+    height: 160px;
+  }
+  .About_me {
+    flex-direction: column;
+    width: 100%;
+    min-width: 250px;
+  }
+  .TopSkills {
+    min-width: 300px;
+    overflow: hidden;
   }
 }

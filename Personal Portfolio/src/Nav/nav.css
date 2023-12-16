@@ -96,6 +96,8 @@
   /* Show the hamburger menu */
   .hamburger {
     display: block;
+    margin-left: auto;
+    margin-right: 30px;
   }
 
   /* When the navbar is expanded, show the list */

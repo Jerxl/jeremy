@@ -57,3 +57,16 @@
     font-size: 0.7rem; /* Smaller text on mobile */
   }
 }
+
+@media (max-width: 600px) {
+  .swiper {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .skill-bubble {
+    width: 80px; /* Smaller size on mobile */
+    height: 80px; /* Smaller size on mobile */
+    font-size: 0.7rem; /* Smaller text on mobile */
+  }
+}
