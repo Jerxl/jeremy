@@ -1,0 +1,49 @@
+/* Custom colors */
+:root {
+  --text-colour: #d8d8d8;
+  --text-colour2: #808080;
+  --bg-colour: #393936;
+  --bg-colour2: #2a2a2a;
+  --my-gradient: linear-gradient(to bottom right, #202020, #131313);
+  --bg-colour-hover: #505050;
+  --bg-colour-hover2: #474747;
+}
+
+.flip-card {
+  background-color: var(--bg-colour);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.flip-card-inner {
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  backface-visibility: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-card-front {
+  color: var(--text-colour);
+  background: var(--my-gradient);
+}
+
+.flip-card-back {
+  color: var(--text-colour2);
+  background-color: var(--bg-colour2);
+  transform: rotateY(180deg);
+  padding: 10px;
+}

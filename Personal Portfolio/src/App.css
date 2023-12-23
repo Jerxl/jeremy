@@ -1,5 +1,6 @@
 .App {
   background-color: black;
+  @apply font-sans;
 }
 /* index.css or global.css */
 .NAV {

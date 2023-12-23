@@ -1,9 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./nav.css";
 
 function Navigation() {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
+
+  // This effect sets up the event listener for clicks outside the navigation
+  useEffect(() => {
+    const handleDocumentClick = (event) => {
+      // Get the nav element
+      const navElement = document.querySelector(".navbar");
+
+      // Check if the click was outside the nav
+      if (navElement && !navElement.contains(event.target)) {
+        setIsNavExpanded(false);
+      }
+    };
+
+    // Add the event listener
+    document.addEventListener("click", handleDocumentClick);
+
+    // Clean up the event listener
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, []);
+
+  const closeNav = () => {
+    setIsNavExpanded(false);
+  };
   return (
     <nav className="navbar">
       <div className="logo">
@@ -23,7 +48,7 @@ function Navigation() {
       </button>
       <div className={`pages ${isNavExpanded ? "nav-expanded" : ""}`}>
         <ul className="page_list">
-          <li>
+          <li onClick={closeNav}>
             <NavLink
               to="/"
               className={({ isActive }) => (isActive ? "active" : "")}
@@ -31,7 +56,7 @@ function Navigation() {
               Home
             </NavLink>
           </li>
-          <li>
+          <li onClick={closeNav}>
             <NavLink
               to="/about"
               className={({ isActive }) => (isActive ? "active" : "")}
@@ -39,15 +64,8 @@ function Navigation() {
               About
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/Skills"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Skills
-            </NavLink>
-          </li>
-          <li>
+
+          <li onClick={closeNav}>
             <NavLink
               to="/Works"
               className={({ isActive }) => (isActive ? "active" : "")}
@@ -55,7 +73,7 @@ function Navigation() {
               Works
             </NavLink>
           </li>
-          <li>
+          <li onClick={closeNav}>
             <NavLink
               to="/Experiences"
               className={({ isActive }) => (isActive ? "active" : "")}

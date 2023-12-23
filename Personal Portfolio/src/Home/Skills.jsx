@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { Link } from "react-router-dom";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -31,25 +31,29 @@ import Fusion360 from "../assets/Skills_Img/Fusion 360.png";
 
 function SkillsSection() {
   const skills = [
-    { name: "Figma", link: "#figma", img: Figma },
-    { name: "Github", link: "#Github", img: Github },
+    { name: "Figma", link: "/credentials#Figma", img: Figma },
+    { name: "Github", link: "/credentials#Github", img: Github },
     {
-      name: "JavaScript",
-      link: "#javascript",
+      name: "Javascript",
+      link: "/credentials#Javascript",
       img: Javascript,
     },
-    { name: "HTML", link: "#html", img: Html },
-    { name: "Illustrator", link: "#Illustrator", img: Illustrator },
-    { name: "Office", link: "#Office", img: Office },
-    { name: "Photoshop", link: "#Photoshop", img: Photoshop },
-    { name: "Python", link: "#Python", img: Python },
-    { name: "Tableau", link: "#Tableau", img: Tableau },
-    { name: "GA4", link: "#GA4", img: GA4 },
-    { name: "GTM", link: "#GTM", img: GTM },
-    { name: "React", link: "#React", img: React_icon },
-    { name: "Solidworks", link: "#Solidworks", img: Solidworks },
-    { name: "premiere-pro", link: "#premiere-pro", img: premiere_pro },
-    { name: "Fusion360", link: "#Fusion360", img: Fusion360 },
+    { name: "Html", link: "/credentials#Html", img: Html },
+    { name: "Illustrator", link: "/credentials#Illustrator", img: Illustrator },
+    { name: "Office", link: "/credentials#Office", img: Office },
+    { name: "Photoshop", link: "/credentials#Photoshop", img: Photoshop },
+    { name: "Python", link: "/credentials#Python", img: Python },
+    { name: "Tableau", link: "/credentials#Tableau", img: Tableau },
+    { name: "GA4", link: "/credentials#GA4", img: GA4 },
+    { name: "GTM", link: "/credentials#GTM", img: GTM },
+    { name: "React", link: "/credentials#React", img: React_icon },
+    { name: "Solidworks", link: "/credentials#Solidworks", img: Solidworks },
+    {
+      name: "premiere-pro",
+      link: "/credentials#premiere",
+      img: premiere_pro,
+    },
+    { name: "Fusion360", link: "/credentials#Fusion360", img: Fusion360 },
 
     // Add more skills and their corresponding anchor link IDs
   ];
@@ -68,10 +72,10 @@ function SkillsSection() {
     >
       {skills.map((skill, index) => (
         <SwiperSlide key={index}>
-          <a href={skill.link} className="skill-bubble">
+          <Link to={skill.link} className="skill-bubble">
             <img src={skill.img} alt={skill.name} />
             {/* <p>{skill.name}</p> */}
-          </a>
+          </Link>
         </SwiperSlide>
       ))}
     </Swiper>

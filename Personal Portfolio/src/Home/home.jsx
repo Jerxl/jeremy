@@ -8,10 +8,7 @@ import Resume from "../assets/Resume.pdf";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Typed from "typed.js";
 import Skills from "./Skills.jsx";
-
-// import achivement_img from "../assets/achivement.png";
-// import experience_img from "../assets/experience.png";
-// import education_img from "../assets/education.png";
+import { NavLink } from "react-router-dom";
 
 function home() {
   const el = useRef(null);
@@ -74,14 +71,14 @@ function home() {
   };
 
   return (
-    <div className="Master_Main">
+    <div className="Master_Main ">
       <div className={`Main`}>
         <div className="Personal_Top">
-          <div className="Intro">
+          <div className="Intro ">
             <div className="Profile_Img">
               <img src={profileimg} alt="" />
             </div>
-            <div className="Profile_Content">
+            <div className="Profile_Content ">
               <p>A Web Developer</p>
               <p style={{ color: "#d1d1cf", fontSize: "30px" }}>Jeremy Zhao</p>
               <p>
@@ -95,51 +92,57 @@ function home() {
               <span ref={el}></span>
             </div>
             <div className="About_me">
-              <div className="About_MeCard">
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <img src={Signature} alt="Signature" />
-                </div>
-                <div className="About_MeCard_content">
-                  <div>
-                    <div>More About Me</div>
-                    <div className="Font_Focus">Credentials</div>
+              <div className="About_MeCard ">
+                <NavLink to="/credentials#About_Container ">
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img src={Signature} alt="Signature" />
                   </div>
-                  <div>
-                    <i
-                      className="bi bi-arrow-right-circle"
-                      style={{ fontSize: "2rem" }}
-                    ></i>
+                  <div className="About_MeCard_content">
+                    <div>
+                      <div>More About Me</div>
+
+                      <div className="Font_Focus">Credentials</div>
+                    </div>
+                    <div>
+                      <i
+                        className="bi bi-arrow-right-circle"
+                        style={{ fontSize: "2rem" }}
+                      ></i>
+                    </div>
                   </div>
-                </div>
+                </NavLink>
               </div>
+
               <div className="About_MeCard">
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <img src={Portfolio} alt="Signature" />
-                </div>
-                <div className="About_MeCard_content">
-                  <div>
-                    <div>Showcase</div>
-                    <div className="Font_Focus">Portfolio</div>
+                <NavLink to="/Works">
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img src={Portfolio} alt="Portfolio" />
                   </div>
-                  <div>
-                    <i
-                      className="bi bi-arrow-right-circle"
-                      style={{ fontSize: "2rem" }}
-                    ></i>
+                  <div className="About_MeCard_content">
+                    <div>
+                      <div>Showcase</div>
+                      <div className="Font_Focus">Portfolio</div>
+                    </div>
+                    <div>
+                      <i
+                        className="bi bi-arrow-right-circle"
+                        style={{ fontSize: "2rem" }}
+                      ></i>
+                    </div>
                   </div>
-                </div>
+                </NavLink>
               </div>
             </div>
           </div>
@@ -216,28 +219,35 @@ function home() {
         {/* // In your React component file */}
         <div className="Personal_Experience">
           <div className="Personal_Exp">
-            <div className="Personal_Exp_Card">
-              <div>
-                <i className="bi bi-award icon"></i>
+            <NavLink to="/credentials#Achievements">
+              <div className="Personal_Exp_Card">
+                <div>
+                  <i className="bi bi-award icon"></i>
+                </div>
+                <div>07</div>
+                <div>ACHIVEMENTS</div>
               </div>
-              <div>07</div>
-              <div>ACHIVEMENTS</div>
-            </div>
-            <div className="Personal_Exp_Card">
-              <div>
-                <i className="bi bi-book icon"></i>
+            </NavLink>
+            <NavLink to="/credentials#Educations">
+              <div className="Personal_Exp_Card">
+                <div>
+                  <i className="bi bi-book icon"></i>
+                </div>
+                <div>Tertiary</div>
+                <div>EDUCATION</div>
               </div>
-              <div>Tertiary</div>
-              <div>EDUCATION</div>
-            </div>
-            <div className="Personal_Exp_Card">
-              <div>
-                <i className="bi bi-buildings icon"></i>
+            </NavLink>
+            <NavLink to="/credentials#Experience">
+              <div className="Personal_Exp_Card">
+                <div>
+                  <i className="bi bi-buildings icon"></i>
+                </div>
+                <div>3</div>
+                <div>WORK EXPERIENCE</div>
               </div>
-              <div>3</div>
-              <div>WORK EXPERIENCE</div>
-            </div>
+            </NavLink>
           </div>
+
           <div className="Personal_Exp_CTA">
             <span>Let's work together.</span>
             <i className="bi bi-arrow-right-circle-fill"></i>

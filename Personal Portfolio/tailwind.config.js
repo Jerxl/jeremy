@@ -15,6 +15,9 @@ export default {
       backgroundImage: {
         "my-gradient": "var(--my-gradient)",
       },
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+      },
     },
   },
   plugins: [],
