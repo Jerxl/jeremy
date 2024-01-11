@@ -75,7 +75,7 @@ function Navigation() {
           </li>
           <li onClick={closeNav}>
             <NavLink
-              to="/Experiences"
+              to="/credentials#Experience"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
               Experiences

@@ -1,60 +1,24 @@
-import React from "react";
-import Figma from "../assets/Skills_Img/Figma.png";
-import Github from "../assets/Skills_Img/Github.png";
-import Html from "../assets/Skills_Img/Html.png";
-import Illustrator from "../assets/Skills_Img/illustrator.png";
-import Office from "../assets/Skills_Img/Ms office.png";
-import Photoshop from "../assets/Skills_Img/photoshop.png";
-import Python from "../assets/Skills_Img/python.png";
-import Tableau from "../assets/Skills_Img/Tableau.png";
-import GTM from "../assets/Skills_Img/GTM Icon.png";
-import Javascript from "../assets/Skills_Img/Javascript.png";
-import GA4 from "../assets/Skills_Img/GA4 Icon.png";
-import React_icon from "../assets/Skills_Img/React.png";
-import Solidworks from "../assets/Skills_Img/Solidworks.png";
-import premiere_pro from "../assets/Skills_Img/premiere-pro.png";
-import Fusion360 from "../assets/Skills_Img/Fusion 360.png";
+import React, { useState, useEffect } from "react";
 import "./About_Skills.css";
 
-const skills = [
-  { name: "Figma", icon: Figma, proficiency: "80%" },
-  { name: "Github", icon: Github, proficiency: "75%" },
-  { name: "Html", icon: Html, proficiency: "75%" },
-  { name: "Illustrator", icon: Illustrator, proficiency: "75%" },
-  { name: "Photoshop", icon: Photoshop, proficiency: "75%" },
-  { name: "Python", icon: Python, proficiency: "75%" },
-  { name: "Tableau", icon: Tableau, proficiency: "75%" },
-  { name: "GTM", icon: GTM, proficiency: "75%" },
-  { name: "Office", icon: Office, proficiency: "75%" },
-  { name: "Javascript", icon: Javascript, proficiency: "75%" },
-  { name: "GA4", icon: GA4, proficiency: "75%" },
-  { name: "React", icon: React_icon, proficiency: "75%" },
-  { name: "Solidworks", icon: Solidworks, proficiency: "75%" },
-  { name: "premiere", icon: premiere_pro, proficiency: "75%" },
-  { name: "Fusion360", icon: Fusion360, proficiency: "75%" },
-  // ... Add other skills similarly
-];
 function SkillCard({ skill }) {
+  // Use skill fields from the API response
   return (
     <div
       className="flip-card w-24 h-24 m-2 perspective"
-      style={{ perspective: "1000px" }}
-      id={skill.name}
+      id={skill["Skill Name"]}
     >
-      <div
-        className="flip-card-inner relative w-full h-full"
-        style={{ transformStyle: "preserve-3d" }}
-      >
+      <div className="flip-card-inner relative w-full h-full">
         <div className="flip-card-front absolute w-full h-full flex items-center justify-center p-4">
           <img
-            src={skill.icon}
-            alt={skill.name}
+            src={skill["icon"]}
+            alt={skill["Skill Name"]}
             className="w-full h-full object-contain"
           />
         </div>
         <div className="flip-card-back absolute w-full h-full flex items-center justify-center p-4">
           <div className="text-center">
-            <p className="font-bold">{skill.name}</p>
+            <p className="font-bold">{skill["Skill Name"]}</p>
             <p>Proficiency: {skill.proficiency}</p>
           </div>
         </div>
@@ -64,11 +28,57 @@ function SkillCard({ skill }) {
 }
 
 function SkillsSection() {
+  const [skills, setSkills] = useState([]);
+
+  useEffect(() => {
+    // Function to fetch skills from Airtable
+    const fetchSkills = () => {
+      fetch("https://api.airtable.com/v0/appcrSl7Zgy2SpKCZ/tbl5o8SBZ21RWiQ2q", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer patuYfQKHplr0F44g.7d0135b2eaef3da73448ccb00bb74e9dbe2c1cfdc96f427ab8001fca87b69b2a", // Replace with your actual API key
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          const transformedSkills = data.records.map((record) => {
+            const iconUrl =
+              record.fields["icon"] && record.fields["icon"][0]
+                ? record.fields["icon"][0].url
+                : "defaultIconPath.jpg"; // Provide a default path to an icon image
+            return {
+              "Skill Name": record.fields["Skill Name"], // Ensure the field name matches your Airtable field
+              link: `/credentials#${record.fields["Skill Name"]}`, // Construct the link dynamically
+              icon: iconUrl, // Use the correct field name and a default icon path
+              proficiency: record.fields["proficiency"],
+            };
+          });
+          setSkills(transformedSkills);
+          // Cache the fetched data in sessionStorage
+          sessionStorage.setItem("skills", JSON.stringify(transformedSkills));
+        })
+        .catch((error) => {
+          console.error("Error fetching data: ", error);
+        });
+    };
+
+    // Check if cached data exists
+    const cachedSkills = sessionStorage.getItem("skills");
+    if (cachedSkills) {
+      setSkills(JSON.parse(cachedSkills));
+    } else {
+      // Fetch skills from Airtable if not cached
+      fetchSkills();
+    }
+  }, []);
+
   return (
     <div className="Skills mt-4">
       <div className="flex flex-wrap justify-center">
         {skills.map((skill) => (
-          <SkillCard key={skill.name} skill={skill} />
+          <SkillCard key={skill["Skill Name"]} skill={skill} />
         ))}
       </div>
     </div>

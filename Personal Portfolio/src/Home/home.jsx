@@ -71,7 +71,7 @@ function home() {
   };
 
   return (
-    <div className="Master_Main ">
+    <div className="Master_Main float-up">
       <div className={`Main`}>
         <div className="Personal_Top">
           <div className="Intro ">
@@ -219,42 +219,244 @@ function home() {
         {/* // In your React component file */}
         <div className="Personal_Experience">
           <div className="Personal_Exp">
-            <NavLink to="/credentials#Achievements">
-              <div className="Personal_Exp_Card">
-                <div>
+            <div className="Personal_Exp_Card">
+              <NavLink to="/credentials#Achievements">
+                <div className=" flex justify-center">
                   <i className="bi bi-award icon"></i>
                 </div>
-                <div>07</div>
+
                 <div>ACHIVEMENTS</div>
-              </div>
-            </NavLink>
-            <NavLink to="/credentials#Educations">
-              <div className="Personal_Exp_Card">
-                <div>
+              </NavLink>
+            </div>
+            <div className="Personal_Exp_Card">
+              <NavLink to="/credentials#Educations">
+                <div className=" flex justify-center">
                   <i className="bi bi-book icon"></i>
                 </div>
-                <div>Tertiary</div>
+
                 <div>EDUCATION</div>
-              </div>
-            </NavLink>
-            <NavLink to="/credentials#Experience">
-              <div className="Personal_Exp_Card">
-                <div>
+              </NavLink>
+            </div>
+            <div className="Personal_Exp_Card">
+              <NavLink to="/credentials#Experience">
+                <div className=" flex justify-center">
                   <i className="bi bi-buildings icon"></i>
                 </div>
-                <div>3</div>
+
                 <div>WORK EXPERIENCE</div>
-              </div>
-            </NavLink>
+              </NavLink>
+            </div>
           </div>
 
-          <div className="Personal_Exp_CTA">
-            <span>Let's work together.</span>
-            <i className="bi bi-arrow-right-circle-fill"></i>
+          <div className="Personal_Exp_CTA w-full justify-center  lg:justify-start">
+            <NavLink to="/contact">
+              <span>Let's work together.</span>
+            </NavLink>
           </div>
         </div>
       </div>
     </div>
+    // <div className=" container ">
+    //   <div className="Personal_Top flex flex-col lg:flex-row ">
+    //     <div className="flex flex-col bg-my-gradient justify-center items-center rounded-3xl p-3 ml-3 mr-3 md:flex-row flex-1 ">
+    //       <div className=" ">
+    //         <img
+    //           src={profileimg}
+    //           alt=""
+    //           className=" rounded-3xl w-80 md:w-64"
+    //         />
+    //       </div>
+    //       <div className="Profile_Content flex flex-col items-center  md:w-[500px] md:pl-10 md:items-start ">
+    //         <p className=" text-xl text-text-colour font-semibold">
+    //           A Web Developer
+    //         </p>
+    //         <p className="text-2xl text-text-colour font-bold">Jeremy Zhao</p>
+    //         <p className=" font-medium text-text-colour lg:text-base">
+    //           Engineering student passionate about embracing and advancing
+    //           technology, driven by innovation and creative problem-solving.
+    //         </p>
+    //       </div>
+    //     </div>
+    //     <div className="flex flex-col rounded-3xl p-3 flex-1 ">
+    //       <div className="Type_js_Intro bg-my-gradient rounded-2xl p-2.5 text-text-colour font-medium">
+    //         <span ref={el}></span>
+    //       </div>
+    //       <div className="flex mt-3  flex-col  gap-3 md:flex-row">
+    //         <div className=" bg-my-gradient rounded-3xl p-3 flex-1">
+    //           <NavLink to="/credentials#About_Container ">
+    //             <div className="flex flex-col justify-center items-center w-full">
+    //               <div>
+    //                 <img src={Signature} alt="Signature" className=" " />
+    //               </div>
+    //               <div className="flex justify-around w-full text-text-colour font-medium">
+    //                 <div>
+    //                   <div className="text-text-colour2">More About Me</div>
+
+    //                   <div className=" text-xl  font-semibold">Credentials</div>
+    //                 </div>
+    //                 <div>
+    //                   <i
+    //                     className="bi bi-arrow-right-circle"
+    //                     style={{ fontSize: "2rem" }}
+    //                   ></i>
+    //                 </div>
+    //               </div>
+    //             </div>
+    //           </NavLink>
+    //         </div>
+
+    //         <div className=" bg-my-gradient rounded-3xl p-3 flex-1">
+    //           <NavLink to="/Works">
+    //             <div className="flex flex-col justify-center items-center w-full">
+    //               <div>
+    //                 <img src={Portfolio} alt="Portfolio" className=" " />
+    //               </div>
+    //               <div className="flex justify-around w-full text-text-colour font-medium">
+    //                 <div>
+    //                   <div className="text-text-colour2">Showcase</div>
+    //                   <div className="text-xl  font-semibold">Portfolio</div>
+    //                 </div>
+    //                 <div>
+    //                   <i
+    //                     className="bi bi-arrow-right-circle"
+    //                     style={{ fontSize: "2rem" }}
+    //                   ></i>
+    //                 </div>
+    //               </div>
+    //             </div>
+    //           </NavLink>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+
+    //   <div className=" flex   flex-col  gap-3 p-3">
+    //     {/* CV */}
+    //     <div
+    //       className=" bg-my-gradient rounded-3xl p-3 flex w-full  flex-col justify-center items-center"
+    //       onClick={handleDownloadCV}
+    //     >
+    //       <div className=" w-48">
+    //         <img src={CV} alt="CV" />
+    //       </div>
+    //       <div className="flex justify-around w-full text-text-colour font-medium ">
+    //         <div>
+    //           <div className="text-text-colour2">My CV</div>
+    //           <div className="text-xl  font-semibold">Download</div>
+    //         </div>
+    //         <div>
+    //           <i
+    //             className="bi bi-arrow-right-circle"
+    //             style={{ fontSize: "2rem" }}
+    //           ></i>
+    //         </div>
+    //       </div>
+    //     </div>
+
+    //     <div className=" bg-my-gradient rounded-3xl p-3">
+    //       <div className="Skills_Container">
+    //         <Skills />
+    //       </div>
+
+    //       <div className=" flex justify-around w-full text-text-colour font-medium flex-col items-center">
+    //         <div className="text-text-colour2">Professional Skills </div>
+    //         <div className="text-xl  font-semibold">Skills Overview</div>
+    //       </div>
+    //     </div>
+
+    //     <div className="bg-my-gradient rounded-3xl p-3 text-text-colour">
+    //       {/* Contact */}
+    //       <div className="flex flex-col gap-3">
+    //         <div className="flex justify-evenly text-4xl">
+    //           <a
+    //             href="mailto:jeremyzhaoxl@gmail.com"
+    //             target="blank"
+    //             className=" w-16 h-16 bg-bg-colour rounded-full flex justify-center items-center"
+    //           >
+    //             <i className="bi bi-envelope-at"></i>
+    //           </a>
+    //           <a
+    //             href="https://www.linkedin.com/in/zhao-xinlei-80875b211/"
+    //             target="blank"
+    //             className=" w-16 h-16 bg-bg-colour rounded-full flex justify-center items-center"
+    //           >
+    //             <i className="bi bi-linkedin"></i>
+    //           </a>
+
+    //           <a
+    //             href="https://github.com/Jerxl"
+    //             target="blank"
+    //             className=" w-16 h-16 bg-bg-colour rounded-full flex justify-center items-center"
+    //           >
+    //             <i className="bi bi-github"></i>
+    //           </a>
+    //           <a
+    //             href=""
+    //             className=" w-16 h-16 bg-bg-colour rounded-full flex justify-center items-center"
+    //           >
+    //             <i className="bi bi-instagram" target="blank"></i>
+    //           </a>
+    //         </div>
+
+    //         <div className="flex justify-around w-full text-text-colour font-medium">
+    //           <div>
+    //             <div className="text-text-colour2">Channles</div>
+    //             <div className="text-xl  font-semibold">Contact Me</div>
+    //           </div>
+    //           <div>
+    //             <i
+    //               className="bi bi-arrow-right-circle"
+    //               style={{ fontSize: "2rem" }}
+    //             ></i>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    //   {/* // In your React component file */}
+    //   <div className=" flex flex-col p-3 gap-3">
+    //     <div className="flex flex-col text-text-colour gap-3 md:flex-row">
+    //       <div className=" bg-my-gradient rounded-3xl p-3 flex-1">
+    //         <NavLink to="/credentials#Achievements">
+    //           <div className="flex items-center justify-center gap-4 pl-3 md:flex-col md:pl-0">
+    //             <div className=" text-5xl">
+    //               <i className="bi bi-award icon"></i>
+    //             </div>
+
+    //             <div className="text-xl  font-semibold">ACHIVEMENTS</div>
+    //           </div>
+    //         </NavLink>
+    //       </div>
+    //       <div className=" bg-my-gradient rounded-3xl p-3 flex-1">
+    //         <NavLink to="/credentials#Educations">
+    //           <div className="flex items-center justify-center gap-4 md:flex-col">
+    //             <div className="text-5xl">
+    //               <i className="bi bi-book icon"></i>
+    //             </div>
+
+    //             <div className="text-xl  font-semibold">EDUCATIONS</div>
+    //           </div>
+    //         </NavLink>
+    //       </div>
+    //       <div className=" bg-my-gradient rounded-3xl p-3 flex-1">
+    //         <NavLink to="/credentials#Experience">
+    //           <div className="flex items-center justify-center gap-4 pl-12 md:flex-col md:pl-0">
+    //             <div className="text-5xl">
+    //               <i className="bi bi-buildings icon"></i>
+    //             </div>
+
+    //             <div className="text-xl  font-semibold">WORK EXPERIENCE</div>
+    //           </div>
+    //         </NavLink>
+    //       </div>
+    //     </div>
+
+    //     <div className="bg-my-gradient rounded-3xl p-3 text-text-colour flex justify-around text-2xl  font-semibold">
+    //       <span>Let's work together.</span>
+    //       <i className="bi bi-arrow-right-circle-fill"></i>
+    //     </div>
+    //   </div>
+    // </div>
   );
 }
 

@@ -256,11 +256,6 @@
 }
 
 .Personal_Exp_Card div:nth-child(2) {
-  font-size: 2.5rem; /* Larger font for the number */
-  font-weight: bold;
-}
-
-.Personal_Exp_Card div:nth-child(3) {
   font-size: 1rem; /* Smaller font for the description */
 }
 

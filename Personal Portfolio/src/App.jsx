@@ -5,6 +5,8 @@ import About from "./About/About.jsx";
 import About_Summary from "./About/About_Summary.jsx";
 import Nav from "./Nav/nav";
 import Footer from "./Nav/Footer.jsx";
+import Contact_Me from "./Contact_Me/Contact.jsx";
+import Work from "./Work/work.jsx";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -20,6 +22,8 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/about" element={<About_Summary />} />
         <Route exact path="/credentials" element={<About />} />
+        <Route exact path="/contact" element={<Contact_Me />} />
+        <Route exact path="/Works" element={<Work />} />
         {/* <Route exact path="/" element={<Nav />} /> */}
       </Routes>
       <Footer />

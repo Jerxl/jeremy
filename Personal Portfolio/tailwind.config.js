@@ -18,6 +18,9 @@ export default {
       fontFamily: {
         sans: ["Inter", "sans-serif"],
       },
+      animation: {
+        "slide-top": "slide-top 0.3s ease-out forwards",
+      },
     },
   },
   plugins: [],

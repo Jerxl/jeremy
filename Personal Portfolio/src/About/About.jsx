@@ -18,7 +18,7 @@ function About() {
 
   return (
     <div
-      className="container h-auto flex flex-col md:flex-row pl-5 pr-5 md:pl-2 md:pr-2 md:gap-6 lg:pr-0 lg:pl-0 mb-24 "
+      className="container h-auto flex flex-col md:flex-row pl-5 pr-5 md:pl-2 md:pr-2 md:gap-6 lg:pr-0 lg:pl-0 mb-24 float-up"
       id="About_Container"
     >
       <aside className=" bg-my-gradient rounded-2xl p-3 flex flex-col md:h-[550px] md:w-[500px] md:sticky md:top-0">

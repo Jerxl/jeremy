@@ -141,12 +141,14 @@ function About_Summary() {
             alt=""
             className="mb-4 w-5 md:w-8 absolute top-4 left-5 hidden md:block xl:w-11"
           />
-          <div className="Personal_Exp_CTA h-full ">
-            <span className="text-4xl text-text-colour font-medium">
-              Let's work together.
-            </span>
-            <i className="bi bi-arrow-right-circle-fill"></i>
-          </div>
+          <NavLink to="/contact">
+            <div className="Personal_Exp_CTA h-full ">
+              <span className="text-4xl text-text-colour font-medium">
+                Let's work together.
+              </span>
+              <i className="bi bi-arrow-right-circle-fill"></i>
+            </div>
+          </NavLink>
         </div>
         <div className="About_MeCard ">
           <NavLink to="/credentials#About_Container">
