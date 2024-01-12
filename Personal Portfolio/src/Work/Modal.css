@@ -11,22 +11,65 @@
   z-index: 1000;
 }
 
-.Modal-Header {
+.modal-header {
   height: 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  z-index: 2;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.modal-header-bg {
+  background-color: #252525;
+  box-shadow: #818181 0px 1px 2px;
+  height: 3.5rem;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  border-radius: 1.5rem 1.5rem 0 0;
 }
 
 .modal-content {
-  background: #ffffff; /* Adjust the background color if needed */
-  padding: 20px;
+  background: #18191a !important; /* Adjust the background color if needed */
+  padding: 20px 0px 20px 0px;
   border-radius: 15px; /* Rounded corners */
   max-width: 600px;
   width: 90%;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   position: relative;
+}
+
+.scroll-y {
+  max-height: 600px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 20px !important;
+}
+
+/* Custom scrollbar styling for WebKit browsers */
+.scroll-y::-webkit-scrollbar {
+  width: 0.4rem; /* Adjust the width of the scrollbar as needed */
+}
+
+.scroll-y::-webkit-scrollbar-track {
+  /* Background color for the scrollbar track */
+  border-radius: 10px; /* Optional: if you want rounded corners for the track */
+}
+
+.scroll-y::-webkit-scrollbar-thumb {
+  background-color: #4e4e4e; /* Darker shade for the thumb for visibility */
+  border-radius: 10px; /* Rounded corners for the thumb */
+}
+
+/* Custom scrollbar for Firefox */
+.scroll-y {
+  scrollbar-width: thin; /* 'auto' or 'thin' */
+  scrollbar-color: #4e4e4e; /* thumb and track color */
 }
 
 .modal-close-btn {
@@ -36,44 +79,76 @@
   cursor: pointer;
 }
 
-.Modal-Header h2 {
+.modal-header h2 {
   font-size: 1.8rem;
-}
-
-.modal-body {
-  text-align: center;
+  font-weight: bold;
 }
 
 .modal-image {
-  max-width: 300px;
+  width: auto;
+  max-width: 500px; /* Adjust width to be responsive within the carousel */
   height: auto;
-  margin-bottom: 15px;
+  margin: 0 auto; /* Center the image horizontally */
   border-radius: 10px; /* Rounded corners for image */
+  max-height: 250px;
+  display: block; /* Ensure the image is a block element to center correctly */
 }
 
+.slider-container {
+  width: calc(100% - 100px); /* Adjust width to allow padding */
+  padding: 20px; /* Add padding around the slider */
+  margin: 0 auto; /* Center the slider container */
+  display: flex;
+  justify-content: center;
+}
+
+/* More specific selectors for arrow buttons */
+.modal-content .slick-prev {
+  left: -10px !important; /* Move the previous button to the left */
+  z-index: 1; /* Ensure it's above other elements */
+}
+
+.modal-content .slick-next {
+  right: -1px !important; /* Move the next button to the right */
+  z-index: 1; /* Ensure it's above other elements */
+}
+
+.modal-content .slick-prev:before {
+  font-size: 1.8rem !important;
+}
+
+.modal-content .slick-next:before {
+  font-size: 1.8rem !important;
+}
 .modal-introduction,
 .modal-content {
   text-align: left;
   margin-bottom: 10px;
 }
-
+.modal-skills {
+  margin-top: 15px;
+}
 .skill-tag {
   display: inline-block;
-  background: #7c5050;
+  background: #4d4d4d;
   padding: 5px 10px;
-  margin: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
   border-radius: 5px; /* Rounded corners for skill tags */
   font-size: 0.9rem;
 }
 
 /* Responsive adjustments for smaller screens */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .modal-content {
     width: 95%; /* Take up almost full width on smaller screens */
     margin: 10px; /* Avoid touching the borders */
     padding: 15px; /* Adjust padding as necessary */
+    max-height: 600px;
   }
-
+  .modal-container {
+    padding: 5px;
+  }
   .modal-close-btn {
     top: 5px;
     right: 10px; /* Adjust button position */

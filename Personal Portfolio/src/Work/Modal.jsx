@@ -1,6 +1,7 @@
 import React from "react";
 import DOMPurify from "dompurify";
 import { marked } from "marked";
+import Slider from "react-slick";
 import "./Modal.css";
 
 const Modal = ({ work, closeModal }) => {
@@ -16,49 +17,82 @@ const Modal = ({ work, closeModal }) => {
     return { __html: DOMPurify.sanitize(htmlContent) };
   };
 
+  // Settings for the carousel
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   return (
     <div className="modal-container" onClick={closeModal}>
       <div
-        className="modal-content bg-slate-800 rounded-3xl"
+        className="modal-content rounded-3xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="Modal-Header">
-          <h2 className="modal-title">{work.fields["Project Name"]}</h2>
+        <div className="modal-header-bg"></div>
+        <div className="modal-header">
+          <h2>{work.fields["Project Name"]}</h2>
           <button className="modal-close-btn" onClick={closeModal}>
-            <i className="bi bi-x-lg text-3xl"></i>
+            <i className="bi bi-x-circle text-3xl text-text-colour2 hover:text-text-colour "></i>
           </button>
         </div>
 
-        <img
-          src={
-            work.fields["Cover Image"]
-              ? work.fields["Cover Image"][0].url
-              : "defaultImagePath.jpg"
-          }
-          alt={work.fields["Project Name"]}
-          className="modal-image"
-        />
+        <div className="modal-body scroll-y">
+          {/* Carousel for Cover Images */}
 
-        <div className="modal-body">
-          <div
-            className="modal-description"
-            dangerouslySetInnerHTML={createMarkup(
-              markdownToHtml(work.fields["Introduction"])
-            )}
-          ></div>
-          <div
-            className="modal-markdown"
-            dangerouslySetInnerHTML={createMarkup(
-              markdownToHtml(work.fields["Content"])
-            )}
-          ></div>
+          {work.fields["Cover Image"] &&
+          work.fields["Cover Image"].length > 1 ? (
+            <div>
+              <Slider {...settings}>
+                {work.fields["Cover Image"].map((image, index) => (
+                  <div key={index}>
+                    <img
+                      src={image.url}
+                      alt={`Cover ${index}`}
+                      className="modal-image"
+                    />
+                  </div>
+                ))}
+              </Slider>
+            </div>
+          ) : (
+            <img
+              src={
+                work.fields["Cover Image"]
+                  ? work.fields["Cover Image"][0].url
+                  : profileimg
+              }
+              alt={work.fields["Project Name"]}
+              className="modal-image"
+            />
+          )}
 
-          <div className="modal-skills">
-            {work.fields["Skills Applied"].map((skill, index) => (
-              <span key={index} className="skill-tag">
-                {skill}
-              </span>
-            ))}
+          {/* Rest of the modal content */}
+          {/* ... */}
+          <div className="modal-body">
+            <div
+              className="modal-description"
+              dangerouslySetInnerHTML={createMarkup(
+                markdownToHtml(work.fields["Introduction"])
+              )}
+            ></div>
+            <div
+              className="modal-markdown"
+              dangerouslySetInnerHTML={createMarkup(
+                markdownToHtml(work.fields["Content"])
+              )}
+            ></div>
+
+            <div className="modal-skills">
+              {work.fields["Skills Applied"].map((skill, index) => (
+                <span key={index} className="skill-tag">
+                  {skill}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -6,25 +6,36 @@ function Work() {
   const [works, setWorks] = useState([]);
   const [selectedWork, setSelectedWork] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  console.log(import.meta.env.VITE_AIRTABLE_API);
   useEffect(() => {
-    fetch("https://api.airtable.com/v0/appcrSl7Zgy2SpKCZ/tblwm7dsYEfwofGU6", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer patuYfQKHplr0F44g.7d0135b2eaef3da73448ccb00bb74e9dbe2c1cfdc96f427ab8001fca87b69b2a`, // Replace with your actual API key
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        const publishedWorks = data.records.filter(
-          (record) => record.fields["Status"] === "Publish"
-        );
-        setWorks(publishedWorks);
+    // Check if the works data is in session storage
+    const cachedWorks = sessionStorage.getItem("worksData");
+    if (cachedWorks) {
+      // If data is cached, use it
+      setWorks(JSON.parse(cachedWorks));
+    } else {
+      // If not, fetch data from the API
+      fetch("https://api.airtable.com/v0/appcrSl7Zgy2SpKCZ/tblwm7dsYEfwofGU6", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API}`, // Replace with your actual API key
+        },
       })
-      .catch((error) => {
-        console.error("Error fetching data: ", error);
-      });
+        .then((res) => res.json())
+        .then((data) => {
+          const publishedWorks = data.records.filter(
+            (record) => record.fields["Status"] === "Publish"
+          );
+          // Update the state with the fetched data
+          setWorks(publishedWorks);
+          // Cache the data in session storage
+          sessionStorage.setItem("worksData", JSON.stringify(publishedWorks));
+        })
+        .catch((error) => {
+          console.error("Error fetching data: ", error);
+        });
+    }
   }, []);
 
   const openModal = (work) => {
@@ -35,10 +46,8 @@ function Work() {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-
-  console.log(works);
   return (
-    <div className="container text-text-colour min-h-screen">
+    <div className="container text-text-colour min-h-screen float-up">
       <div className="flex flex-col justify-center items-center">
         <div className="text-3xl font-bold mb-4 md:text-4xl lg:text-5xl">
           ✨ALL PROJECTS✨
@@ -47,7 +56,7 @@ function Work() {
           {works.map((work) => (
             <div
               key={work.id}
-              className="bg-my-gradient w-[350px] min-h-[400px] p-3 rounded-3xl flex flex-col items-center gap-3 hover:cursor-pointer hover:animate-slide-top"
+              className="bg-my-gradient w-[350px] min-h-[400px] p-3 rounded-3xl flex flex-col items-center gap-3 hover:cursor-pointer hover:animate-slide-top group"
               onClick={() => openModal(work)}
             >
               <div className="w-[300px] h-[300px] rounded-3xl">
@@ -86,7 +95,7 @@ function Work() {
                   </div>
                 </div>
                 <i
-                  className="bi bi-arrow-right-circle text-bg-colour-hover"
+                  className="bi bi-arrow-right-circle text-bg-colour-hover group-hover:text-text-colour"
                   style={{ fontSize: "2rem" }}
                 ></i>
               </div>

@@ -42,3 +42,19 @@ html {
 .slide-top {
   animation: slide-top 1s ease-out forwards;
 }
+
+/* Custom scrollbar styling for WebKit browsers */
+::-webkit-scrollbar {
+  width: 0.4rem; /* Adjust the width of the scrollbar as needed */
+}
+
+::-webkit-scrollbar-track {
+  /* Background color for the scrollbar track */
+  border-radius: 10px; /* Optional: if you want rounded corners for the track */
+  background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4e4e4e; /* Darker shade for the thumb for visibility */
+  border-radius: 10px; /* Rounded corners for the thumb */
+}

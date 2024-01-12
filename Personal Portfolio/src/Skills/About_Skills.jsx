@@ -37,8 +37,7 @@ function SkillsSection() {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization:
-            "Bearer patuYfQKHplr0F44g.7d0135b2eaef3da73448ccb00bb74e9dbe2c1cfdc96f427ab8001fca87b69b2a", // Replace with your actual API key
+          Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API}`, // Replace with your actual API key
         },
       })
         .then((res) => res.json())
