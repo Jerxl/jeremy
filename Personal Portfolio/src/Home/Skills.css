@@ -4,8 +4,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 120px; /* Adjust as needed */
-  height: 120px; /* Adjust as needed */
+  width: 100px; /* Adjust as needed */
+  height: 100px; /* Adjust as needed */
   text-decoration: none;
   background-color: var(--bg-colour2); /* Your preferred background color */
   color: #000; /* Your preferred text color */
@@ -52,8 +52,8 @@
   }
 
   .skill-bubble {
-    width: 100px; /* Smaller size on mobile */
-    height: 100px; /* Smaller size on mobile */
+    width: 80px; /* Smaller size on mobile */
+    height: 80px; /* Smaller size on mobile */
     font-size: 0.7rem; /* Smaller text on mobile */
   }
 }

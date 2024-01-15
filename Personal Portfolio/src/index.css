@@ -50,7 +50,7 @@ html {
 
 ::-webkit-scrollbar-track {
   /* Background color for the scrollbar track */
-  border-radius: 10px; /* Optional: if you want rounded corners for the track */
+  /* Optional: if you want rounded corners for the track */
   background-color: black;
 }
 
