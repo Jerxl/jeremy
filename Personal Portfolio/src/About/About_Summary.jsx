@@ -1,5 +1,4 @@
 import React from "react";
-import "./About_Summary.css";
 import profileimg from "../assets/Personal_img.png";
 import Deco1 from "../assets/Deco1.png";
 import Signature from "../assets/signature.png";
@@ -97,80 +96,82 @@ function About_Summary() {
       </div>
 
       <div className=" flex mt-5 gap-3 mb-5 flex-col md:flex-row">
-        <div className="About_Summary_Socal bg-my-gradient flex-1 p-2 rounded-3xl group hover:scale-105 transition ease-in-out duration-300 ">
-          <div className="SocialMedia md:w-60 ml-auto mr-auto ">
+        <div className=" text-text-colour bg-my-gradient flex-1 p-3 flex justify-between flex-col rounded-3xl group hover:scale-105 transition ease-in-out duration-300 ">
+          <div className=" xl:mt-5 md:flex-wrap md:w-[250px] lg:max-w-[300px] xl:max-w-none xl:flex-nowrap xl:w-auto md:gap-14 lg:gap-2.5 flex gap-3 justify-center ml-auto mr-auto ">
             <a
               href="mailto:jeremyzhaoxl@gmail.com"
               target="blank"
-              className="flex justify-center"
+              className="bg-bg-colour2 rounded-full p-3 flex items-center justify-center hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out"
             >
-              <i className="bi bi-envelope-at"></i>
+              <i className="bi bi-envelope-at text-5xl lg:text-6xl"></i>
             </a>
             <a
               href="https://www.linkedin.com/in/zhao-xinlei-80875b211/"
               target="blank"
-              className="flex justify-center"
+              className="bg-bg-colour2 rounded-full p-3 flex items-center justify-center hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out"
             >
-              <i className="bi bi-linkedin"></i>
+              <i className="bi bi-linkedin text-5xl lg:text-6xl"></i>
             </a>
             <a
               href="https://github.com/Jerxl"
               target="blank"
-              className="flex justify-center"
+              className="bg-bg-colour2 rounded-full p-3 flex items-center justify-center hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out"
             >
-              <i className="bi bi-github"></i>
+              <i className="bi bi-github text-5xl lg:text-6xl"></i>
             </a>
-            <a href="" target="blank" className="flex justify-center">
-              <i className="bi bi-instagram"></i>
+            <a
+              href=""
+              target="blank"
+              className="bg-bg-colour2 rounded-full p-3 flex items-center justify-center hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out"
+            >
+              <i className="bi bi-instagram text-5xl lg:text-6xl"></i>
             </a>
           </div>
-          <div className="CV_Portfo_content">
+          <div className="flex justify-between items-center">
             <div>
-              <div>Channles</div>
-              <div className="Font_Focus font-medium">Contact Me</div>
+              <div className=" text-text-colour2 text-base font-medium">
+                Channels
+              </div>
+              <div className="text-2xl font-semibold">Contact Me</div>
             </div>
             <div>
-              <i className="bi bi-arrow-right-circle group-hover:text-text-colour "></i>
+              <i className="bi bi-arrow-right-circle text-text-colour2 text-3xl group-hover:text-text-colour"></i>
             </div>
           </div>
         </div>
 
-        <div className="About_Summary_Contact flex-1  relative">
+        <div className=" flex-1  relative">
           <img
             src={Deco1}
             alt=""
-            className="mb-4 w-5 md:w-8 absolute top-4 left-5 hidden md:block xl:w-11"
+            className="mb-4 w-5 md:w-8 absolute top-0 left-5 hidden md:block xl:w-11"
           />
           <NavLink to="/contact">
-            <div className="Personal_Exp_CTA h-full ">
+            <div className="bg-my-gradient rounded-3xl p-3 flex-1 group h-full flex justify-between items-center hover:bg-none hover:bg-[#007bff] hover:-translate-y-2 hover:duration-300 hover:ease-in-out">
               <span className="text-4xl text-text-colour font-medium">
                 Let's work together.
               </span>
-              <i className="bi bi-arrow-right-circle-fill"></i>
+              <i className="bi bi-arrow-right-circle-fill text-text-colour2 text-3xl group-hover:text-text-colour"></i>
             </div>
           </NavLink>
         </div>
-        <div className="About_MeCard ">
-          <NavLink to="/credentials#About_Container">
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+        <div className=" bg-my-gradient rounded-3xl p-3 flex-1 group hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out">
+          {/* Credentials */}
+          <NavLink to="/credentials#About_Container ">
+            <div className="flex justify-center lg:min-h-[150px]  md:mb-6 md:mt-6 xl:mb-0 xl:mt-0">
               <img src={Signature} alt="Signature" />
             </div>
-            <div className="About_MeCard_content ">
+            <div className="flex justify-between items-center">
               <div>
-                <div>More About Me</div>
-                <div className="Font_Focus font-medium">Credentials</div>
+                <div className=" text-text-colour2 text-base font-medium">
+                  More About Me
+                </div>
+                <div className="text-2xl font-semibold text-text-colour">
+                  Credentials
+                </div>
               </div>
               <div>
-                <i
-                  className="bi bi-arrow-right-circle"
-                  style={{ fontSize: "2rem" }}
-                ></i>
+                <i className="bi bi-arrow-right-circle text-text-colour2 text-3xl group-hover:text-text-colour"></i>
               </div>
             </div>
           </NavLink>

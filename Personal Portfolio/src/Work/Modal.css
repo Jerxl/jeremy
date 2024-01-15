@@ -38,7 +38,7 @@
   background: #18191a !important; /* Adjust the background color if needed */
   padding: 20px 0px 20px 0px;
   border-radius: 15px; /* Rounded corners */
-  max-width: 600px;
+  max-width: 800px; /* Adjust the width size if needed */
   width: 90%;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   position: relative;
@@ -58,7 +58,9 @@
 
 .scroll-y::-webkit-scrollbar-track {
   /* Background color for the scrollbar track */
-  border-radius: 10px; /* Optional: if you want rounded corners for the track */
+  background-color: #18191a;
+  border-radius: 10px;
+  /* optional: if you want rounded corners for the track; */
 }
 
 .scroll-y::-webkit-scrollbar-thumb {
@@ -86,11 +88,11 @@
 
 .modal-image {
   width: auto;
-  max-width: 500px; /* Adjust width to be responsive within the carousel */
+  max-width: 800px; /* Adjust width to be responsive within the carousel */
   height: auto;
   margin: 0 auto; /* Center the image horizontally */
   border-radius: 10px; /* Rounded corners for image */
-  max-height: 250px;
+  max-height: 300px;
   display: block; /* Ensure the image is a block element to center correctly */
 }
 
