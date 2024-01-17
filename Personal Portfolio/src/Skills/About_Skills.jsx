@@ -31,44 +31,55 @@ function SkillsSection() {
   const [skills, setSkills] = useState([]);
 
   useEffect(() => {
-    // Function to fetch skills from Airtable
-    const fetchSkills = () => {
-      fetch("https://api.airtable.com/v0/appcrSl7Zgy2SpKCZ/tbl5o8SBZ21RWiQ2q", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API}`, // Replace with your actual API key
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          const transformedSkills = data.records.map((record) => {
-            const iconUrl =
-              record.fields["icon"] && record.fields["icon"][0]
-                ? record.fields["icon"][0].url
-                : "defaultIconPath.jpg"; // Provide a default path to an icon image
-            return {
-              "Skill Name": record.fields["Skill Name"], // Ensure the field name matches your Airtable field
-              link: `/credentials#${record.fields["Skill Name"]}`, // Construct the link dynamically
-              icon: iconUrl, // Use the correct field name and a default icon path
-              proficiency: record.fields["proficiency"],
-            };
-          });
-          setSkills(transformedSkills);
-          // Cache the fetched data in sessionStorage
-          sessionStorage.setItem("skills", JSON.stringify(transformedSkills));
-        })
-        .catch((error) => {
-          console.error("Error fetching data: ", error);
+    const fetchSkills = async () => {
+      try {
+        const response = await fetch(
+          "https://api.airtable.com/v0/appcrSl7Zgy2SpKCZ/tbl5o8SBZ21RWiQ2q",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API}`, // Replace with your actual API key
+            },
+          }
+        );
+
+        const data = await response.json();
+        const fetchIcons = data.records.map(async (record) => {
+          let iconDataUrl = "defaultIconPath.jpg"; // Fallback icon path
+          if (record.fields["icon"] && record.fields["icon"][0]) {
+            try {
+              const iconResponse = await fetch(record.fields["icon"][0].url);
+              const blob = await iconResponse.blob();
+              iconDataUrl = await new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onloadend = () => resolve(reader.result);
+                reader.readAsDataURL(blob);
+              });
+            } catch (error) {
+              console.error("Error fetching icon:", error);
+            }
+          }
+          return {
+            "Skill Name": record.fields["Skill Name"],
+            link: `/credentials#${record.fields["Skill Name"]}`,
+            icon: iconDataUrl, // Data URL
+            proficiency: record.fields["proficiency"],
+          };
         });
+
+        const transformedSkills = await Promise.all(fetchIcons);
+        setSkills(transformedSkills);
+        sessionStorage.setItem("skills", JSON.stringify(transformedSkills));
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
     };
 
-    // Check if cached data exists
     const cachedSkills = sessionStorage.getItem("skills");
     if (cachedSkills) {
       setSkills(JSON.parse(cachedSkills));
     } else {
-      // Fetch skills from Airtable if not cached
       fetchSkills();
     }
   }, []);

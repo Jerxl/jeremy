@@ -1,42 +1,12 @@
-import { useEffect, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Modal from "./Modal"; // Import a Modal component
 import profileimg from "../assets/Personal_img.png";
+import WorksContext from "./WorksContext.jsx";
 
 function Work() {
-  const [works, setWorks] = useState([]);
+  const { works, setWorks } = useContext(WorksContext);
   const [selectedWork, setSelectedWork] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log(import.meta.env.VITE_AIRTABLE_API);
-  useEffect(() => {
-    // Check if the works data is in session storage
-    const cachedWorks = sessionStorage.getItem("worksData");
-    if (cachedWorks) {
-      // If data is cached, use it
-      setWorks(JSON.parse(cachedWorks));
-    } else {
-      // If not, fetch data from the API
-      fetch("https://api.airtable.com/v0/appcrSl7Zgy2SpKCZ/tblwm7dsYEfwofGU6", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API}`, // Replace with your actual API key
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          const publishedWorks = data.records.filter(
-            (record) => record.fields["Status"] === "Publish"
-          );
-          // Update the state with the fetched data
-          setWorks(publishedWorks);
-          // Cache the data in session storage
-          sessionStorage.setItem("worksData", JSON.stringify(publishedWorks));
-        })
-        .catch((error) => {
-          console.error("Error fetching data: ", error);
-        });
-    }
-  }, []);
 
   const openModal = (work) => {
     setSelectedWork(work);
@@ -62,10 +32,10 @@ function Work() {
               <div className="w-[300px] h-[300px] rounded-3xl">
                 <img
                   src={
-                    work.fields["Cover Image"] &&
-                    work.fields["Cover Image"].length > 0
-                      ? work.fields["Cover Image"][0].url
-                      : profileimg
+                    work.fields.ImageDataUrls &&
+                    work.fields.ImageDataUrls.length > 0
+                      ? work.fields.ImageDataUrls[0]
+                      : profileimg // Fallback image if ImageDataUrls is not available or empty
                   }
                   alt={work.fields["Project Name"]}
                   className="rounded-3xl w-full h-full object-cover"

@@ -9,25 +9,28 @@ import Contact_Me from "./Contact_Me/Contact.jsx";
 import Work from "./Work/work.jsx";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import WorksProvider from "./Work/WorksProvider.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="App">
-      <div className="NAV">
-        <Nav />
+    <WorksProvider>
+      <div className="App">
+        <div className="NAV">
+          <Nav />
+        </div>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/about" element={<About_Summary />} />
+          <Route exact path="/credentials" element={<About />} />
+          <Route exact path="/contact" element={<Contact_Me />} />
+          <Route exact path="/Works" element={<Work />} />
+          {/* <Route exact path="/" element={<Nav />} /> */}
+        </Routes>
+        <Footer />
       </div>
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/about" element={<About_Summary />} />
-        <Route exact path="/credentials" element={<About />} />
-        <Route exact path="/contact" element={<Contact_Me />} />
-        <Route exact path="/Works" element={<Work />} />
-        {/* <Route exact path="/" element={<Nav />} /> */}
-      </Routes>
-      <Footer />
-    </div>
+    </WorksProvider>
   );
 }
 

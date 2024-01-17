@@ -42,27 +42,24 @@ const Modal = ({ work, closeModal }) => {
 
         <div className="modal-body scroll-y">
           {/* Carousel for Cover Images */}
-
-          {work.fields["Cover Image"] &&
-          work.fields["Cover Image"].length > 1 ? (
-            <div>
-              <Slider {...settings}>
-                {work.fields["Cover Image"].map((image, index) => (
-                  <div key={index}>
-                    <img
-                      src={image.url}
-                      alt={`Cover ${index}`}
-                      className="modal-image"
-                    />
-                  </div>
-                ))}
-              </Slider>
-            </div>
+          {work.fields.ImageDataUrls && work.fields.ImageDataUrls.length > 1 ? (
+            <Slider {...settings}>
+              {work.fields.ImageDataUrls.map((imageDataUrl, index) => (
+                <div key={index}>
+                  <img
+                    src={imageDataUrl || profileimg}
+                    alt={`Cover ${index}`}
+                    className="modal-image"
+                  />
+                </div>
+              ))}
+            </Slider>
           ) : (
             <img
               src={
-                work.fields["Cover Image"]
-                  ? work.fields["Cover Image"][0].url
+                work.fields.ImageDataUrls &&
+                work.fields.ImageDataUrls.length > 0
+                  ? work.fields.ImageDataUrls[0]
                   : profileimg
               }
               alt={work.fields["Project Name"]}
