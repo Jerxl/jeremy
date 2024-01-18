@@ -94,10 +94,10 @@ function home() {
         </div>
 
         <div className="flex flex-col justify-center items-center gap-3  w-[100%]">
-          <div className="bg-my-gradient rounded-2xl p-1.5 h-auto min-h-[3rem] w-full">
+          <div className="bg-my-gradient rounded-2xl p-1.5 h-[4rem] w-full">
             {/* Quote */}
 
-            <span ref={el}></span>
+            <span className=" text-[1.5vh]" ref={el}></span>
           </div>
           <div className="flex gap-3 w-[100%] flex-col md:flex-row">
             {/* About ME */}

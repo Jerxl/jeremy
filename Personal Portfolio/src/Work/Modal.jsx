@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import DOMPurify from "dompurify";
 import { marked } from "marked";
 import Slider from "react-slick";
 import "./Modal.css";
 
 const Modal = ({ work, closeModal }) => {
+  const [animationClass, setAnimationClass] = useState("modal-zoom-in");
+
   if (!work) return null;
+
+  useEffect(() => {
+    // When the modal is closing, change the animation
+    const handleAnimationEnd = () => {
+      if (animationClass === "modal-zoom-out") {
+        closeModal();
+      }
+    };
+
+    return () => {
+      document.removeEventListener("animationend", handleAnimationEnd);
+    };
+  }, [animationClass, closeModal]);
+
+  const handleClose = () => {
+    setAnimationClass("modal-zoom-out");
+  };
 
   // Convert Markdown content to HTML
   const markdownToHtml = (markdownContent) => {
@@ -26,16 +45,35 @@ const Modal = ({ work, closeModal }) => {
     slidesToScroll: 1,
   };
 
+  // Inside your Modal component
+  useEffect(() => {
+    const handleAnimationEnd = () => {
+      if (animationClass === "modal-zoom-out") {
+        // Trigger the actual close function passed from the parent
+        closeModal();
+      }
+    };
+
+    document.addEventListener("animationend", handleAnimationEnd);
+
+    return () => {
+      document.removeEventListener("animationend", handleAnimationEnd);
+    };
+  }, [animationClass, closeModal]);
+
   return (
-    <div className="modal-container" onClick={closeModal}>
+    <div className={`modal-container ${animationClass}`} onClick={handleClose}>
       <div
-        className="modal-content rounded-3xl"
+        className="modal-content rounded-3xl "
         onClick={(e) => e.stopPropagation()}
       >
         <div className="modal-header-bg"></div>
         <div className="modal-header">
           <h2>{work.fields["Project Name"]}</h2>
-          <button className="modal-close-btn" onClick={closeModal}>
+          <button
+            className={`modal-close-btn ${animationClass}`}
+            onClick={handleClose}
+          >
             <i className="bi bi-x-circle text-3xl text-text-colour2 hover:text-text-colour "></i>
           </button>
         </div>

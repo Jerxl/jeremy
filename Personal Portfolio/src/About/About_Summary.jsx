@@ -82,7 +82,7 @@ function About_Summary() {
             </div>
             <div className="flex gap-2 flex-col">
               <h5 className="text-text-colour2 font-medium">
-                March 2022 - Present
+                Sept 2022 - Oct 2022
               </h5>
               <h4 className="text-text-colour text-lg font-semibold">
                 Starboard

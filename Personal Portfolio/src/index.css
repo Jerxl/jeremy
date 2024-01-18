@@ -40,7 +40,7 @@ html {
 }
 
 .slide-top {
-  animation: slide-top 1s ease-out forwards;
+  animation: slide-top 1s ease-in forwards;
 }
 
 /* Custom scrollbar styling for WebKit browsers */
@@ -57,4 +57,34 @@ html {
 ::-webkit-scrollbar-thumb {
   background-color: #4e4e4e; /* Darker shade for the thumb for visibility */
   border-radius: 10px; /* Rounded corners for the thumb */
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.modal-zoom-in {
+  animation: zoomIn 0.3s forwards;
+}
+
+.modal-zoom-out {
+  animation: zoomOut 0.3s forwards;
 }
