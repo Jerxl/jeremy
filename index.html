@@ -6,7 +6,15 @@
   <link rel="icon" type="image/svg+xml" href="/jeremy/assets/favicon-DFg4Xj96.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jeremy Zhao</title>
-
+  <script>
+    // Check if the URL contains a path
+    var redirect = sessionStorage.redirect;
+    delete sessionStorage.redirect;
+    if (redirect && redirect != location.href) {
+      // If we have a redirect path stored, push the path to history
+      history.replaceState(null, null, redirect);
+    }
+  </script>
   <script type="module" crossorigin src="/jeremy/assets/index-Vr2CYLdA.js"></script>
   <link rel="stylesheet" crossorigin href="/jeremy/assets/index-_uSZN0aw.css">
 </head>
