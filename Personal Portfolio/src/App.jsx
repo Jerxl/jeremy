@@ -25,7 +25,7 @@ function App() {
           <Route exact path="/about" element={<About_Summary />} />
           <Route exact path="/credentials" element={<About />} />
           <Route exact path="/contact" element={<Contact_Me />} />
-          <Route exact path="/Works" element={<Work />} />
+          <Route exact path="/works" element={<Work />} />
           {/* <Route exact path="/" element={<Nav />} /> */}
         </Routes>
         <Footer />

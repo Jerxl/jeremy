@@ -122,7 +122,7 @@ function home() {
             </div>
             <div className=" bg-my-gradient rounded-3xl p-3  flex-1 group hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out">
               {/* Credentials */}
-              <NavLink to="/Works">
+              <NavLink to="/works">
                 <div className="flex justify-center">
                   <img src={Portfolio} alt="Portfolio" />
                 </div>

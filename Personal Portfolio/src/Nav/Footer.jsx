@@ -1,6 +1,6 @@
 // At the top of your Footer.jsx
 import "./Footer.css";
-
+import { NavLink } from "react-router-dom";
 // Footer.jsx
 function Footer() {
   return (
@@ -8,18 +8,21 @@ function Footer() {
       <div className="footer-content">
         <p className="footer-title">Jeremy Zhao</p>
         <div className="footer-links">
-          <a href="/jeremy" className="footer-link">
+          <NavLink to="/" className="footer-link">
             HOME
-          </a>
-          <a href="/about" className="footer-link">
+          </NavLink>
+
+          <NavLink to="/about" className="footer-link">
             ABOUT
-          </a>
-          <a href="/works" className="footer-link">
+          </NavLink>
+
+          <NavLink to="/works" className="footer-link">
             WORKS
-          </a>
-          <a href="/contact" className="footer-link">
+          </NavLink>
+
+          <NavLink to="/contact" className="footer-link">
             CONTACT
-          </a>
+          </NavLink>
         </div>
         <p className="footer-rights">© All rights reserved by Jeremy</p>
       </div>

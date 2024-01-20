@@ -67,7 +67,7 @@ function Navigation() {
 
           <li onClick={closeNav}>
             <NavLink
-              to="/Works"
+              to="/works"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
               Works
