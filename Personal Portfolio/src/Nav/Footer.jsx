@@ -8,7 +8,7 @@ function Footer() {
       <div className="footer-content">
         <p className="footer-title">Jeremy Zhao</p>
         <div className="footer-links">
-          <a href="/" className="footer-link">
+          <a href="/jeremy" className="footer-link">
             HOME
           </a>
           <a href="/about" className="footer-link">

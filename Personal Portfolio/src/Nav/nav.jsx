@@ -33,7 +33,7 @@ function Navigation() {
     <nav className="navbar">
       <div className="logo">
         <NavLink
-          to="/"
+          to="/jeremy"
           className={({ isActive }) => (isActive ? "active" : "")}
         >
           Jeremy
