@@ -88,3 +88,9 @@ html {
 .modal-zoom-out {
   animation: zoomOut 0.3s forwards;
 }
+
+.card_hover {
+  transform: translateY(-20px);
+  transition-duration: 1.5s;
+  transition-timing-function: ease-in-out;
+}

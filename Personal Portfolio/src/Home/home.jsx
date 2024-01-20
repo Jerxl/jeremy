@@ -12,21 +12,19 @@ import { NavLink } from "react-router-dom";
 
 function home() {
   const el = useRef(null);
-  const [quotes, setQuotes] = useState(["Loading quotes..."]);
-  const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+  const [quotes, setQuotes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // Added loading state
 
   useEffect(() => {
     async function fetchQuotes() {
       const LINK = `https://api.airtable.com/v0/appcrSl7Zgy2SpKCZ/tbldO5btIPv4GKgkB/`;
+      setIsLoading(true); // Set loading to true when fetching starts
       try {
         const response = await fetch(LINK, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API}`, // Be sure to replace with your actual API key
+            Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API}`,
           },
         });
         const data = await response.json();
@@ -35,8 +33,10 @@ function home() {
           .slice(0, 5)
           .map((record) => record.fields.Quotes);
         setQuotes(selectedQuotes);
+        setIsLoading(false); // Set loading to false when fetching is done
       } catch (error) {
         setQuotes(["Error loading quotes..."]);
+        setIsLoading(false);
       }
     }
 
@@ -44,7 +44,7 @@ function home() {
   }, []);
 
   useEffect(() => {
-    if (quotes.length > 0) {
+    if (!isLoading && quotes.length > 0) {
       const typed = new Typed(el.current, {
         strings: quotes,
         typeSpeed: 50,
@@ -57,7 +57,7 @@ function home() {
         typed.destroy();
       };
     }
-  }, [quotes]);
+  }, [quotes, isLoading]); // Add isLoading to the dependency array
 
   // Function to handle CV download
   const handleDownloadCV = () => {
@@ -193,8 +193,9 @@ function home() {
                   <i className="bi bi-github text-5xl"></i>
                 </a>
                 <a
-                  href=""
+                  href="https://www.instagram.com/xinleiz/"
                   className=" bg-bg-colour2 rounded-full p-4  flex items-center justify-center hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out"
+                  target="blank"
                 >
                   <i className="bi bi-instagram text-5xl " target="blank"></i>
                 </a>
@@ -255,7 +256,8 @@ function home() {
                 <i className="bi bi-github text-5xl lg:text-6xl"></i>
               </a>
               <a
-                href=""
+                href="https://www.instagram.com/xinleiz/"
+                target="blank"
                 className=" bg-bg-colour2 rounded-full p-3 flex items-center justify-center hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out"
               >
                 <i

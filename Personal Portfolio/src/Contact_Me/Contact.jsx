@@ -120,7 +120,6 @@ function Contact_Me() {
                   id="name"
                   placeholder="Name"
                   value={name}
-                  onBlur={() => setTouched(true)}
                   onChange={(e) => setName(e.target.value)}
                 />
                 {errors.name && (
@@ -135,7 +134,6 @@ function Contact_Me() {
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  onBlur={() => setTouched(true)}
                 />
                 {errors.email && (
                   <span className="text-red-500">{errors.email}</span>
@@ -149,7 +147,6 @@ function Contact_Me() {
                   placeholder="Subject"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
-                  onBlur={() => setTouched(true)}
                 />
                 {errors.subject && (
                   <span className="text-red-500">{errors.subject}</span>
@@ -163,7 +160,6 @@ function Contact_Me() {
                   placeholder="Message"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  onBlur={() => setTouched(true)}
                 ></textarea>
                 {errors.message && (
                   <span className="text-red-500">{errors.message}</span>

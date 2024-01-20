@@ -50,7 +50,7 @@ function About() {
             </a>
           </div>
           <div className=" bg-bg-colour w-16  h-16 rounded-full center_item hover:bg-bg-colour-hover2 hover:-translate-y-2 hover:duration-100">
-            <a href="">
+            <a href="https://www.instagram.com/xinleiz/" target="blank">
               <i
                 className="bi bi-instagram text-text-colour text-3xl"
                 target="blank"
@@ -143,10 +143,52 @@ function About() {
               </h2>
               <p className="text-text-colour2 mb-0.5 font-medium">Stellar</p>
               <p className="font-medium">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam
-                eaque placeat numquam vel repudiandae impedit pariatur ratione
-                nam dolorem labore error, quos nulla, atque a nostrum. Nulla
-                repellendus sint blanditiis.
+                At Stellar, renowned for its meticulous process-driven ethos, I
+                embraced the art of efficiency within a vibrant and structured
+                work culture. My tenure as an Automation Engineer Intern was
+                marked by a rigorous documentation standard that cultivated my
+                process-oriented mindset and analytical skills. Key
+                accomplishments and learning experiences include:
+              </p>
+              <ul className="list-none ml-5 mb-4 mt-3 space-y-3">
+                <li>
+                  <strong>Process Optimization:</strong> Mastered the skill of
+                  deconstructing complex tasks into manageable subtasks, laying
+                  the groundwork for potential automation, which led to a
+                  reduction in process time.
+                </li>
+                <li>
+                  <strong>Automation Projects:</strong> Participated in the
+                  end-to-end development of automation systems aimed at
+                  enhancing operational efficiency. Contributed to several
+                  projects that resulted in reducing manual intervention by{" "}
+                  <strong>60%</strong>.
+                </li>
+                <li>
+                  <strong>Machine Learning:</strong> Acquired practical
+                  experience in machine learning, specifically in fine-tuning
+                  models to assist customers with corporate compliance issues.
+                  This work provided valuable insights that contributed to
+                  shaping business strategies
+                </li>
+                <li>
+                  <strong>Data Management:</strong> Developed proficiency in
+                  data scraping, alongside advanced techniques in data filtering
+                  and cleaning, ensuring high-quality data for analysis and
+                  decision-making processes.
+                </li>
+                <li>
+                  <strong>Collaborative Development:</strong> Worked
+                  collaboratively with cross-functional teams to identify
+                  automation opportunities, resulting in the seamless
+                  integration of automated solutions into existing workflows.
+                </li>
+              </ul>
+              <p className="font-medium">
+                This experience fortified my technical foundation and honed my
+                ability to innovate and execute within a forward-thinking
+                organization that values precision, efficiency, and the
+                transformative power of automation technology.
               </p>
             </div>
             <div>
@@ -155,11 +197,42 @@ function About() {
               </h2>
               <p className="text-text-colour2 mb-0.5 font-medium">Starboard</p>
               <p className="font-medium">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam
-                eaque placeat numquam vel repudiandae impedit pariatur ratione
-                nam dolorem labore error, quos nulla, atque a nostrum. Nulla
-                repellendus sint blanditiis.
+                In my role as an Automation Engineer Intern at Starboard, I
+                specialized in leveraging cutting-edge automation tools to
+                streamline and optimize business processes. Key aspects of my
+                role included:
               </p>
+              <ul className="list-none ml-5 mb-4 mt-3 space-y-3">
+                <li>
+                  <strong>Process Automation Expertise:</strong> Proficiently
+                  utilized UiPath, a leading robotic process automation (RPA)
+                  tool, to automate repetitive and time-consuming tasks. This
+                  significantly improved operational efficiency by reducing
+                  manual effort and error rates.
+                </li>
+                <li>
+                  <strong>Workflow Optimization with Zapier:</strong> Skilled in
+                  integrating various applications and services using Zapier.
+                  This enabled seamless workflow automation between different
+                  business tools, enhancing overall productivity and data
+                  consistency.
+                </li>
+                <li>
+                  <strong>Strategic Process Improvement:</strong> Collaborated
+                  with cross-functional teams to identify and target key areas
+                  for process optimization. My efforts led to more streamlined
+                  operations, with noticeable improvements in speed and quality
+                  of output.
+                </li>
+                <li>
+                  <strong>Innovation and Problem-Solving:</strong> Continuously
+                  sought innovative solutions to complex challenges,
+                  demonstrating strong problem-solving skills. My contributions
+                  were instrumental in enhancing the automation strategy at
+                  Starboard, leading to more agile and efficient business
+                  processes.
+                </li>
+              </ul>
             </div>
             <div>
               <h2 className="text-lg font-medium mb-0.5 text-[#5b78f6]">
@@ -167,22 +240,51 @@ function About() {
               </h2>
               <p className="text-text-colour2 mb-0.5 font-medium">ARYZTA</p>
               <p className="font-medium">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam
-                eaque placeat numquam vel repudiandae impedit pariatur ratione
-                nam dolorem labore error, quos nulla, atque a nostrum. Nulla
-                repellendus sint blanditiis.
+                As an HR Intern at ARYZTA, a leader in the food and bakery
+                industry, I had the valuable opportunity to develop key skills
+                in communication and gain insights into the intricacies of
+                business operations. My role encompassed:
               </p>
+              <ul className="list-none ml-5 mb-4 mt-3 space-y-3">
+                <li>
+                  <strong>Effective Communication:</strong> Honed my
+                  communication skills by interacting with employees across
+                  various departments. This experience taught me the importance
+                  of clear, empathetic, and effective communication in
+                  maintaining a positive and productive work environment.
+                </li>
+                <li>
+                  <strong>Business Operations Insight:</strong> Gained a
+                  comprehensive overview of business operations at ARYZTA. This
+                  included understanding the integral role of human resources in
+                  aligning employee goals with business objectives, managing
+                  workforce dynamics, and contributing to overall operational
+                  efficiency.
+                </li>
+                <li>
+                  <strong>Collaborative Learning:</strong> Worked closely with
+                  experienced HR professionals and business managers, which
+                  allowed me to observe and learn about strategic
+                  decision-making processes, employee relations, and the
+                  implementation of HR policies.
+                </li>
+                <li>
+                  <strong>Skills Development:</strong> This role was
+                  instrumental in developing my interpersonal and organizational
+                  skills. I learned to navigate complex workplace dynamics,
+                  adapt to diverse professional settings, and contribute
+                  effectively to team objectives.
+                </li>
+              </ul>
             </div>
           </div>
         </div>
         <div className="Skills" id="Skills">
           <h2 className="text-xl font-semibold mb-2 md:text-2xl">SKILLS</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Repellendus eius reiciendis itaque maiores facilis ipsa consequatur
-            explicabo labore nostrum officiis totam earum numquam omnis, error
-            deserunt voluptatum! Perferendis illo corporis quisquam, optio ut,
-            ex autem repellat nisi id veniam totam!
+            A versatile and strategic thinker equipped with a diverse range of
+            skills tailored for excellence in the digital era. My expertise
+            includes:
           </p>
           {<Skill />}
         </div>
@@ -193,12 +295,18 @@ function About() {
           <div className="flex flex-col gap-3">
             <div>
               <h3 className=" text-lg font-medium mb-0.5 text-[#5b78f6]">
-                UiPath Student Developer Champion Awarded for demonstrating
+                UiPath Student Developer Champion
               </h3>
               <p className=" font-medium">
-                Awarded for demonstrating exceptional skills in automation and
-                innovation, underscoring my commitment to staying at the
-                forefront of technological advancements.
+                In 2023, I was honored with the UiPath Student Developer
+                Champion title, a recognition of my advanced expertise in
+                robotic process automation (RPA) using UiPath. A significant
+                aspect of my achievement was my dedication to peer learning and
+                leadership within the UiPath community. I actively engaged in
+                sharing my knowledge and expertise, guiding fellow peers, and
+                participating in various collaborative projects. This experience
+                not only allowed me to contribute to the community but also to
+                grow as a leader in the field of automation technology.
               </p>
             </div>
             <div>
@@ -206,9 +314,17 @@ function About() {
                 National IIOT Competition 2023
               </h3>
               <p className=" font-medium">
-                Awarded for demonstrating exceptional skills in automation and
-                innovation, underscoring my commitment to staying at the
-                forefront of technological advancements.
+                In 2023, I participated in the National IIOT Competition
+                focusing on Smart Farming, an esteemed event encouraging
+                innovation in automation, precision agriculture, and smart
+                irrigation among students. Our team engaged in rigorous
+                preparation, including a workshop on IIoT technologies, Arduino,
+                and MIT Inventor software. Our efforts culminated in us winning
+                the 1st runner-up position, securing 2nd place in the
+                competition held at Republic Polytechnic. This achievement not
+                only honed our technical skills but also demonstrated our
+                ability to collaborate effectively and innovate in the realm of
+                Smart Farming.
               </p>
             </div>
             <div>
@@ -216,9 +332,14 @@ function About() {
                 NUS MIEC 2022
               </h3>
               <p className=" font-medium">
-                Awarded for demonstrating exceptional skills in automation and
-                innovation, underscoring my commitment to staying at the
-                forefront of technological advancements.
+                In the 2022 NUS Materials Innovation and Engineering Challenge,
+                focused on 3D printing in Material Science and Engineering, our
+                team "Chicken Little" represented Republic Polytechnic and
+                secured the position of 2nd Runner Up. Tasked with designing a
+                glider for egg transportation, our innovative approach and
+                application of 3D printing and engineering principles led us to
+                this notable achievement in a competition that evaluated both
+                the distance covered and the egg's safety.
               </p>
             </div>
           </div>
@@ -227,17 +348,26 @@ function About() {
           <h2 className="text-xl font-semibold mb-2 md:text-2xl">
             Testimonials
           </h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Repellendus eius reiciendis itaque maiores facilis ipsa consequatur
-            explicabo labore nostrum officiis totam earum numquam omnis, error
-            deserunt voluptatum! Perferendis illo corporis quisquam, optio ut,
-            ex autem repellat nisi id veniam totam! Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Necessitatibus unde recusandae,
-            obcaecati voluptates asperiores quod consequuntur vitae et, nam
-            earum deserunt culpa aut in? Repellendus, minus! Reiciendis est
-            nobis corrupti.
-          </p>
+          <div className="flex flex-col gap-3">
+            <div>
+              <h2 className="text-lg font-medium mb-0.5  text-[#5b78f6]">
+                Ling Siew Hui
+              </h2>
+              <p className="text-text-colour2 mb-0.5 font-medium">
+                Republic Polytechnic | Assistant Programme Chair (DIOM)
+              </p>
+              <p className="font-medium">
+                I highly recommend Zhao Xinlei, who excelled in my Operations
+                Planning class at Republic Polytechnic, earning a Distinction.
+                Over two years, he demonstrated exceptional leadership,
+                problem-solving skills, and teamwork, notably in various
+                competitions like the SUTD 3D Printing Design Innovation
+                Challenge. His proactive attitude and innovative approach make
+                him an excellent candidate for any academic or professional
+                opportunity.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

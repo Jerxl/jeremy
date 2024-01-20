@@ -25,28 +25,30 @@ function SkillsSection() {
       })
         .then((res) => res.json())
         .then(async (data) => {
-          const fetchIcons = data.records.map(async (record) => {
-            let iconDataUrl = "defaultIconPath.jpg";
-            if (record.fields["icon"] && record.fields["icon"][0]) {
-              try {
-                const response = await fetch(record.fields["icon"][0].url);
-                const blob = await response.blob();
-                iconDataUrl = await new Promise((resolve) => {
-                  const reader = new FileReader();
-                  reader.onloadend = () => resolve(reader.result);
-                  reader.readAsDataURL(blob);
-                });
-              } catch (error) {
-                console.error("Error fetching icon:", error);
+          const fetchIcons = data.records
+            .filter((record) => record.fields["Status"] === "Publish")
+            .map(async (record) => {
+              let iconDataUrl = "defaultIconPath.jpg";
+              if (record.fields["icon"] && record.fields["icon"][0]) {
+                try {
+                  const response = await fetch(record.fields["icon"][0].url);
+                  const blob = await response.blob();
+                  iconDataUrl = await new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onloadend = () => resolve(reader.result);
+                    reader.readAsDataURL(blob);
+                  });
+                } catch (error) {
+                  console.error("Error fetching icon:", error);
+                }
               }
-            }
-            return {
-              "Skill Name": record.fields["Skill Name"],
-              link: `/credentials#${record.fields["Skill Name"]}`,
-              icon: iconDataUrl,
-              proficiency: record.fields["proficiency"],
-            };
-          });
+              return {
+                "Skill Name": record.fields["Skill Name"],
+                link: `/credentials#${record.fields["Skill Name"]}`,
+                icon: iconDataUrl,
+                proficiency: record.fields["proficiency"],
+              };
+            });
 
           const transformedSkills = await Promise.all(fetchIcons);
           setSkills(transformedSkills);

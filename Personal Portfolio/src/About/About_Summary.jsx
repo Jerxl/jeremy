@@ -120,7 +120,7 @@ function About_Summary() {
               <i className="bi bi-github text-5xl lg:text-6xl"></i>
             </a>
             <a
-              href=""
+              href="https://www.instagram.com/xinleiz/"
               target="blank"
               className="bg-bg-colour2 rounded-full p-3 flex items-center justify-center hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out"
             >

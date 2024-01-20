@@ -29,6 +29,7 @@ function SkillCard({ skill }) {
 
 function SkillsSection() {
   const [skills, setSkills] = useState([]);
+  const [showAllSkills, setShowAllSkills] = useState(false);
 
   useEffect(() => {
     const fetchSkills = async () => {
@@ -45,28 +46,30 @@ function SkillsSection() {
         );
 
         const data = await response.json();
-        const fetchIcons = data.records.map(async (record) => {
-          let iconDataUrl = "defaultIconPath.jpg"; // Fallback icon path
-          if (record.fields["icon"] && record.fields["icon"][0]) {
-            try {
-              const iconResponse = await fetch(record.fields["icon"][0].url);
-              const blob = await iconResponse.blob();
-              iconDataUrl = await new Promise((resolve) => {
-                const reader = new FileReader();
-                reader.onloadend = () => resolve(reader.result);
-                reader.readAsDataURL(blob);
-              });
-            } catch (error) {
-              console.error("Error fetching icon:", error);
+        const fetchIcons = data.records
+          .filter((record) => record.fields["Status"] === "Publish")
+          .map(async (record) => {
+            let iconDataUrl = "defaultIconPath.jpg"; // Fallback icon path
+            if (record.fields["icon"] && record.fields["icon"][0]) {
+              try {
+                const iconResponse = await fetch(record.fields["icon"][0].url);
+                const blob = await iconResponse.blob();
+                iconDataUrl = await new Promise((resolve) => {
+                  const reader = new FileReader();
+                  reader.onloadend = () => resolve(reader.result);
+                  reader.readAsDataURL(blob);
+                });
+              } catch (error) {
+                console.error("Error fetching icon:", error);
+              }
             }
-          }
-          return {
-            "Skill Name": record.fields["Skill Name"],
-            link: `/credentials#${record.fields["Skill Name"]}`,
-            icon: iconDataUrl, // Data URL
-            proficiency: record.fields["proficiency"],
-          };
-        });
+            return {
+              "Skill Name": record.fields["Skill Name"],
+              link: `/credentials#${record.fields["Skill Name"]}`,
+              icon: iconDataUrl, // Data URL
+              proficiency: record.fields["proficiency"],
+            };
+          });
 
         const transformedSkills = await Promise.all(fetchIcons);
         setSkills(transformedSkills);
@@ -84,13 +87,25 @@ function SkillsSection() {
     }
   }, []);
 
+  const toggleShowAllSkills = () => {
+    setShowAllSkills(!showAllSkills);
+  };
+
   return (
     <div className="Skills mt-4">
       <div className="flex flex-wrap justify-center">
-        {skills.map((skill) => (
+        {skills.slice(0, showAllSkills ? skills.length : 9).map((skill) => (
           <SkillCard key={skill["Skill Name"]} skill={skill} />
         ))}
       </div>
+      {skills.length > 9 && (
+        <button
+          onClick={toggleShowAllSkills}
+          className="mt-4 bg-bg-colour2 text-white py-2 px-4 rounded  sm:block"
+        >
+          {showAllSkills ? "Less Skills" : "More Skills"}
+        </button>
+      )}
     </div>
   );
 }
