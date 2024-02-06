@@ -72,7 +72,7 @@
 
 /* Custom scrollbar for Firefox */
 .scroll-y {
-  scrollbar-width: thin; /* 'auto' or 'thin' */
+  scrollbar-width: auto; /* 'auto' or 'thin' */
   scrollbar-color: #4e4e4e; /* thumb and track color */
 }
 
