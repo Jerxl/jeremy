@@ -85,7 +85,7 @@ function Contact_Me() {
             </div>
             <div>
               <h3 className="text-text-colour2  font-semibold">CONTACT ME</h3>
-              <p className="font-medium">+65 91458453</p>
+              <p className="font-medium">+65 ••••••••</p>
             </div>
           </div>
           <div className="flex gap-3 items-center mt-3 ">
