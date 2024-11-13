@@ -1,42 +1,41 @@
-name: GitHub Pages Build and Deploy
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # Trigger on pushes to the main branch
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write  # Required for deploy-pages action
+      - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Install Dependencies
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Install dependencies
       run: npm install
-      working-directory: "Personal Portfolio"  # Set to the directory containing package.json
 
-    - name: Build Project
+    - name: Build the project
       run: npm run build
-      working-directory: "Personal Portfolio"  # Ensure the build command runs in the correct directory
 
-    - name: Upload artifact for deployment
+    - name: Upload artifacts for deployment
       uses: actions/upload-pages-artifact@v1
       with:
-        path: "Personal Portfolio/build"  # Path to the build output directory
+        path: ./dist  # Make sure 'dist' matches your Vite output directory
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build  # Run deploy after build
+    needs: build-and-deploy
+    permissions:
+      pages: write
+      id-token: write
 
     steps:
     - name: Deploy to GitHub Pages
-      uses: actions/deploy-pages@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+      uses: actions/deploy-pages@v1
