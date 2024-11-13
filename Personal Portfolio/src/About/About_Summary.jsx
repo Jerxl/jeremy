@@ -23,11 +23,7 @@ function About_Summary() {
             </h3>
 
             <p className="text-base text-text-colour2 md:text-lg font-medium">
-              Hello, I'm Zhao Xinlei, a passionate 3rd-year Engineering student
-              at Republic Polytechnic with a deep interest in technology and
-              innovation. My journey in engineering is fueled by a love for
-              learning and problem-solving, where I eagerly embrace advancements
-              in technology and strive to contribute meaningfully to the field.
+              Hello, I'm Zhao Xinlei, a graduate of Republic Polytechnic with a strong passion for technology and innovation. My journey in engineering is driven by a love for learning and problem-solving. I am eager to embrace advancements in technology and contribute meaningfully to impactful projects in the field.
             </p>
           </div>
         </div>
