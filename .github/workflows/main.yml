@@ -27,7 +27,7 @@ jobs:
     - name: Upload artifacts for deployment
       uses: actions/upload-pages-artifact@v1
       with:
-        path: ./dist  # Make sure 'dist' matches your Vite output directory
+        path: ./dist  # This should match Vite's default output directory
 
   deploy:
     runs-on: ubuntu-latest
