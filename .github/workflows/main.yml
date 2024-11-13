@@ -1,0 +1,26 @@
+name: GitHub Pages Build and Deploy
+
+on:
+  push:
+    branches:
+      - main  # Trigger on pushes to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install Dependencies
+      run: npm install  # Adjust if you use another package manager
+
+    - name: Build Project
+      run: npm run build  # Replace with your build command
+
+    - name: Upload to GitHub Pages
+      uses: actions/deploy-pages@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        build_dir: ./build  # Adjust to your build output directory
