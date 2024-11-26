@@ -22,10 +22,13 @@ jobs:
 
       # Step 3: Install dependencies and build the project
       - name: Install and Build
+        env:
+          VITE_AIRTABLE_API: ${{ secrets.VITE_AIRTABLE_API }}
         run: |
           cd "Personal Portfolio"
           npm install
           npm run build
+
 
       # Step 4: List built files for debugging
       - name: List Dist Directory
