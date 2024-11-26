@@ -30,6 +30,9 @@ jobs:
       # Step 4: List built files for debugging
       - name: List Build Directory
         run: ls -la "Personal Portfolio/dist"
+      - name: List Actions Directory
+        run: ls -la /home/runner/actions_github_pages_*
+
 
       # Step 5: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
@@ -37,8 +40,8 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./Personal Portfolio/dist
-          exclude_assets: '' # Ensure no files are accidentally excluded
-          publish_branch: gh-pages
+          force_orphan: true
+
 
       # Step 6: Debug deployment directory (optional)
       - name: Verify Deployment Directory
