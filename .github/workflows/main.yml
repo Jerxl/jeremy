@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Replace with the branch you use for deployment
+      - main  # Replace with your branch name
 
 jobs:
   build-and-deploy:
@@ -14,20 +14,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Set the working directory to 'Personal Portfolio'
-      - name: Change working directory
-        run: cd "Personal Portfolio"
-
-      # Set up Node.js
+      # Set up Node.js (use a compatible version)
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16  # Match the version used in your project
+          node-version: 18  # Upgrade to Node.js 18 or later
 
-      # Install dependencies and build the project
+      # Install dependencies and build
       - name: Install dependencies and build
+        working-directory: Personal Portfolio
         run: |
-          cd "Personal Portfolio"
           npm install
           npm run build
 
@@ -37,4 +33,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./Personal Portfolio/dist
-          force_orphan: true  # Overwrite all existing content in the gh-pages branch
+          force_orphan: true
