@@ -86,9 +86,7 @@ function home() {
 
             <p className=" text-2xl font-semibold md:text-3xl">Jeremy Zhao</p>
 
-            <p className=" text-base font-medium ">
-              Engineering student passionate about embracing and advancing
-              technology, driven by innovation and creative problem-solving.
+            <p className=" text-base font-medium ">Web Developer passionate about embracing and advancing technology, driven by innovation and creative problem-solving."
             </p>
           </div>
         </div>
