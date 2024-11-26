@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Replace with your branch name
+      - main
 
 jobs:
   build-and-deploy:
@@ -14,28 +14,27 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Debug the directory structure
+      # Debug Repository Structure
       - name: Debug Repository Structure
         run: ls -la
 
-      # Set up Node.js (use a compatible version)
+      # Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18  # Upgrade to Node.js 18 or later
+          node-version: 18
 
       # Install dependencies and build
       - name: Install dependencies and build
         run: |
-          cd "Personal Portfolio" # Use the correct directory name here
+          cd "Personal Portfolio"
           npm install
           npm run build
 
       # List build output
       - name: List build output
         run: |
-          cd "Personal Portfolio/dist" # Use the correct path to the `dist` folder
-          ls -la
+          ls -la "Personal Portfolio/dist"
 
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
@@ -43,4 +42,11 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./Personal Portfolio/dist
-          force_orphan: true
+          exclude_assets: '.*'
+
+      # Debug Deployed Files
+      - name: Debug Deployed Files
+        run: |
+          git clone --branch gh-pages https://github.com/Jerxl/jeremy.git gh-pages-clone
+          ls -la gh-pages-clone
+
