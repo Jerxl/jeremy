@@ -14,6 +14,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Debug the directory structure
+      - name: Debug Repository Structure
+        run: ls -la
+
       # Set up Node.js (use a compatible version)
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -22,14 +26,16 @@ jobs:
 
       # Install dependencies and build
       - name: Install dependencies and build
-        working-directory: Personal Portfolio
         run: |
+          cd "Personal Portfolio" # Use the correct directory name here
           npm install
           npm run build
 
+      # List build output
       - name: List build output
-        run: ls -la Personal Portfolio
-
+        run: |
+          cd "Personal Portfolio/dist" # Use the correct path to the `dist` folder
+          ls -la
 
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
