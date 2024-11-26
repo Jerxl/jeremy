@@ -68,26 +68,11 @@ function About() {
         <div className="About_Me">
           <h2 className=" text-xl font-semibold mb-2 md:text-2xl">ABOUT ME</h2>
           <p className="mb-2 font-medium">
-            Hello, I'm Zhao Xinlei, a passionate 3rd-year Engineering student at
-            Republic Polytechnic with a deep interest in technology and
-            innovation. My journey in engineering is fueled by a love for
-            learning and problem-solving, where I eagerly embrace advancements
-            in technology and strive to contribute meaningfully to the field.
+            Hello, I'm Zhao Xinlei, a graduate of Republic Polytechnic with a deep passion for technology and innovation. My journey in engineering is driven by a love for learning and problem-solving, where I eagerly embrace advancements in technology to contribute meaningfully to the field.
           </p>
 
           <p className="font-medium">
-            My academic and extracurricular experiences have honed my strengths
-            in proactive problem-solving and teamwork. I approach challenges
-            with a positive mindset and have a keen sensitivity to team
-            dynamics, ensuring effective collaboration even in complex
-            situations. These skills were put to the test and further developed
-            through active participation in prestigious competitions like the
-            SUTD 3D Printing Design Innovation Challenge, NUS MIEC2022, and the
-            National IIOT Competition 2023. Here, I contributed innovative
-            solutions to address some of tomorrow's pressing issues. I am eager
-            to bring my enthusiasm, creativity, and collaborative spirit to a
-            professional setting, where I can continue to grow and make a
-            positive impact in the world of engineering.
+            My academic and professional experiences have strengthened my skills in proactive problem-solving and teamwork. I approach challenges with a positive mindset and a strong sensitivity to team dynamics, fostering effective collaboration even in complex situations. These abilities were honed through active participation in prestigious competitions such as the SUTD 3D Printing Design Innovation Challenge, NUS MIEC2022, and the National IIOT Competition 2023, where I delivered innovative solutions to address emerging challenges. I am excited to bring my enthusiasm, creativity, and collaborative spirit to the professional world, striving to grow and make a meaningful impact in the field of engineering and technology.
           </p>
         </div>
         <div className="About_Educations" id="Educations">
@@ -95,7 +80,7 @@ function About() {
           <div className="flex flex-col gap-5">
             <div>
               <p className="text-text-colour2 mb-0.5 font-medium">
-                2021 - Current
+                2021 - 2024
               </p>
               <h2 className="text-lg font-medium mb-0.5 text-[#5b78f6]">
                 Diploma in Industrial & Operations Management
