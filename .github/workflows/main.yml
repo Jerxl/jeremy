@@ -27,6 +27,10 @@ jobs:
           npm install
           npm run build
 
+      - name: List build output
+        run: ls -la Personal Portfolio/dist
+
+
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
