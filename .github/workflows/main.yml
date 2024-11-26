@@ -28,21 +28,15 @@ jobs:
           npm run build
 
       # Step 4: List built files for debugging
-      - name: List Build Directory
-        run: ls -la "Personal Portfolio/dist"
-      - name: List Actions Directory
-        run: ls -la /home/runner/actions_github_pages_*
-
+      - name: List Dist Directory
+        run: |
+          echo "Contents of dist directory:"
+          ls -la ./Personal\ Portfolio/dist
 
       # Step 5: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./Personal Portfolio/dist
+          publish_dir: ./Personal\ Portfolio/dist
           force_orphan: true
-
-
-      # Step 6: Debug deployment directory (optional)
-      - name: Verify Deployment Directory
-        run: ls -la /home/runner/actions_github_pages_1732608562168
