@@ -28,7 +28,7 @@ jobs:
           npm run build
 
       - name: List build output
-        run: ls -la Personal Portfolio/dist
+        run: ls -la Personal Portfolio
 
 
       # Deploy to GitHub Pages
