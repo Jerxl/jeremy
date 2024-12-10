@@ -48,7 +48,7 @@ function About_Summary() {
             </div>
             <div className="flex gap-2 flex-col">
               <h5 className="text-text-colour2 font-medium">
-                Mar 2020 - Mar 2021
+                March 2020 - March 2021
               </h5>
               <h3 className="text-text-colour text-lg font-medium">
                 Human Resoruce Management & Services
@@ -78,7 +78,7 @@ function About_Summary() {
             </div>
             <div className="flex gap-2 flex-col">
               <h5 className="text-text-colour2 font-medium">
-                Sept 2022 - Oct 2022
+                September 2022 - October 2022
               </h5>
               <h4 className="text-text-colour text-lg font-semibold">
                 Starboard
