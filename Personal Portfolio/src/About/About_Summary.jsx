@@ -37,7 +37,7 @@ function About_Summary() {
           <div className="flex gap-5 flex-col">
             <div className="flex gap-2 flex-col">
               <h5 className="text-text-colour2 font-medium  ">
-                April 2021 - Current
+                April 2021 - May 2024
               </h5>
               <h3 className="text-text-colour text-lg font-semibold">
                 Diploma in Industrial & Operations Management
@@ -67,13 +67,13 @@ function About_Summary() {
           <div className="flex gap-5 flex-col">
             <div className="flex gap-2 flex-col">
               <h5 className="text-text-colour2 font-medium">
-                March 2022 - Present
+                March 2022 - November 2024
               </h5>
               <h4 className="text-text-colour text-lg font-semibold">
                 Stellar
               </h4>
               <h3 className="text-text-colour2 font-medium ">
-                Intern - Automation Engineer
+                Automation Engineer
               </h3>
             </div>
             <div className="flex gap-2 flex-col">
