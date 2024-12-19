@@ -124,7 +124,7 @@ function About() {
           <div className="flex flex-col gap-5">
             <div>
               <h2 className="text-lg font-medium mb-0.5  text-[#5b78f6]">
-                Intern - Automaton Engineer
+                Automaton Engineer
               </h2>
               <p className="text-text-colour2 mb-0.5 font-medium">Stellar</p>
               <p className="font-medium">
