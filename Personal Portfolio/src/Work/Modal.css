@@ -14,36 +14,34 @@
 }
 
 .modal-header {
-  height: 30px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 20px;
-  z-index: 2;
-  margin-left: 20px;
-  margin-right: 20px;
+  gap: 15px; /* Space between title and close button */
 }
 
-.modal-header-bg {
+/* Modal Header Wrapper - provides background that grows with content */
+.modal-header-wrapper {
   background-color: #252525;
   box-shadow: #818181 0px 1px 2px;
-  height: 3.5rem;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  border-radius: 1.5rem 1.5rem 0 0;
+  width: calc(100% + 40px); /* Extend to edges */
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  border-radius: 1.5rem 1.5rem 0 0; /* Only round the top */
+  padding: 15px 20px 10px 20px;
 }
 
 .modal-content {
-  background: #18191a !important; /* Adjust the background color if needed */
-  padding: 20px 0px 20px 0px;
-  border-radius: 15px; /* Rounded corners */
-  max-width: 850px; /* Adjust the width size if needed */
+  background: #18191a !important;
+  padding: 20px;
+  border-radius: 1.5rem; /* Match header radius */
+  max-width: 850px;
   width: 90%;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   position: relative;
+  overflow: hidden; /* Prevent header from overlapping rounded corners */
 }
 
 .scroll-y {
@@ -80,23 +78,52 @@
 .modal-close-btn {
   border: none;
   background: none;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   cursor: pointer;
+  flex-shrink: 0; /* Prevent close button from shrinking */
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  height: 30px; /* Fixed height for alignment */
 }
 
 .modal-header h2 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: bold;
+  line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  flex: 1; /* Allow title to take available space */
+  margin: 0;
+  padding-right: 10px;
 }
 
 .modal-image {
   width: auto;
-  max-width: 800px; /* Adjust width to be responsive within the carousel */
+  max-width: 100%; /* Fully responsive */
   height: auto;
   margin: 0 auto; /* Center the image horizontally */
   border-radius: 10px; /* Rounded corners for image */
-  max-height: 300px;
+  max-height: 400px;
   display: block; /* Ensure the image is a block element to center correctly */
+  object-fit: contain;
+}
+
+/* Video specific styling */
+video.modal-image {
+  background-color: #000; /* Black background for videos */
+}
+
+.clickable-image {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.clickable-image:hover {
+  transform: scale(1.02);
+  opacity: 0.9;
 }
 
 .slider-container {
@@ -165,45 +192,215 @@
   margin-top: 10px;
 }
 
-/* Responsive adjustments for smaller screens */
+/* Tablet Responsive (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .modal-content {
+    max-width: 700px;
+    width: 85%;
+  }
+
+  .modal-image {
+    max-height: 350px;
+  }
+
+  .modal-header h2 {
+    font-size: 1.6rem;
+  }
+}
+
+/* Mobile Landscape / Small Tablet (481px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+  .modal-content {
+    width: 90%;
+    max-width: 600px;
+    padding: 15px 0;
+  }
+
+  .scroll-y {
+    max-height: 70vh;
+    padding: 15px !important;
+  }
+
+  .modal-header {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .modal-header-wrapper {
+    padding: 12px 15px 8px 15px;
+    margin-bottom: 15px;
+  }
+
+  .modal-header {
+    gap: 10px;
+  }
+
+  .modal-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .modal-image {
+    max-height: 300px;
+  }
+
+  .lightbox-close {
+    width: 45px;
+    height: 45px;
+    font-size: 1.8rem;
+    top: 15px;
+    right: 15px;
+  }
+}
+
+/* Mobile Portrait (320px - 480px) */
 @media (max-width: 480px) {
   .modal-content {
-    width: 95%; /* Take up almost full width on smaller screens */
-    margin: 10px; /* Avoid touching the borders */
-    padding: 15px; /* Adjust padding as necessary */
-    max-height: 600px;
+    width: 95%;
+    margin: 10px;
+    padding: 10px 0;
+    max-height: 85vh;
   }
+
   .scroll-y {
-    max-height: 600px;
+    max-height: 75vh;
+    padding: 12px !important;
   }
 
   .modal-container {
     padding: 5px;
   }
-  .modal-close-btn {
-    top: 5px;
-    right: 10px; /* Adjust button position */
-    font-size: 1.2rem; /* Adjust close button size */
+
+  .modal-header-wrapper {
+    padding: 10px 12px 8px 12px;
+    margin-bottom: 12px;
+  }
+
+  .modal-header {
+    gap: 8px;
+    align-items: flex-start; /* Align to top for long titles */
   }
 
   .modal-header h2 {
-    font-size: 1.5rem; /* Adjust header size */
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+
+  .modal-close-btn {
+    font-size: 1.5rem;
   }
 
   .modal-image {
-    width: 100%; /* Make sure image is fully responsive */
+    max-height: 250px;
+    border-radius: 8px;
   }
 
-  /* Adjust modal body text for readability on smaller screens */
   .modal-body {
-    text-align: left;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .modal-description h2,
+  .modal-markdown h3 {
+    font-size: 1.1rem;
+  }
+
+  .skill-tag {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+  }
+
+  /* Lightbox adjustments for mobile */
+  .lightbox-image {
+    max-width: 100%;
+    max-height: 90vh;
+  }
+
+  video.lightbox-image {
+    max-width: 100%;
+    max-height: 80vh;
+  }
+
+  .lightbox-close {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    top: 10px;
+    right: 10px;
+  }
+
+  .lightbox-hint {
+    font-size: 0.75rem;
+    bottom: 15px;
+    padding: 0 10px;
+  }
+
+  .lightbox-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+
+  .lightbox-nav-prev {
+    left: 10px;
+  }
+
+  .lightbox-nav-next {
+    right: 10px;
+  }
+
+  .lightbox-counter {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    top: 15px;
+  }
+}
+
+/* Extra Small Mobile (max 320px) */
+@media (max-width: 320px) {
+  .modal-header-wrapper {
+    padding: 8px 10px 6px 10px;
+  }
+
+  .modal-header {
+    gap: 5px;
+  }
+
+  .modal-header h2 {
+    font-size: 1.05rem;
+    line-height: 1.4;
+  }
+
+  .modal-image {
+    max-height: 200px;
+  }
+
+  .modal-body {
     font-size: 0.9rem;
+  }
+}
+
+/* Short screen heights */
+@media (max-height: 600px) {
+  .modal-content {
+    max-height: 90vh;
+  }
+
+  .scroll-y {
+    max-height: 75vh;
+  }
+
+  .modal-image {
+    max-height: 200px;
   }
 }
 
 @media (max-height: 480px) {
   .modal-content {
-    height: 95%;
+    height: 95vh;
+  }
+
+  .scroll-y {
+    max-height: 70vh;
   }
 }
 
@@ -217,4 +414,139 @@
 .skill-tag {
   /* ...existing styles... */
   font-size: 0.8rem; /* Adjust font size for mobile */
+}
+
+/* Image Lightbox/Zoom Styles */
+.image-lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.2s ease;
+  padding: 20px;
+}
+
+.lightbox-image {
+  max-width: 95%;
+  max-height: 95vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  animation: zoomIn 0.3s ease;
+}
+
+/* Video specific styling in lightbox */
+video.lightbox-image {
+  max-width: 90%;
+  max-height: 85vh;
+  background-color: #000; /* Black background for videos */
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 2rem;
+  color: #fff;
+  transition: all 0.3s ease;
+  z-index: 2001;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.lightbox-hint {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  text-align: center;
+  max-width: 90%;
+}
+
+/* Lightbox Navigation Arrows */
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 2rem;
+  color: #fff;
+  transition: all 0.3s ease;
+  z-index: 2002;
+}
+
+.lightbox-nav:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-nav-prev {
+  left: 20px;
+}
+
+.lightbox-nav-next {
+  right: 20px;
+}
+
+/* Image Counter */
+.lightbox-counter {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  z-index: 2001;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

@@ -18,8 +18,9 @@
 }
 
 .skill-bubble img {
-  max-width: 100%; /* Ensures the image fits in the bubble */
-  max-height: 80%; /* Adjust as needed */
+  width: 60px; /* Fixed width for consistency */
+  height: 60px; /* Fixed height for consistency */
+  object-fit: contain; /* Ensures the image fits without distortion */
   margin-bottom: 10px; /* Space between the image and text */
 }
 
@@ -56,6 +57,11 @@
     height: 80px; /* Smaller size on mobile */
     font-size: 0.7rem; /* Smaller text on mobile */
   }
+
+  .skill-bubble img {
+    width: 50px; /* Smaller fixed width on mobile */
+    height: 50px; /* Smaller fixed height on mobile */
+  }
 }
 
 @media (max-width: 600px) {
@@ -68,5 +74,10 @@
     width: 80px; /* Smaller size on mobile */
     height: 80px; /* Smaller size on mobile */
     font-size: 0.7rem; /* Smaller text on mobile */
+  }
+
+  .skill-bubble img {
+    width: 45px; /* Even smaller fixed width on smaller screens */
+    height: 45px; /* Even smaller fixed height on smaller screens */
   }
 }

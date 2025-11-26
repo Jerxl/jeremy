@@ -3,7 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import profileimg from "../assets/Personal_img.png";
 import { useEffect } from "react";
 import Skill from "../Skills/About_Skills.jsx";
-import SocialLinks from "../components/SocialLinks.jsx";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 function About() {
   const location = useLocation();
@@ -34,8 +34,47 @@ function About() {
           </h2>
         </div>
 
-        <div className="pt-2 pb-2">
-          <SocialLinks variant="compact" />
+        <div className="flex justify-center gap-4 pt-2 pb-2">
+          <a
+            href="mailto:jeremyzhaoxl@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-bg-colour w-14 h-14 rounded-full flex items-center justify-center hover:bg-bg-colour-hover2 hover:-translate-y-2 hover:duration-300 hover:ease-in-out transition-all"
+            aria-label="Send email to Jeremy Zhao"
+            title="Email"
+          >
+            <i className="bi bi-envelope-at text-text-colour text-2xl"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/zhao-xinlei-80875b211/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-bg-colour w-14 h-14 rounded-full flex items-center justify-center hover:bg-bg-colour-hover2 hover:-translate-y-2 hover:duration-300 hover:ease-in-out transition-all"
+            aria-label="Visit Jeremy Zhao's LinkedIn profile"
+            title="LinkedIn"
+          >
+            <i className="bi bi-linkedin text-text-colour text-2xl"></i>
+          </a>
+          <a
+            href="https://github.com/Jerxl"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-bg-colour w-14 h-14 rounded-full flex items-center justify-center hover:bg-bg-colour-hover2 hover:-translate-y-2 hover:duration-300 hover:ease-in-out transition-all"
+            aria-label="Visit Jeremy Zhao's GitHub profile"
+            title="GitHub"
+          >
+            <i className="bi bi-github text-text-colour text-2xl"></i>
+          </a>
+          <a
+            href="https://www.instagram.com/xinleiz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-bg-colour w-14 h-14 rounded-full flex items-center justify-center hover:bg-bg-colour-hover2 hover:-translate-y-2 hover:duration-300 hover:ease-in-out transition-all"
+            aria-label="Visit Jeremy Zhao's Instagram profile"
+            title="Instagram"
+          >
+            <i className="bi bi-instagram text-text-colour text-2xl"></i>
+          </a>
         </div>
         <NavLink 
           to="/contact" 
