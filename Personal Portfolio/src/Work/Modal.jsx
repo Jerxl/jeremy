@@ -2,25 +2,13 @@ import React, { useState, useEffect } from "react";
 import DOMPurify from "dompurify";
 import { marked } from "marked";
 import Slider from "react-slick";
+import profileimg from "../assets/Personal_img.png";
 import "./Modal.css";
 
 const Modal = ({ work, closeModal }) => {
   const [animationClass, setAnimationClass] = useState("modal-zoom-in");
 
   if (!work) return null;
-
-  useEffect(() => {
-    // When the modal is closing, change the animation
-    const handleAnimationEnd = () => {
-      if (animationClass === "modal-zoom-out") {
-        closeModal();
-      }
-    };
-
-    return () => {
-      document.removeEventListener("animationend", handleAnimationEnd);
-    };
-  }, [animationClass, closeModal]);
 
   const handleClose = () => {
     setAnimationClass("modal-zoom-out");
@@ -62,19 +50,26 @@ const Modal = ({ work, closeModal }) => {
   }, [animationClass, closeModal]);
 
   return (
-    <div className={`modal-container ${animationClass}`} onClick={handleClose}>
+    <div 
+      className={`modal-container ${animationClass}`} 
+      onClick={handleClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
       <div
         className="modal-content rounded-3xl "
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="modal-header-bg"></div>
+        <div className="modal-header-bg" aria-hidden="true"></div>
         <div className="modal-header">
-          <h2>{work.fields["Project Name"]}</h2>
+          <h2 id="modal-title">{work.fields["Project Name"]}</h2>
           <button
             className={`modal-close-btn ${animationClass}`}
             onClick={handleClose}
+            aria-label="Close project details modal"
           >
-            <i className="bi bi-x-circle text-3xl text-text-colour2 hover:text-text-colour "></i>
+            <i className="bi bi-x-circle text-3xl text-text-colour2 hover:text-text-colour " aria-hidden="true"></i>
           </button>
         </div>
 
@@ -121,9 +116,9 @@ const Modal = ({ work, closeModal }) => {
               )}
             ></div>
 
-            <div className="modal-skills">
+            <div className="modal-skills" role="list" aria-label="Technologies and skills used in this project">
               {work.fields["Skills Applied"].map((skill, index) => (
-                <span key={index} className="skill-tag">
+                <span key={index} className="skill-tag" role="listitem">
                   {skill}
                 </span>
               ))}

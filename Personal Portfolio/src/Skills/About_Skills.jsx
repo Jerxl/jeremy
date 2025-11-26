@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { getCachedData, setCachedData } from "../utils/cacheUtils";
 import "./About_Skills.css";
 
 function SkillCard({ skill }) {
@@ -30,20 +31,37 @@ function SkillCard({ skill }) {
 function SkillsSection() {
   const [skills, setSkills] = useState([]);
   const [showAllSkills, setShowAllSkills] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchSkills = async () => {
+      // Try to get cached data first
+      const cachedSkills = getCachedData("cache_skills");
+
+      if (cachedSkills) {
+        setSkills(cachedSkills);
+        setIsLoading(false);
+        return;
+      }
+
+      // If no cache, fetch from API
       try {
+        setIsLoading(true);
         const response = await fetch(
           "https://api.airtable.com/v0/appcrSl7Zgy2SpKCZ/tbl5o8SBZ21RWiQ2q",
           {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API}`, // Replace with your actual API key
+              Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API}`,
             },
           }
         );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
         const data = await response.json();
         const fetchIcons = data.records
@@ -73,23 +91,45 @@ function SkillsSection() {
 
         const transformedSkills = await Promise.all(fetchIcons);
         setSkills(transformedSkills);
-        sessionStorage.setItem("skills", JSON.stringify(transformedSkills));
+        setCachedData("cache_skills", transformedSkills);
+        setIsLoading(false);
       } catch (error) {
-        console.error("Error fetching data: ", error);
+        console.error("Error fetching skills data:", error);
+        setError("Failed to load skills. Please try again later.");
+        setIsLoading(false);
       }
     };
 
-    const cachedSkills = sessionStorage.getItem("skills");
-    if (cachedSkills) {
-      setSkills(JSON.parse(cachedSkills));
-    } else {
-      fetchSkills();
-    }
+    fetchSkills();
   }, []);
 
   const toggleShowAllSkills = () => {
     setShowAllSkills(!showAllSkills);
   };
+
+  if (isLoading) {
+    return (
+      <div className="Skills mt-4 flex justify-center items-center min-h-[200px]">
+        <div className="text-text-colour2">Loading skills...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="Skills mt-4 flex justify-center items-center min-h-[200px]">
+        <div className="text-red-500">{error}</div>
+      </div>
+    );
+  }
+
+  if (skills.length === 0) {
+    return (
+      <div className="Skills mt-4 flex justify-center items-center min-h-[200px]">
+        <div className="text-text-colour2">No skills available</div>
+      </div>
+    );
+  }
 
   return (
     <div className="Skills mt-4">
@@ -101,7 +141,8 @@ function SkillsSection() {
       {skills.length > 9 && (
         <button
           onClick={toggleShowAllSkills}
-          className="mt-4 bg-bg-colour2 text-white py-2 px-4 rounded  sm:block"
+          className="mt-4 bg-bg-colour2 text-white py-2 px-4 rounded sm:block hover:bg-bg-colour transition"
+          aria-label={showAllSkills ? "Show less skills" : "Show more skills"}
         >
           {showAllSkills ? "Less Skills" : "More Skills"}
         </button>

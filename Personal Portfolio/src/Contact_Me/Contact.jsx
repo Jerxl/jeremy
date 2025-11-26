@@ -63,24 +63,26 @@ function Contact_Me() {
   };
 
   return (
-    <div className=" container min-h-[80vh] mb-10 md:mt-40 float-up">
+    <div className=" container min-h-[80vh] mb-10 md:mt-40 float-up" role="main">
       <div className="flex  text-text-colour justify-center gap-10 flex-col md:flex-row items-center md:items-start">
         {/* Left Contact Info */}
-        <div className="flex-2">
+        <aside className="flex-2" aria-label="Contact information">
           <h2 className=" text-2xl font-semibold">CONTACT INFO</h2>
           <div className="flex gap-3 items-center mt-3 ">
             {/* Mail */}
-            <div className=" bg-bg-colour2 p-2.5 rounded-md">
+            <div className=" bg-bg-colour2 p-2.5 rounded-md" aria-hidden="true">
               <i className="bi bi-envelope text-3xl "></i>
             </div>
             <div>
               <h3 className="text-text-colour2  font-semibold">EMAIL</h3>
-              <p className="font-medium">Jeremy.zhaoxl@gmail.com</p>
+              <a href="mailto:Jeremy.zhaoxl@gmail.com" className="font-medium hover:underline">
+                Jeremy.zhaoxl@gmail.com
+              </a>
             </div>
           </div>
           <div className="flex gap-3 items-center mt-3 ">
             {/* Contact US */}
-            <div className=" bg-bg-colour2 p-2.5 rounded-md">
+            <div className=" bg-bg-colour2 p-2.5 rounded-md" aria-hidden="true">
               <i className="bi bi-telephone text-3xl"></i>
             </div>
             <div>
@@ -90,7 +92,7 @@ function Contact_Me() {
           </div>
           <div className="flex gap-3 items-center mt-3 ">
             {/* Location */}
-            <div className=" bg-bg-colour2 p-2.5 rounded-md">
+            <div className=" bg-bg-colour2 p-2.5 rounded-md" aria-hidden="true">
               <i className="bi bi-geo-alt text-3xl"></i>
             </div>
             <div>
@@ -98,22 +100,24 @@ function Contact_Me() {
               <p className="font-medium">Singapore</p>
             </div>
           </div>
-        </div>
+        </aside>
         {/* Right Contact Form */}
-        <div className=" bg-my-gradient flex-1 p-10 md:p-16 rounded-3xl relative max-w-[900px]">
+        <section className=" bg-my-gradient flex-1 p-10 md:p-16 rounded-3xl relative max-w-[900px]" aria-labelledby="contact-form-heading">
           <div>
-            <h2 className=" font-semibold text-4xl mb-4">
+            <h2 id="contact-form-heading" className=" font-semibold text-4xl mb-4">
               Lets Work
               <span className=" text-blue-600"> Together</span>
               <img
                 src={Deco1}
                 alt=""
+                aria-hidden="true"
                 className="mb-4 w-5 md:w-10 float-right absolute right-16 top-0 hidden md:block"
               />
             </h2>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} aria-label="Contact form">
               <div className="mb-3">
+                <label htmlFor="name" className="sr-only">Your Name</label>
                 <input
                   type="text"
                   className="form-control bg-bg-colour border-none text-white focus:border-none focus:outline-none focus:bg-bg-colour focus:ring-0 placeholder-text-colour2 h-12  "
@@ -121,12 +125,16 @@ function Contact_Me() {
                   placeholder="Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  aria-required="true"
+                  aria-invalid={errors.name ? "true" : "false"}
+                  aria-describedby={errors.name ? "name-error" : undefined}
                 />
                 {errors.name && (
-                  <span className="text-red-500">{errors.name}</span>
+                  <span id="name-error" className="text-red-500" role="alert">{errors.name}</span>
                 )}
               </div>
               <div className="mb-3">
+                <label htmlFor="email" className="sr-only">Your Email</label>
                 <input
                   type="email"
                   className="form-control bg-bg-colour border-none text-white focus:border-none focus:outline-none focus:bg-bg-colour focus:ring-0 placeholder-text-colour2 h-12  "
@@ -134,25 +142,33 @@ function Contact_Me() {
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  aria-required="true"
+                  aria-invalid={errors.email ? "true" : "false"}
+                  aria-describedby={errors.email ? "email-error" : undefined}
                 />
                 {errors.email && (
-                  <span className="text-red-500">{errors.email}</span>
+                  <span id="email-error" className="text-red-500" role="alert">{errors.email}</span>
                 )}
               </div>
               <div className="mb-3">
+                <label htmlFor="subject" className="sr-only">Subject</label>
                 <input
-                  type="Subject"
+                  type="text"
                   className="form-control bg-bg-colour border-none text-white focus:border-none focus:outline-none focus:bg-bg-colour focus:ring-0 placeholder-text-colour2 h-12  "
-                  id="Subject"
+                  id="subject"
                   placeholder="Subject"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
+                  aria-required="true"
+                  aria-invalid={errors.subject ? "true" : "false"}
+                  aria-describedby={errors.subject ? "subject-error" : undefined}
                 />
                 {errors.subject && (
-                  <span className="text-red-500">{errors.subject}</span>
+                  <span id="subject-error" className="text-red-500" role="alert">{errors.subject}</span>
                 )}
               </div>
               <div className="mb-3">
+                <label htmlFor="message" className="sr-only">Your Message</label>
                 <textarea
                   className="form-control bg-bg-colour border-none text-white focus:border-none focus:outline-none focus:bg-bg-colour focus:ring-0 placeholder-text-colour2"
                   id="message"
@@ -160,26 +176,34 @@ function Contact_Me() {
                   placeholder="Message"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
+                  aria-required="true"
+                  aria-invalid={errors.message ? "true" : "false"}
+                  aria-describedby={errors.message ? "message-error" : undefined}
                 ></textarea>
                 {errors.message && (
-                  <span className="text-red-500">{errors.message}</span>
+                  <span id="message-error" className="text-red-500" role="alert">{errors.message}</span>
                 )}
               </div>
               <button
                 type="submit"
                 className="btn btn-primary bg-bg-colour2 border-none hover:bg-bg-colour pl-6 pr-6"
+                aria-label="Submit contact form"
               >
                 Submit
               </button>
               {isSubmitted && (
-                <div className="text-green-500 mt-3 flex items-center">
-                  <i className="bi bi-check-circle-fill mr-2 text-2xl"></i>
+                <div 
+                  className="text-green-500 mt-3 flex items-center" 
+                  role="status" 
+                  aria-live="polite"
+                >
+                  <i className="bi bi-check-circle-fill mr-2 text-2xl" aria-hidden="true"></i>
                   Message submitted successfully!
                 </div>
               )}
             </form>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );

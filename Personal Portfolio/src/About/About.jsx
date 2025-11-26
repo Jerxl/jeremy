@@ -3,6 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import profileimg from "../assets/Personal_img.png";
 import { useEffect } from "react";
 import Skill from "../Skills/About_Skills.jsx";
+import SocialLinks from "../components/SocialLinks.jsx";
 
 function About() {
   const location = useLocation();
@@ -21,52 +22,32 @@ function About() {
       className="container h-auto flex flex-col md:flex-row pl-5 pr-5 md:pl-2 md:pr-2 md:gap-6 lg:pr-0 lg:pl-0 mb-24 float-up"
       id="About_Container"
     >
-      <aside className=" bg-my-gradient rounded-2xl p-3 flex flex-col md:h-[550px] md:w-[500px] md:sticky md:top-0">
+      <aside className=" bg-my-gradient rounded-2xl p-3 flex flex-col md:h-[550px] md:w-[500px] md:sticky md:top-0" role="complementary" aria-label="Profile sidebar">
         <div className=" flex flex-col items-center mb-3 mt-3">
-          <img src={profileimg} alt="" className=" w-96 rounded-3xl md:w-72" />
-          <p className=" text-3xl font-semibold text-text-colour mt-2">
+          <img 
+            src={profileimg} 
+            alt="Jeremy Zhao (Zhao Xinlei) - Professional headshot" 
+            className=" w-96 rounded-3xl md:w-72" 
+          />
+          <h2 className=" text-3xl font-semibold text-text-colour mt-2">
             Zhao Xinlei
-          </p>
+          </h2>
         </div>
 
-        <div className="flex justify-evenly pt-2 pb-2 group/icons">
-          <div className="bg-bg-colour w-16 h-16 rounded-full center_item hover:bg-bg-colour-hover2 hover:-translate-y-2 hover:duration-100">
-            <a href="mailto:jeremyzhaoxl@gmail.com" target="blank">
-              <i className="bi bi-envelope-at text-text-colour text-3xl"></i>
-            </a>
-          </div>
-          <div className="bg-bg-colour w-16 h-16 rounded-full center_item hover:bg-bg-colour-hover2 hover:-translate-y-2 hover:duration-100">
-            <a
-              href="https://www.linkedin.com/in/zhao-xinlei-80875b211/"
-              target="blank"
-            >
-              <i className="bi bi-linkedin text-text-colour text-3xl"></i>
-            </a>
-          </div>
-
-          <div className="bg-bg-colour w-16 h-16 rounded-full center_item hover:bg-bg-colour-hover2 hover:-translate-y-2 hover:duration-100">
-            <a href="https://github.com/Jerxl" target="blank">
-              <i className="bi bi-github text-text-colour text-3xl"></i>
-            </a>
-          </div>
-          <div className=" bg-bg-colour w-16  h-16 rounded-full center_item hover:bg-bg-colour-hover2 hover:-translate-y-2 hover:duration-100">
-            <a href="https://www.instagram.com/xinleiz/" target="blank">
-              <i
-                className="bi bi-instagram text-text-colour text-3xl"
-                target="blank"
-              ></i>
-            </a>
-          </div>
+        <div className="pt-2 pb-2">
+          <SocialLinks variant="compact" />
         </div>
-        <NavLink to="/contact">
-          <div className="center_item bg-bg-colour m-4 p-2 rounded-3xl text-xl hover:bg-bg-colour-hover hover:transition">
-            <p className="text-text-colour font-semibold">Contact Me</p>
-          </div>
+        <NavLink 
+          to="/contact" 
+          className="center_item bg-bg-colour m-4 p-2 rounded-3xl text-xl hover:bg-bg-colour-hover hover:transition"
+          aria-label="Go to contact page"
+        >
+          <span className="text-text-colour font-semibold">Contact Me</span>
         </NavLink>
       </aside>
-      <div className="text-text-colour flex flex-col gap-20 mt-4 md:mt-0 w-[100%]">
-        <div className="About_Me">
-          <h2 className=" text-xl font-semibold mb-2 md:text-2xl">ABOUT ME</h2>
+      <div className="text-text-colour flex flex-col gap-20 mt-4 md:mt-0 w-[100%]" role="main">
+        <section className="About_Me" aria-labelledby="about-heading">
+          <h2 id="about-heading" className=" text-xl font-semibold mb-2 md:text-2xl">ABOUT ME</h2>
           <p className="mb-2 font-medium">
             Hello, I'm Zhao Xinlei, a graduate of Republic Polytechnic with a deep passion for technology and innovation. My journey in engineering is driven by a love for learning and problem-solving, where I eagerly embrace advancements in technology to contribute meaningfully to the field.
           </p>
@@ -74,9 +55,9 @@ function About() {
           <p className="font-medium">
             My academic and professional experiences have strengthened my skills in proactive problem-solving and teamwork. I approach challenges with a positive mindset and a strong sensitivity to team dynamics, fostering effective collaboration even in complex situations. These abilities were honed through active participation in prestigious competitions such as the SUTD 3D Printing Design Innovation Challenge, NUS MIEC2022, and the National IIOT Competition 2023, where I delivered innovative solutions to address emerging challenges. I am excited to bring my enthusiasm, creativity, and collaborative spirit to the professional world, striving to grow and make a meaningful impact in the field of engineering and technology.
           </p>
-        </div>
-        <div className="About_Educations" id="Educations">
-          <h2 className="text-xl font-semibold mb-2 md:text-2xl">EDUCATION</h2>
+        </section>
+        <section className="About_Educations" id="Educations" aria-labelledby="education-heading">
+          <h2 id="education-heading" className="text-xl font-semibold mb-2 md:text-2xl">EDUCATION</h2>
           <div className="flex flex-col gap-5">
             <div>
               <p className="text-text-colour2 mb-0.5 font-medium">
@@ -118,9 +99,9 @@ function About() {
               </p>
             </div>
           </div>
-        </div>
-        <div className="Experience" id="Experience">
-          <h2 className="text-xl font-semibold mb-2 md:text-2xl">EXPERIENCE</h2>
+        </section>
+        <section className="Experience" id="Experience" aria-labelledby="experience-heading">
+          <h2 id="experience-heading" className="text-xl font-semibold mb-2 md:text-2xl">EXPERIENCE</h2>
           <div className="flex flex-col gap-5">
             <div>
               <h2 className="text-lg font-medium mb-0.5  text-[#5b78f6]">
@@ -263,18 +244,18 @@ function About() {
               </ul>
             </div>
           </div>
-        </div>
-        <div className="Skills" id="Skills">
-          <h2 className="text-xl font-semibold mb-2 md:text-2xl">SKILLS</h2>
+        </section>
+        <section className="Skills" id="Skills" aria-labelledby="skills-heading">
+          <h2 id="skills-heading" className="text-xl font-semibold mb-2 md:text-2xl">SKILLS</h2>
           <p>
             A versatile and strategic thinker equipped with a diverse range of
             skills tailored for excellence in the digital era. My expertise
             includes:
           </p>
           {<Skill />}
-        </div>
-        <div className="About_Achievements" id="Achievements">
-          <h2 className="text-xl font-semibold mb-2 md:text-2xl">
+        </section>
+        <section className="About_Achievements" id="Achievements" aria-labelledby="achievements-heading">
+          <h2 id="achievements-heading" className="text-xl font-semibold mb-2 md:text-2xl">
             ACHIEVEMENTS
           </h2>
           <div className="flex flex-col gap-3">
@@ -328,9 +309,9 @@ function About() {
               </p>
             </div>
           </div>
-        </div>
-        <div className="About_Testimonials">
-          <h2 className="text-xl font-semibold mb-2 md:text-2xl">
+        </section>
+        <section className="About_Testimonials" aria-labelledby="testimonials-heading">
+          <h2 id="testimonials-heading" className="text-xl font-semibold mb-2 md:text-2xl">
             Testimonials
           </h2>
           <div className="flex flex-col gap-3">
@@ -353,7 +334,7 @@ function About() {
               </p>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );

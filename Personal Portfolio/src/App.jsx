@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./Home/home";
 import About from "./About/About.jsx";
 import About_Summary from "./About/About_Summary.jsx";
@@ -12,8 +11,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import WorksProvider from "./Work/WorksProvider.jsx";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <WorksProvider>
       <div className="App">

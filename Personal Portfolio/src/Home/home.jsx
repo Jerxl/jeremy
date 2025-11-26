@@ -8,17 +8,18 @@ import Resume from "../assets/Resume.pdf";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Typed from "typed.js";
 import Skills from "./Skills.jsx";
+import SocialLinks from "../components/SocialLinks.jsx";
 import { NavLink } from "react-router-dom";
 
-function home() {
+function Home() {
   const el = useRef(null);
   const [quotes, setQuotes] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // Added loading state
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function fetchQuotes() {
       const LINK = `https://api.airtable.com/v0/appcrSl7Zgy2SpKCZ/tbldO5btIPv4GKgkB/`;
-      setIsLoading(true); // Set loading to true when fetching starts
+      setIsLoading(true);
       try {
         const response = await fetch(LINK, {
           method: "GET",
@@ -27,15 +28,25 @@ function home() {
             Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API}`,
           },
         });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const data = await response.json();
         const shuffled = data.records.sort(() => 0.5 - Math.random());
         let selectedQuotes = shuffled
           .slice(0, 5)
           .map((record) => record.fields.Quotes);
         setQuotes(selectedQuotes);
-        setIsLoading(false); // Set loading to false when fetching is done
+        setIsLoading(false);
       } catch (error) {
-        setQuotes(["Error loading quotes..."]);
+        console.error("Error fetching quotes:", error);
+        setQuotes([
+          "Welcome to my portfolio!",
+          "Driven by innovation and creative problem-solving.",
+          "Passionate about technology and continuous learning.",
+        ]);
         setIsLoading(false);
       }
     }
@@ -77,14 +88,18 @@ function home() {
         <div className="flex flex-col justify-center items-center bg-my-gradient rounded-3xl p-3  md:w-[100%] lg:w-[50%] lg:flex-row lg:gap-4">
           {/* Intro */}
           <div className=" w-64  lg:w-[600px]">
-            <img src={profileimg} alt="Profile Image" className="rounded-3xl" />
+            <img 
+              src={profileimg} 
+              alt="Jeremy Zhao - Web Developer and Automation Engineer" 
+              className="rounded-3xl" 
+            />
           </div>
           <div>
             <p className=" text-lg text-text-colour2 font-medium">
               A Web Developer
             </p>
 
-            <p className=" text-2xl font-semibold md:text-3xl">Jeremy Zhao</p>
+            <h1 className=" text-2xl font-semibold md:text-3xl">Jeremy Zhao</h1>
 
             <p className=" text-base font-medium ">Web Developer passionate about embracing and advancing technology, driven by innovation and creative problem-solving."
             </p>
@@ -92,18 +107,22 @@ function home() {
         </div>
 
         <div className="flex flex-col justify-center items-center gap-3  w-[100%]">
-          <div className="bg-my-gradient rounded-2xl p-1.5 h-[5rem] md:h-[4rem] w-full">
+            <div 
+              className="bg-my-gradient rounded-2xl p-1.5 h-[5rem] md:h-[4rem] w-full"
+              role="status"
+              aria-live="polite"
+              aria-label="Inspirational quote"
+            >
             {/* Quote */}
-
             <span className=" text-[1rem]" ref={el}></span>
           </div>
           <div className="flex gap-3 w-[100%] flex-col md:flex-row">
             {/* About ME */}
             <div className=" bg-my-gradient rounded-3xl p-3 flex-1 group hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out">
               {/* Credentials */}
-              <NavLink to="/credentials#About_Container ">
+              <NavLink to="/credentials#About_Container " aria-label="View my credentials and detailed background">
                 <div className="flex justify-center lg:min-h-[150px] ">
-                  <img src={Signature} alt="Signature" />
+                  <img src={Signature} alt="Jeremy Zhao's signature" />
                 </div>
                 <div className="flex justify-between items-center">
                   <div>
@@ -112,17 +131,17 @@ function home() {
                     </div>
                     <div className="text-2xl font-semibold">Credentials</div>
                   </div>
-                  <div>
+                  <div aria-hidden="true">
                     <i className="bi bi-arrow-right-circle text-text-colour2 text-3xl group-hover:text-text-colour"></i>
                   </div>
                 </div>
               </NavLink>
             </div>
             <div className=" bg-my-gradient rounded-3xl p-3  flex-1 group hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out">
-              {/* Credentials */}
-              <NavLink to="/works">
+              {/* Portfolio */}
+              <NavLink to="/works" aria-label="View my portfolio and projects">
                 <div className="flex justify-center">
-                  <img src={Portfolio} alt="Portfolio" />
+                  <img src={Portfolio} alt="Portfolio showcase icon" />
                 </div>
                 <div className="flex justify-between items-center">
                   <div>
@@ -131,7 +150,7 @@ function home() {
                     </div>
                     <div className="text-2xl font-semibold">Portfolio</div>
                   </div>
-                  <div>
+                  <div aria-hidden="true">
                     <i className="bi bi-arrow-right-circle text-text-colour2 text-3xl group-hover:text-text-colour"></i>
                   </div>
                 </div>
@@ -143,62 +162,34 @@ function home() {
       {/* Middle Container */}
       <div className="flex flex-col gap-3 lg:flex-row w-full mt-3 ">
         <div className="flex gap-3 flex-1">
-          <div
-            className="bg-my-gradient rounded-3xl p-3  flex-1 cursor-pointer group hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out"
+          <button
+            className="bg-my-gradient rounded-3xl p-3 flex-1 cursor-pointer group hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out w-full text-left"
             onClick={handleDownloadCV}
+            aria-label="Download Jeremy Zhao's resume PDF"
           >
             <div className=" w-52 ml-auto mr-auto ">
-              <img src={CV} alt="CV" className="" />
+              <img src={CV} alt="Resume download icon" className="" />
             </div>
             <div className="flex justify-between items-center">
               <div>
                 <div className="text-text-colour2 text-base font-medium">
-                  My cv
+                  My CV
                 </div>
                 <div className="text-2xl font-semibold">Download</div>
               </div>
-              <div>
+              <div aria-hidden="true">
                 <i className="bi bi-arrow-right-circle text-text-colour2 text-3xl group-hover:text-text-colour"></i>
               </div>
             </div>
-          </div>
+          </button>
           {/* 2nd social */}
           <div className="bg-my-gradient rounded-3xl p-3  flex-1 cursor-pointer hidden md:block lg:hidden group">
             {/* Contact */}
-
             <div className="flex flex-col">
-              <div className="md:flex-wrap md:w-[250px] xl:max-w-[300px] md:gap-14 lg:gap-2.5 flex gap-3 justify-center md:ml-auto md:mr-auto ">
-                <a
-                  href="mailto:jeremyzhaoxl@gmail.com"
-                  target="blank"
-                  className=" bg-bg-colour2 rounded-full p-4 flex items-center justify-center hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out"
-                >
-                  <i className="bi bi-envelope-at text-5xl"></i>
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/zhao-xinlei-80875b211/"
-                  target="blank"
-                  className=" bg-bg-colour2 rounded-full p-4  flex items-center justify-center hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out"
-                >
-                  <i className="bi bi-linkedin text-5xl"></i>
-                </a>
-
-                <a
-                  href="https://github.com/Jerxl"
-                  target="blank"
-                  className=" bg-bg-colour2 rounded-full p-4  flex items-center justify-center hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out"
-                >
-                  <i className="bi bi-github text-5xl"></i>
-                </a>
-                <a
-                  href="https://www.instagram.com/xinleiz/"
-                  className=" bg-bg-colour2 rounded-full p-4  flex items-center justify-center hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out"
-                  target="blank"
-                >
-                  <i className="bi bi-instagram text-5xl " target="blank"></i>
-                </a>
-              </div>
-
+              <SocialLinks
+                variant="default"
+                className="md:flex-wrap md:w-[250px] xl:max-w-[300px] md:gap-14 lg:gap-2.5 md:ml-auto md:mr-auto"
+              />
               <div className="flex justify-between items-center">
                 <div>
                   <div className=" text-text-colour2 text-base font-medium">
@@ -228,43 +219,11 @@ function home() {
 
         <div className="bg-my-gradient rounded-3xl p-3  flex-1 cursor-pointer md:hidden lg:block group">
           {/* Contact */}
-
           <div className="flex flex-col ">
-            <div className="md:flex-wrap md:w-[250px] xl:max-w-[300px] md:gap-14 lg:gap-2.5 flex gap-3 justify-center ml-auto mr-auto">
-              <a
-                href="mailto:jeremyzhaoxl@gmail.com"
-                target="blank"
-                className=" bg-bg-colour2 rounded-full p-3 flex items-center justify-center hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out"
-              >
-                <i className="bi bi-envelope-at text-5xl lg:text-6xl "></i>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/zhao-xinlei-80875b211/"
-                target="blank"
-                className=" bg-bg-colour2 rounded-full p-3 flex items-center justify-center hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out"
-              >
-                <i className="bi bi-linkedin text-5xl lg:text-6xl"></i>
-              </a>
-
-              <a
-                href="https://github.com/Jerxl"
-                target="blank"
-                className=" bg-bg-colour2 rounded-full p-3 flex items-center justify-center hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out"
-              >
-                <i className="bi bi-github text-5xl lg:text-6xl"></i>
-              </a>
-              <a
-                href="https://www.instagram.com/xinleiz/"
-                target="blank"
-                className=" bg-bg-colour2 rounded-full p-3 flex items-center justify-center hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out"
-              >
-                <i
-                  className="bi bi-instagram text-5xl lg:text-6xl"
-                  target="blank"
-                ></i>
-              </a>
-            </div>
-
+            <SocialLinks
+              variant="large"
+              className="md:flex-wrap md:w-[250px] xl:max-w-[300px] md:gap-14 lg:gap-2.5 ml-auto mr-auto"
+            />
             <div className="flex justify-between items-center">
               <div>
                 <div className=" text-text-colour2 text-base font-medium">
@@ -283,34 +242,31 @@ function home() {
       <div className="flex flex-col gap-3 lg:flex-row w-full mt-3 mb-12 ">
         <div className="flex flex-col gap-3 md:flex-row lg:w-2/3">
           <div className="bg-my-gradient rounded-3xl p-3  flex-1 hover:-translate-y-2 hover:duration-100 hover:ease-in-out">
-            <NavLink to="/credentials#Achievements">
+            <NavLink to="/credentials#Achievements" aria-label="View my achievements and awards">
               <div className="flex justify-center items-center md:flex-col md:gap-1.5 ">
-                <div className=" flex justify-center">
+                <div className=" flex justify-center" aria-hidden="true">
                   <i className="bi bi-award icon text-5xl "></i>
                 </div>
-
-                <div className="text-2xl font-semibold">ACHIVEMENTS</div>
+                <div className="text-2xl font-semibold">ACHIEVEMENTS</div>
               </div>
             </NavLink>
           </div>
           <div className="bg-my-gradient rounded-3xl p-3  flex-1 hover:-translate-y-2 hover:duration-100 hover:ease-in-out">
-            <NavLink to="/credentials#Educations">
+            <NavLink to="/credentials#Educations" aria-label="View my educational background">
               <div className="flex justify-center items-center gap-2 md:flex-col">
-                <div className=" flex justify-center">
+                <div className=" flex justify-center" aria-hidden="true">
                   <i className="bi bi-book icon text-5xl"></i>
                 </div>
-
                 <div className="text-2xl font-semibold">EDUCATION</div>
               </div>
             </NavLink>
           </div>
           <div className="bg-my-gradient rounded-3xl p-3  flex-1 basis-1 hover:-translate-y-2 hover:duration-100 hover:ease-in-out">
-            <NavLink to="/credentials#Experience">
+            <NavLink to="/credentials#Experience" aria-label="View my work experience">
               <div className="flex justify-center items-center gap-2 md:flex-col">
-                <div className=" flex justify-center">
+                <div className=" flex justify-center" aria-hidden="true">
                   <i className="bi bi-buildings icon text-5xl"></i>
                 </div>
-
                 <div className="text-2xl font-semibold ">EXPERIENCE</div>
               </div>
             </NavLink>
@@ -320,10 +276,12 @@ function home() {
         <NavLink
           to="/contact"
           className="bg-my-gradient rounded-3xl p-3 flex-1 flex justify-start md:justify-center lg:justify-start items-center hover:-translate-y-2 hover:duration-100 hover:ease-in-out hover:bg-[#007bff] hover:bg-none hover:cursor-pointer group"
+          aria-label="Contact me to work together"
         >
           <img
             src={Deco1}
             alt=""
+            aria-hidden="true"
             className=" absolute right-5 lg:block hidden group-hover:hidden"
           />
           <span className="text-2xl font-semibold">Let's work together.</span>
@@ -333,4 +291,4 @@ function home() {
   );
 }
 
-export default home;
+export default Home;
