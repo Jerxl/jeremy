@@ -30,7 +30,6 @@ function Contact_Me() {
     if (Object.keys(newErrors).length === 0) {
       // Set the submission state to true
       setIsSubmitted(true);
-      console.log("Form data:", { name, email, subject, message });
       // Add your form submission logic here
       fetch("https://api.airtable.com/v0/appcrSl7Zgy2SpKCZ/tblWgcWJHYfu90s1d", {
         method: "POST",
@@ -51,7 +50,17 @@ function Contact_Me() {
           ],
           typecast: true,
         }),
-      }).then(console.log("Message Posted"));
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to send message");
+          }
+        })
+        .catch((error) => {
+          console.error("Error submitting form:", error);
+          setErrors({ submit: "Failed to send message. Please try again." });
+          setIsSubmitted(false);
+        });
       setName("");
       setEmail("");
       setSubject("");
@@ -63,7 +72,10 @@ function Contact_Me() {
   };
 
   return (
-    <div className=" container min-h-[80vh] mb-10 md:mt-40 float-up" role="main">
+    <div
+      className=" container min-h-[80vh] mb-10 md:mt-40 float-up"
+      role="main"
+    >
       <div className="flex  text-text-colour justify-center gap-10 flex-col md:flex-row items-center md:items-start">
         {/* Left Contact Info */}
         <aside className="flex-2" aria-label="Contact information">
@@ -75,7 +87,10 @@ function Contact_Me() {
             </div>
             <div>
               <h3 className="text-text-colour2  font-semibold">EMAIL</h3>
-              <a href="mailto:Jeremy.zhaoxl@gmail.com" className="font-medium hover:underline">
+              <a
+                href="mailto:Jeremy.zhaoxl@gmail.com"
+                className="font-medium hover:underline"
+              >
                 Jeremy.zhaoxl@gmail.com
               </a>
             </div>
@@ -102,9 +117,15 @@ function Contact_Me() {
           </div>
         </aside>
         {/* Right Contact Form */}
-        <section className=" bg-my-gradient flex-1 p-10 md:p-16 rounded-3xl relative max-w-[900px]" aria-labelledby="contact-form-heading">
+        <section
+          className=" bg-my-gradient flex-1 p-10 md:p-16 rounded-3xl relative max-w-[900px]"
+          aria-labelledby="contact-form-heading"
+        >
           <div>
-            <h2 id="contact-form-heading" className=" font-semibold text-4xl mb-4">
+            <h2
+              id="contact-form-heading"
+              className=" font-semibold text-4xl mb-4"
+            >
               Lets Work
               <span className=" text-blue-600"> Together</span>
               <img
@@ -117,7 +138,9 @@ function Contact_Me() {
 
             <form onSubmit={handleSubmit} aria-label="Contact form">
               <div className="mb-3">
-                <label htmlFor="name" className="sr-only">Your Name</label>
+                <label htmlFor="name" className="sr-only">
+                  Your Name
+                </label>
                 <input
                   type="text"
                   className="form-control bg-bg-colour border-none text-white focus:border-none focus:outline-none focus:bg-bg-colour focus:ring-0 placeholder-text-colour2 h-12  "
@@ -130,11 +153,15 @@ function Contact_Me() {
                   aria-describedby={errors.name ? "name-error" : undefined}
                 />
                 {errors.name && (
-                  <span id="name-error" className="text-red-500" role="alert">{errors.name}</span>
+                  <span id="name-error" className="text-red-500" role="alert">
+                    {errors.name}
+                  </span>
                 )}
               </div>
               <div className="mb-3">
-                <label htmlFor="email" className="sr-only">Your Email</label>
+                <label htmlFor="email" className="sr-only">
+                  Your Email
+                </label>
                 <input
                   type="email"
                   className="form-control bg-bg-colour border-none text-white focus:border-none focus:outline-none focus:bg-bg-colour focus:ring-0 placeholder-text-colour2 h-12  "
@@ -147,11 +174,15 @@ function Contact_Me() {
                   aria-describedby={errors.email ? "email-error" : undefined}
                 />
                 {errors.email && (
-                  <span id="email-error" className="text-red-500" role="alert">{errors.email}</span>
+                  <span id="email-error" className="text-red-500" role="alert">
+                    {errors.email}
+                  </span>
                 )}
               </div>
               <div className="mb-3">
-                <label htmlFor="subject" className="sr-only">Subject</label>
+                <label htmlFor="subject" className="sr-only">
+                  Subject
+                </label>
                 <input
                   type="text"
                   className="form-control bg-bg-colour border-none text-white focus:border-none focus:outline-none focus:bg-bg-colour focus:ring-0 placeholder-text-colour2 h-12  "
@@ -161,14 +192,24 @@ function Contact_Me() {
                   onChange={(e) => setSubject(e.target.value)}
                   aria-required="true"
                   aria-invalid={errors.subject ? "true" : "false"}
-                  aria-describedby={errors.subject ? "subject-error" : undefined}
+                  aria-describedby={
+                    errors.subject ? "subject-error" : undefined
+                  }
                 />
                 {errors.subject && (
-                  <span id="subject-error" className="text-red-500" role="alert">{errors.subject}</span>
+                  <span
+                    id="subject-error"
+                    className="text-red-500"
+                    role="alert"
+                  >
+                    {errors.subject}
+                  </span>
                 )}
               </div>
               <div className="mb-3">
-                <label htmlFor="message" className="sr-only">Your Message</label>
+                <label htmlFor="message" className="sr-only">
+                  Your Message
+                </label>
                 <textarea
                   className="form-control bg-bg-colour border-none text-white focus:border-none focus:outline-none focus:bg-bg-colour focus:ring-0 placeholder-text-colour2"
                   id="message"
@@ -178,10 +219,18 @@ function Contact_Me() {
                   onChange={(e) => setMessage(e.target.value)}
                   aria-required="true"
                   aria-invalid={errors.message ? "true" : "false"}
-                  aria-describedby={errors.message ? "message-error" : undefined}
+                  aria-describedby={
+                    errors.message ? "message-error" : undefined
+                  }
                 ></textarea>
                 {errors.message && (
-                  <span id="message-error" className="text-red-500" role="alert">{errors.message}</span>
+                  <span
+                    id="message-error"
+                    className="text-red-500"
+                    role="alert"
+                  >
+                    {errors.message}
+                  </span>
                 )}
               </div>
               <button
@@ -192,12 +241,15 @@ function Contact_Me() {
                 Submit
               </button>
               {isSubmitted && (
-                <div 
-                  className="text-green-500 mt-3 flex items-center" 
-                  role="status" 
+                <div
+                  className="text-green-500 mt-3 flex items-center"
+                  role="status"
                   aria-live="polite"
                 >
-                  <i className="bi bi-check-circle-fill mr-2 text-2xl" aria-hidden="true"></i>
+                  <i
+                    className="bi bi-check-circle-fill mr-2 text-2xl"
+                    aria-hidden="true"
+                  ></i>
                   Message submitted successfully!
                 </div>
               )}
