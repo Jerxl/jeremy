@@ -22,12 +22,16 @@ function About() {
       className="container h-auto flex flex-col md:flex-row pl-5 pr-5 md:pl-2 md:pr-2 md:gap-6 lg:pr-0 lg:pl-0 mb-24 float-up"
       id="About_Container"
     >
-      <aside className=" bg-my-gradient rounded-2xl p-3 flex flex-col md:h-[550px] md:w-[500px] md:sticky md:top-0" role="complementary" aria-label="Profile sidebar">
+      <aside
+        className=" bg-my-gradient rounded-2xl p-3 flex flex-col md:h-[550px] md:w-[500px] md:sticky md:top-0"
+        role="complementary"
+        aria-label="Profile sidebar"
+      >
         <div className=" flex flex-col items-center mb-3 mt-3">
-          <img 
-            src={profileimg} 
-            alt="Jeremy Zhao (Zhao Xinlei) - Professional headshot" 
-            className=" w-96 rounded-3xl md:w-72" 
+          <img
+            src={profileimg}
+            alt="Jeremy Zhao (Zhao Xinlei) - Professional headshot"
+            className=" w-96 rounded-3xl md:w-72"
           />
           <h2 className=" text-3xl font-semibold text-text-colour mt-2">
             Zhao Xinlei
@@ -76,28 +80,81 @@ function About() {
             <i className="bi bi-instagram text-text-colour text-2xl"></i>
           </a>
         </div>
-        <NavLink 
-          to="/contact" 
+        <NavLink
+          to="/contact"
           className="center_item bg-bg-colour m-4 p-2 rounded-3xl text-xl hover:bg-bg-colour-hover hover:transition"
           aria-label="Go to contact page"
         >
           <span className="text-text-colour font-semibold">Contact Me</span>
         </NavLink>
       </aside>
-      <div className="text-text-colour flex flex-col gap-20 mt-4 md:mt-0 w-[100%]" role="main">
+      <div
+        className="text-text-colour flex flex-col gap-20 mt-4 md:mt-0 w-[100%]"
+        role="main"
+      >
         <section className="About_Me" aria-labelledby="about-heading">
-          <h2 id="about-heading" className=" text-xl font-semibold mb-2 md:text-2xl">ABOUT ME</h2>
+          <h2
+            id="about-heading"
+            className=" text-xl font-semibold mb-2 md:text-2xl"
+          >
+            ABOUT ME
+          </h2>
           <p className="mb-2 font-medium">
-            Hello, I'm Zhao Xinlei, a graduate of Republic Polytechnic with a deep passion for technology and innovation. My journey in engineering is driven by a love for learning and problem-solving, where I eagerly embrace advancements in technology to contribute meaningfully to the field.
+            Hello, I'm Zhao Xinlei, a Computer Software Engineering student at
+            Singapore Management University with a deep passion for technology
+            and innovation. My journey in software development is driven by a
+            love for learning and problem-solving, where I eagerly embrace
+            advancements in technology to contribute meaningfully to the field.
           </p>
 
           <p className="font-medium">
-            My academic and professional experiences have strengthened my skills in proactive problem-solving and teamwork. I approach challenges with a positive mindset and a strong sensitivity to team dynamics, fostering effective collaboration even in complex situations. These abilities were honed through active participation in prestigious competitions such as the SUTD 3D Printing Design Innovation Challenge, NUS MIEC2022, and the National IIOT Competition 2023, where I delivered innovative solutions to address emerging challenges. I am excited to bring my enthusiasm, creativity, and collaborative spirit to the professional world, striving to grow and make a meaningful impact in the field of engineering and technology.
+            My academic and professional experiences have strengthened my skills
+            in proactive problem-solving and teamwork. With a background in
+            automation engineering and operations management, I bring a unique
+            perspective to software development, combining process optimization
+            expertise with technical innovation. I approach challenges with a
+            positive mindset and a strong sensitivity to team dynamics,
+            fostering effective collaboration even in complex situations. These
+            abilities were honed through active participation in prestigious
+            competitions such as the SUTD 3D Printing Design Innovation
+            Challenge, NUS MIEC2022, and the National IIOT Competition 2023,
+            where I delivered innovative solutions to address emerging
+            challenges. I am excited to bring my enthusiasm, creativity, and
+            collaborative spirit to the professional world, striving to grow and
+            make a meaningful impact in the field of software engineering and
+            technology.
           </p>
         </section>
-        <section className="About_Educations" id="Educations" aria-labelledby="education-heading">
-          <h2 id="education-heading" className="text-xl font-semibold mb-2 md:text-2xl">EDUCATION</h2>
+        <section
+          className="About_Educations"
+          id="Educations"
+          aria-labelledby="education-heading"
+        >
+          <h2
+            id="education-heading"
+            className="text-xl font-semibold mb-2 md:text-2xl"
+          >
+            EDUCATION
+          </h2>
           <div className="flex flex-col gap-5">
+            <div>
+              <p className="text-text-colour2 mb-0.5 font-medium">
+                2025 - Current
+              </p>
+              <h2 className="text-lg font-medium mb-0.5 text-[#5b78f6]">
+                Degree in Computer Software Engineering
+              </h2>
+              <p className="text-text-colour2 mb-0.5 font-medium">
+                Singapore Management University
+              </p>
+              <p className="font-medium mb-2">
+                Currently pursuing a degree in Computer Software Engineering,
+                focusing on developing expertise in software development, system
+                design, and modern programming practices. This program provides
+                a comprehensive foundation in computer science principles and
+                hands-on experience in building scalable software solutions.
+              </p>
+            </div>
             <div>
               <p className="text-text-colour2 mb-0.5 font-medium">
                 2021 - 2024
@@ -139,8 +196,17 @@ function About() {
             </div>
           </div>
         </section>
-        <section className="Experience" id="Experience" aria-labelledby="experience-heading">
-          <h2 id="experience-heading" className="text-xl font-semibold mb-2 md:text-2xl">EXPERIENCE</h2>
+        <section
+          className="Experience"
+          id="Experience"
+          aria-labelledby="experience-heading"
+        >
+          <h2
+            id="experience-heading"
+            className="text-xl font-semibold mb-2 md:text-2xl"
+          >
+            EXPERIENCE
+          </h2>
           <div className="flex flex-col gap-5">
             <div>
               <h2 className="text-lg font-medium mb-0.5  text-[#5b78f6]">
@@ -284,8 +350,17 @@ function About() {
             </div>
           </div>
         </section>
-        <section className="Skills" id="Skills" aria-labelledby="skills-heading">
-          <h2 id="skills-heading" className="text-xl font-semibold mb-2 md:text-2xl">SKILLS</h2>
+        <section
+          className="Skills"
+          id="Skills"
+          aria-labelledby="skills-heading"
+        >
+          <h2
+            id="skills-heading"
+            className="text-xl font-semibold mb-2 md:text-2xl"
+          >
+            SKILLS
+          </h2>
           <p>
             A versatile and strategic thinker equipped with a diverse range of
             skills tailored for excellence in the digital era. My expertise
@@ -293,8 +368,15 @@ function About() {
           </p>
           {<Skill />}
         </section>
-        <section className="About_Achievements" id="Achievements" aria-labelledby="achievements-heading">
-          <h2 id="achievements-heading" className="text-xl font-semibold mb-2 md:text-2xl">
+        <section
+          className="About_Achievements"
+          id="Achievements"
+          aria-labelledby="achievements-heading"
+        >
+          <h2
+            id="achievements-heading"
+            className="text-xl font-semibold mb-2 md:text-2xl"
+          >
             ACHIEVEMENTS
           </h2>
           <div className="flex flex-col gap-3">
@@ -349,8 +431,14 @@ function About() {
             </div>
           </div>
         </section>
-        <section className="About_Testimonials" aria-labelledby="testimonials-heading">
-          <h2 id="testimonials-heading" className="text-xl font-semibold mb-2 md:text-2xl">
+        <section
+          className="About_Testimonials"
+          aria-labelledby="testimonials-heading"
+        >
+          <h2
+            id="testimonials-heading"
+            className="text-xl font-semibold mb-2 md:text-2xl"
+          >
             Testimonials
           </h2>
           <div className="flex flex-col gap-3">

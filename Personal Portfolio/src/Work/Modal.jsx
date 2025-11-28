@@ -9,35 +9,38 @@ const Modal = ({ work, closeModal }) => {
   const [animationClass, setAnimationClass] = useState("modal-zoom-in");
   const [zoomedImage, setZoomedImage] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
 
   if (!work) return null;
 
   // Get all available images/media
-  const allImages = work.fields.ImageDataUrls && work.fields.ImageDataUrls.length > 0
-    ? work.fields.ImageDataUrls
-    : [profileimg];
+  const allImages =
+    work.fields.ImageDataUrls && work.fields.ImageDataUrls.length > 0
+      ? work.fields.ImageDataUrls
+      : [profileimg];
 
   // Helper function to detect media type
   const getMediaType = (url) => {
-    if (!url || url === profileimg) return 'image';
-    
-    const extension = url.split('.').pop().toLowerCase().split('?')[0];
-    
-    if (['mp4', 'webm', 'ogg', 'mov'].includes(extension)) {
-      return 'video';
-    } else if (['gif'].includes(extension)) {
-      return 'gif';
+    if (!url || url === profileimg) return "image";
+
+    const extension = url.split(".").pop().toLowerCase().split("?")[0];
+
+    if (["mp4", "webm", "ogg", "mov"].includes(extension)) {
+      return "video";
+    } else if (["gif"].includes(extension)) {
+      return "gif";
     } else {
-      return 'image';
+      return "image";
     }
   };
 
   // Render media based on type
   const renderMedia = (mediaUrl, alt, className, onClick, index = null) => {
     const mediaType = getMediaType(mediaUrl);
-    const key = index !== null ? index : 'single';
+    const key = index !== null ? index : "single";
 
-    if (mediaType === 'video') {
+    if (mediaType === "video") {
       return (
         <video
           key={key}
@@ -45,7 +48,7 @@ const Modal = ({ work, closeModal }) => {
           className={className}
           controls
           onClick={onClick}
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: "pointer" }}
           title="Click to enlarge"
           preload="metadata"
         >
@@ -61,8 +64,12 @@ const Modal = ({ work, closeModal }) => {
           alt={alt}
           className={className}
           onClick={onClick}
-          style={{ cursor: 'pointer' }}
-          title={mediaType === 'gif' ? 'Click to enlarge (GIF)' : 'Click to enlarge (use arrow keys to navigate)'}
+          style={{ cursor: "pointer" }}
+          title={
+            mediaType === "gif"
+              ? "Click to enlarge (GIF)"
+              : "Click to enlarge (use arrow keys to navigate)"
+          }
         />
       );
     }
@@ -88,16 +95,43 @@ const Modal = ({ work, closeModal }) => {
 
   const navigateImage = (direction) => {
     if (allImages.length <= 1) return;
-    
+
     let newIndex;
-    if (direction === 'next') {
+    if (direction === "next") {
       newIndex = (currentImageIndex + 1) % allImages.length;
     } else {
       newIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
     }
-    
+
     setCurrentImageIndex(newIndex);
     setZoomedImage(allImages[newIndex]);
+  };
+
+  // Touch handlers for swipe navigation in lightbox
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && allImages.length > 1) {
+      navigateImage("next");
+    }
+    if (isRightSwipe && allImages.length > 1) {
+      navigateImage("prev");
+    }
   };
 
   // Convert Markdown content to HTML
@@ -139,28 +173,28 @@ const Modal = ({ work, closeModal }) => {
     if (!zoomedImage) return;
 
     const handleKeyDown = (e) => {
-      if (e.key === 'ArrowLeft') {
+      if (e.key === "ArrowLeft") {
         e.preventDefault();
-        navigateImage('prev');
-      } else if (e.key === 'ArrowRight') {
+        navigateImage("prev");
+      } else if (e.key === "ArrowRight") {
         e.preventDefault();
-        navigateImage('next');
-      } else if (e.key === 'Escape') {
+        navigateImage("next");
+      } else if (e.key === "Escape") {
         e.preventDefault();
         closeZoom();
       }
     };
 
-    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [zoomedImage, currentImageIndex, allImages]);
 
   return (
-    <div 
-      className={`modal-container ${animationClass}`} 
+    <div
+      className={`modal-container ${animationClass}`}
       onClick={handleClose}
       role="dialog"
       aria-modal="true"
@@ -178,7 +212,10 @@ const Modal = ({ work, closeModal }) => {
               onClick={handleClose}
               aria-label="Close project details modal"
             >
-              <i className="bi bi-x-circle text-3xl text-text-colour2 hover:text-text-colour " aria-hidden="true"></i>
+              <i
+                className="bi bi-x-circle text-3xl text-text-colour2 hover:text-text-colour "
+                aria-hidden="true"
+              ></i>
             </button>
           </div>
         </div>
@@ -192,7 +229,7 @@ const Modal = ({ work, closeModal }) => {
                   {renderMedia(
                     mediaUrl || profileimg,
                     `Cover ${index + 1}`,
-                    'modal-image clickable-image',
+                    "modal-image clickable-image",
                     () => handleImageClick(mediaUrl || profileimg, index),
                     index
                   )}
@@ -205,13 +242,15 @@ const Modal = ({ work, closeModal }) => {
                 ? work.fields.ImageDataUrls[0]
                 : profileimg,
               work.fields["Project Name"],
-              'modal-image clickable-image',
-              () => handleImageClick(
-                work.fields.ImageDataUrls && work.fields.ImageDataUrls.length > 0
-                  ? work.fields.ImageDataUrls[0]
-                  : profileimg,
-                0
-              )
+              "modal-image clickable-image",
+              () =>
+                handleImageClick(
+                  work.fields.ImageDataUrls &&
+                    work.fields.ImageDataUrls.length > 0
+                    ? work.fields.ImageDataUrls[0]
+                    : profileimg,
+                  0
+                )
             )
           )}
 
@@ -231,7 +270,11 @@ const Modal = ({ work, closeModal }) => {
               )}
             ></div>
 
-            <div className="modal-skills" role="list" aria-label="Technologies and skills used in this project">
+            <div
+              className="modal-skills"
+              role="list"
+              aria-label="Technologies and skills used in this project"
+            >
               {work.fields["Skills Applied"].map((skill, index) => (
                 <span key={index} className="skill-tag" role="listitem">
                   {skill}
@@ -244,17 +287,20 @@ const Modal = ({ work, closeModal }) => {
 
       {/* Image Zoom/Lightbox */}
       {zoomedImage && (
-        <div 
+        <div
           className="image-lightbox"
           onClick={(e) => {
             e.stopPropagation();
             closeZoom(e);
           }}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
           role="dialog"
           aria-modal="true"
           aria-label="Enlarged image view"
         >
-          <button 
+          <button
             className="lightbox-close"
             onClick={(e) => {
               e.stopPropagation();
@@ -268,21 +314,21 @@ const Modal = ({ work, closeModal }) => {
           {/* Navigation arrows - only show if multiple images */}
           {allImages.length > 1 && (
             <>
-              <button 
+              <button
                 className="lightbox-nav lightbox-nav-prev"
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigateImage('prev');
+                  navigateImage("prev");
                 }}
                 aria-label="Previous image"
               >
                 <i className="bi bi-chevron-left"></i>
               </button>
-              <button 
+              <button
                 className="lightbox-nav lightbox-nav-next"
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigateImage('next');
+                  navigateImage("next");
                 }}
                 aria-label="Next image"
               >
@@ -292,7 +338,7 @@ const Modal = ({ work, closeModal }) => {
           )}
 
           {/* Render zoomed media */}
-          {getMediaType(zoomedImage) === 'video' ? (
+          {getMediaType(zoomedImage) === "video" ? (
             <video
               src={zoomedImage}
               className="lightbox-image"
@@ -303,25 +349,27 @@ const Modal = ({ work, closeModal }) => {
               Your browser does not support the video tag.
             </video>
           ) : (
-            <img 
-              src={zoomedImage} 
-              alt={`Enlarged view - ${getMediaType(zoomedImage).toUpperCase()} ${currentImageIndex + 1} of ${allImages.length}`}
+            <img
+              src={zoomedImage}
+              alt={`Enlarged view - ${getMediaType(
+                zoomedImage
+              ).toUpperCase()} ${currentImageIndex + 1} of ${allImages.length}`}
               className="lightbox-image"
               onClick={(e) => e.stopPropagation()}
             />
           )}
-          
+
           {/* Image counter */}
           {allImages.length > 1 && (
             <div className="lightbox-counter">
               {currentImageIndex + 1} / {allImages.length}
             </div>
           )}
-          
+
           <p className="lightbox-hint">
-            {allImages.length > 1 
-              ? 'Use arrow keys to navigate • Click outside to close' 
-              : 'Click outside to close'}
+            {allImages.length > 1
+              ? "Use arrow keys to navigate • Click outside to close"
+              : "Click outside to close"}
           </p>
         </div>
       )}

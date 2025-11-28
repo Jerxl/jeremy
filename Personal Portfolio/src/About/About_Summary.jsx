@@ -9,37 +9,70 @@ function About_Summary() {
   return (
     <div className="container min-h-screen box-border float-up" role="main">
       {/* Intro */}
-      <section className="flex h-auto gap-4 flex-col lg:flex-row" aria-labelledby="summary-heading">
+      <section
+        className="flex h-auto gap-4 flex-col lg:flex-row"
+        aria-labelledby="summary-heading"
+      >
         <div className=" max-w-xs  p-3 rounded-3xl bg-my-gradient flex-1 ml-auto mr-auto">
-          <img 
-            src={profileimg} 
-            alt="Jeremy Zhao (Zhao Xinlei) - Web Developer and Automation Engineer" 
-            className="rounded-3xl " 
+          <img
+            src={profileimg}
+            alt="Jeremy Zhao (Zhao Xinlei) - Web Developer and Automation Engineer"
+            className="rounded-3xl "
           />
         </div>
         <div className="flex-1 flex flex-col gap-3 items-center md:items-start">
-          <h1 id="summary-heading" className="text-3xl font-medium text-text-colour md:text-4xl lg:text-5xl">
+          <h1
+            id="summary-heading"
+            className="text-3xl font-medium text-text-colour md:text-4xl lg:text-5xl"
+          >
             ✨SELF-SUMMARY✨
           </h1>
           <div className="bg-my-gradient rounded-3xl p-3 h-full ">
-            <img src={Deco1} alt="" aria-hidden="true" className="mb-4 w-5 md:w-6" />
+            <img
+              src={Deco1}
+              alt=""
+              aria-hidden="true"
+              className="mb-4 w-5 md:w-6"
+            />
             <h2 className="text-2xl font-medium mb-2 text-text-colour md:text-3xl">
               Zhao Xinlei
             </h2>
 
             <p className="text-base text-text-colour2 md:text-lg font-medium">
-              Hello, I'm Zhao Xinlei, a graduate of Republic Polytechnic with a strong passion for technology and innovation. My journey in engineering is driven by a love for learning and problem-solving. I am eager to embrace advancements in technology and contribute meaningfully to impactful projects in the field.
+              Hello, I'm Zhao Xinlei, a Computer Software Engineering student at
+              Singapore Management University with a strong passion for
+              technology and innovation. My journey in software development is
+              driven by a love for learning and problem-solving. I am eager to
+              embrace advancements in technology and contribute meaningfully to
+              impactful projects in the field.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="About_Summary_Background mt-5 flex h-auto gap-3 flex-col sm:flex-row" aria-label="Education and Experience Summary">
+      <section
+        className="About_Summary_Background mt-5 flex h-auto gap-3 flex-col sm:flex-row"
+        aria-label="Education and Experience Summary"
+      >
         <div className="About_Summary_Background_Left flex-1 bg-my-gradient rounded-3xl p-4">
-          <h2 className="text-2xl text-text-colour mb-3 font-medium" id="education-summary">
+          <h2
+            className="text-2xl text-text-colour mb-3 font-medium"
+            id="education-summary"
+          >
             EDUCATION
           </h2>
           <div className="flex gap-5 flex-col">
+            <div className="flex gap-2 flex-col">
+              <h5 className="text-text-colour2 font-medium  ">
+                2025 - Current
+              </h5>
+              <h3 className="text-text-colour text-lg font-semibold">
+                Degree in Computer Software Engineering
+              </h3>
+              <h4 className="text-text-colour2 font-medium">
+                Singapore Management University
+              </h4>
+            </div>
             <div className="flex gap-2 flex-col">
               <h5 className="text-text-colour2 font-medium  ">
                 April 2021 - May 2024
@@ -51,22 +84,14 @@ function About_Summary() {
                 Republic Polytechnic
               </h4>
             </div>
-            <div className="flex gap-2 flex-col">
-              <h5 className="text-text-colour2 font-medium">
-                March 2020 - March 2021
-              </h5>
-              <h3 className="text-text-colour text-lg font-medium">
-                Human Resoruce Management & Services
-              </h3>
-              <h4 className="text-text-colour2 font-medium">
-                Institute of Technical Education
-              </h4>
-            </div>
           </div>
         </div>
 
         <div className="About_Summary_Background_Right flex-1 bg-my-gradient rounded-3xl p-4 ">
-          <h2 className="text-2xl text-text-colour mb-3 font-medium" id="experience-summary">
+          <h2
+            className="text-2xl text-text-colour mb-3 font-medium"
+            id="experience-summary"
+          >
             EXPERIENCE
           </h2>
           <div className="flex gap-5 flex-col">
@@ -96,13 +121,18 @@ function About_Summary() {
         </div>
       </section>
 
-      <section className=" flex mt-5 gap-3 mb-5 flex-col md:flex-row" aria-label="Contact and Credentials">
-        <div className=" text-text-colour bg-my-gradient flex-1 p-3 flex justify-between flex-col rounded-3xl group hover:scale-105 transition ease-in-out duration-300 ">
-          <SocialLinks
-            variant="large"
-            className="xl:mt-5 md:flex-wrap md:w-[250px] lg:max-w-[300px] xl:max-w-none xl:flex-nowrap xl:w-auto md:gap-14 lg:gap-2.5 ml-auto mr-auto"
-          />
-          <div className="flex justify-between items-center">
+      <section
+        className=" flex mt-5 gap-3 mb-5 flex-col md:flex-row w-full"
+        aria-label="Contact and Credentials"
+      >
+        <div className=" text-text-colour bg-my-gradient flex-1 p-3 flex justify-between flex-col rounded-3xl group hover:scale-105 transition ease-in-out duration-300 min-h-[200px] md:min-h-[250px]">
+          <div className="lg:mt-5 ml-auto mr-auto">
+            <SocialLinks
+              variant="large"
+              className="flex flex-wrap justify-center gap-3 md:w-[250px] lg:max-w-[300px] lg:w-full lg:grid lg:grid-cols-2 lg:gap-4 lg:justify-items-center"
+            />
+          </div>
+          <div className="flex justify-between items-center mt-auto">
             <div>
               <div className=" text-text-colour2 text-base font-medium">
                 Channels
@@ -115,35 +145,45 @@ function About_Summary() {
           </div>
         </div>
 
-        <div className=" flex-1  relative">
+        <div className=" flex-1 relative min-h-[200px] md:min-h-[250px]">
           <img
             src={Deco1}
             alt=""
             aria-hidden="true"
-            className="mb-4 w-5 md:w-8 absolute top-0 left-5 hidden md:block xl:w-11"
+            className="w-5 md:w-8 absolute top-3 left-3 hidden md:block xl:w-11 z-10"
           />
-          <NavLink 
+          <NavLink
             to="/contact"
             aria-label="Contact me to collaborate and work together"
+            className="h-full w-full block"
           >
-            <div className="bg-my-gradient rounded-3xl p-3 flex-1 group h-full flex justify-between items-center hover:bg-none hover:bg-[#007bff] hover:-translate-y-2 hover:duration-300 hover:ease-in-out">
-              <span className="text-4xl text-text-colour font-medium">
+            <div className="bg-my-gradient rounded-3xl p-3 h-full min-h-[200px] md:min-h-[250px] flex justify-between items-center group hover:bg-none hover:bg-[#007bff] hover:-translate-y-2 hover:duration-300 hover:ease-in-out">
+              <span className="text-2xl md:text-3xl xl:text-4xl text-text-colour font-medium">
                 Let's work together.
               </span>
-              <i className="bi bi-arrow-right-circle-fill text-text-colour2 text-3xl group-hover:text-text-colour" aria-hidden="true"></i>
+              <i
+                className="bi bi-arrow-right-circle-fill text-text-colour2 text-3xl group-hover:text-text-colour"
+                aria-hidden="true"
+              ></i>
             </div>
           </NavLink>
         </div>
-        <div className=" bg-my-gradient rounded-3xl p-3 flex-1 group hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out">
+
+        <div className=" bg-my-gradient rounded-3xl p-3 flex-1 flex flex-col justify-between group hover:bg-bg-colour hover:-translate-y-2 hover:duration-300 hover:ease-in-out min-h-[200px] md:min-h-[250px]">
           {/* Credentials */}
-          <NavLink 
+          <NavLink
             to="/credentials#About_Container "
             aria-label="View my detailed credentials and background"
+            className="h-full flex flex-col justify-between"
           >
-            <div className="flex justify-center lg:min-h-[150px]  md:mb-6 md:mt-6 xl:mb-0 xl:mt-0">
-              <img src={Signature} alt="Jeremy Zhao's signature" />
+            <div className="flex justify-center items-center flex-1 min-h-[100px] md:min-h-[120px]">
+              <img
+                src={Signature}
+                alt="Jeremy Zhao's signature"
+                className="max-h-[120px] md:max-h-[150px] object-contain"
+              />
             </div>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center mt-auto">
               <div>
                 <div className=" text-text-colour2 text-base font-medium">
                   More About Me
