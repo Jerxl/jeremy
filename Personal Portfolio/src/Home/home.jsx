@@ -96,12 +96,12 @@ function Home() {
           </div>
           <div>
             <p className=" text-lg text-text-colour2 font-medium">
-              A Web Developer
+              Software Developer
             </p>
 
             <h1 className=" text-2xl font-semibold md:text-3xl">Jeremy Zhao</h1>
 
-            <p className=" text-base font-medium ">Web Developer passionate about embracing and advancing technology, driven by innovation and creative problem-solving."
+            <p className=" text-base font-medium ">Software Developer passionate about embracing and advancing technology, driven by innovation and creative problem-solving.
             </p>
           </div>
         </div>
