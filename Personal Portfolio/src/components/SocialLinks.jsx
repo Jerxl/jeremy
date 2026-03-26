@@ -22,7 +22,7 @@ function SocialLinks({
     },
     {
       name: "LinkedIn",
-      url: "https://www.linkedin.com/in/zhao-xinlei-80875b211/",
+      url: "https://www.linkedin.com/in/zhao-xinlei/",
       icon: "bi-linkedin",
       ariaLabel: "Visit Jeremy Zhao's LinkedIn profile",
     },
@@ -83,4 +83,3 @@ function SocialLinks({
 }
 
 export default SocialLinks;
-

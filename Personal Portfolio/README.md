@@ -18,6 +18,7 @@ A modern, responsive portfolio website showcasing my work as a Computer Software
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - **React 18.2.0** - UI library
 - **Vite 5.0.0** - Build tool and dev server
 - **React Router DOM 6.20.0** - Client-side routing
@@ -25,6 +26,7 @@ A modern, responsive portfolio website showcasing my work as a Computer Software
 - **Bootstrap Icons 1.11.2** - Icon library
 
 ### Libraries & Tools
+
 - **React Slick** - Image carousel/slider
 - **Swiper** - Touch slider for skills section
 - **Marked** - Markdown parser for project descriptions
@@ -32,6 +34,7 @@ A modern, responsive portfolio website showcasing my work as a Computer Software
 - **Typed.js** - Typing animation library
 
 ### Backend Integration
+
 - **Airtable API** - Content management for projects, skills, and contact submissions
 
 ## 📁 Project Structure
@@ -84,22 +87,26 @@ Personal Portfolio/
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd "Personal Portfolio"
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Create a `.env` file in the root directory:
+
 ```env
 VITE_AIRTABLE_API=your_airtable_api_key_here
 ```
 
 4. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -117,19 +124,23 @@ npm run dev
 ## 🎨 Key Features Explained
 
 ### Caching System
+
 The portfolio implements a sophisticated caching system (`src/utils/cacheUtils.js`) that:
+
 - Caches API responses for 24 hours
 - Uses versioning for easy cache invalidation
 - Handles storage quota exceeded errors gracefully
 - Supports both localStorage and sessionStorage
 
 ### Responsive Design
+
 - Mobile-first approach with Tailwind CSS
 - Breakpoints: sm (640px), md (768px), lg (1024px), xl (1280px)
 - Touch-friendly interactions on mobile devices
 - Swipe gestures for image navigation on mobile
 
 ### Accessibility
+
 - Semantic HTML5 elements
 - ARIA labels and roles
 - Keyboard navigation support
@@ -137,6 +148,7 @@ The portfolio implements a sophisticated caching system (`src/utils/cacheUtils.j
 - Focus management for modals
 
 ### Performance Optimizations
+
 - Image lazy loading
 - Code splitting with React Router
 - Efficient data fetching with caching
@@ -145,13 +157,17 @@ The portfolio implements a sophisticated caching system (`src/utils/cacheUtils.j
 ## 🔧 Configuration
 
 ### Environment Variables
+
 Create a `.env` file with:
+
 ```
 VITE_AIRTABLE_API=your_api_key
 ```
 
 ### Airtable Setup
+
 The portfolio uses Airtable for content management. You'll need:
+
 - A base with tables for:
   - Projects/Works
   - Skills
@@ -159,7 +175,9 @@ The portfolio uses Airtable for content management. You'll need:
 - API key with appropriate permissions
 
 ### Deployment
+
 The project is configured for GitHub Pages deployment:
+
 - Uses `gh-pages` package for deployment
 - Includes `ghspa.js` for SPA routing support
 - Base path configured in `vite.config.js`
@@ -183,8 +201,9 @@ This project is private and personal. All rights reserved.
 ## 👤 Author
 
 **Jeremy Zhao (Zhao Xinlei)**
+
 - Portfolio: [jeremyzhaoxl.com](https://jeremyzhaoxl.com)
-- LinkedIn: [zhao-xinlei-80875b211](https://www.linkedin.com/in/zhao-xinlei-80875b211/)
+- LinkedIn: [zhao-xinlei](https://www.linkedin.com/in/zhao-xinlei/)
 - GitHub: [Jerxl](https://github.com/Jerxl)
 - Email: jeremyzhaoxl@gmail.com
 

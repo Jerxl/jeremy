@@ -50,7 +50,7 @@ function About() {
             <i className="bi bi-envelope-at text-text-colour text-2xl"></i>
           </a>
           <a
-            href="https://www.linkedin.com/in/zhao-xinlei-80875b211/"
+            href="https://www.linkedin.com/in/zhao-xinlei/"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-bg-colour w-14 h-14 rounded-full flex items-center justify-center hover:bg-bg-colour-hover2 hover:-translate-y-2 hover:duration-300 hover:ease-in-out transition-all"
